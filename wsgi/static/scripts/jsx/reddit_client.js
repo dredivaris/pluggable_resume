@@ -269,7 +269,7 @@ var SimpleRedditClient = React.createClass({
     return (
       <div>
         <Button text="Home" disabled={this.state.is_home} onClick={this.onClickHome}></Button>
-        <Button text="Favorites" disabled={!this.state.is_home} onClick={this.onClickFav}></Button>
+        <Button text="TestingChange" disabled={!this.state.is_home} onClick={this.onClickFav}></Button>
         { this.state.is_home ?
           <RedditEntries url={reddit_all}/> : <RedditFavorites url={favorites_url} /> }
       </div>
