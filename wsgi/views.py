@@ -1,6 +1,12 @@
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-from app import app
+app = Flask(__name__)
+app.config.from_object('config')
+db = SQLAlchemy(app)
+
 from flask import render_template
+from wsgi import models, api
 
 # route to flask tutorial page
 @app.route('/')
