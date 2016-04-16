@@ -1,0 +1,22 @@
+{
+  "name": "reddit_web_client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dredivaris@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "bower": "latest",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean": "^0.3.1",
+    "gulp-size": "^1.2.1",
+    "react": "^0.14.7",
+    "react-bootstrap": "^0.28.3",
+    "reactify": "^1.0.0",
+    "react-dom": "^0.14.7"
+  }
+}
