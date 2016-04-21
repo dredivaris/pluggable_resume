@@ -8,8 +8,15 @@ app.config.from_object('config')
 from flask import render_template
 # from wsgi import models, api
 
+
 # route to flask tutorial page
 @app.route('/')
 def index():
     return render_template('index.html',
                            title='Home')
+
+
+@app.route('/resume/')
+def resume():
+    return render_template('live_resume.html',
+                           title='Resume')
