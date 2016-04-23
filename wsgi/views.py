@@ -1,9 +1,12 @@
 from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
+from flask_admin import Admin
+from flask.ext.pymongo import PyMongo
 
 app = Flask(__name__)
 app.config.from_object('config')
-# db = SQLAlchemy(app)
+
+mongo = PyMongo(app)
+admin = Admin(app, name='andreas_website', template_mode='bootstrap3')
 
 from flask import render_template
 # from wsgi import models, api
