@@ -2,11 +2,12 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+MONGO_DBNAME = 'andreas_website'
 
-if os.environ.get('HEROKU') is None:
-    SQLALCHEMY_DATABASE_URI = "postgresql://redditdbuser:redajisdg@localhost/redditclient"
-else:
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+# if os.environ.get('HEROKU') is None:
+#     SQLALCHEMY_DATABASE_URI = "postgresql://redditdbuser:redajisdg@localhost/redditclient"
+# else:
+#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 
 '''mongo credentials:
    Root User:     admin
@@ -14,5 +15,5 @@ else:
    Database Name: andreaswebsite
 '''
 
-SQLALCHEMY_TRACK_MODIFICATIONS = True
-SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+# SQLALCHEMY_TRACK_MODIFICATIONS = True
+# SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
