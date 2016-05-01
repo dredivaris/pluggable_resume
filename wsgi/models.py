@@ -1,23 +1,20 @@
-from app import db
+from flask.ext.admin.contrib.pymongo import ModelView
+
+from wtforms import Form, StringField
+
+from wsgi.views import db, admin
 
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nickname = db.Column(db.String(64), index=True, unique=True)
-    email = db.Column(db.String(120), index=True, unique=True)
-    favorite_links = db.relationship('FavoriteLink', backref='owner', lazy='dynamic')
-
-    def __repr__(self):
-        return '<User {}>'.format(self.nickname)
+class UserForm(Form):
+    name = StringField('Name')
+    email = StringField('Email')
 
 
-class FavoriteLink(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    reddit_post_id = db.Column(db.String, unique=True)
-    url = db.Column(db.String, unique=False)
-    thumbnail = db.Column(db.String)
-    title = db.Column(db.String)
+class UserView(ModelView):
+    column_list = ('name', 'email')
+    form = UserForm
 
-    def __repr__(self):
-        return '<Favorite URL {}>'.format(self.url)
+
+if __name__ == '__main__':
+    # 'db' is PyMongo database object
+    admin.add_view(UserView(db['users']))
