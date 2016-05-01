@@ -7,6 +7,8 @@ app.config.from_object('config')
 
 mongo = PyMongo(app)
 admin = Admin(app, name='andreas_website', template_mode='bootstrap3')
+with app.app_context():
+  db = mongo.db
 
 from flask import render_template
 # from wsgi import models, api
