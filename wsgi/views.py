@@ -1,46 +1,49 @@
-from flask import Flask, request, flash, redirect, url_for
-from flask.ext.login import LoginManager, login_user, logout_user, login_required
+
+from flask import Flask
+
 from flask_admin import Admin
 from flask.ext.pymongo import PyMongo
 
-from wsgi.forms import LoginForm
-from wsgi.login import User
+from flask.ext.security import Security, login_required, \
+  MongoEngineUserDatastore
+from flask.ext.security import RoleMixin, UserMixin
+from flask.ext.mongoengine import MongoEngine
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.config.from_object('config')
-app.secret_key = "super secret key"
-login_manager = LoginManager()
-login_manager.login_view = 'login'
+# app.secret_key = "super secret key"
+# login_manager = LoginManager()
+# login_manager.login_view = 'login'
 
 mongo = PyMongo(app)
 with app.app_context():
   db = mongo.db
-login_manager.init_app(app)
+# login_manager.init_app(app)
 
-admin = Admin(app, name='Admin', template_mode='bootstrap3')
+engine_db = MongoEngine(app)
+
+class Role(engine_db.Document, RoleMixin):
+    name = engine_db.StringField(max_length=80, unique=True)
+    description = engine_db.StringField(max_length=255)
+
+class User(engine_db.Document, UserMixin):
+    email = engine_db.StringField(max_length=255)
+    password = engine_db.StringField(max_length=255)
+    active = engine_db.BooleanField(default=True)
+    confirmed_at = engine_db.DateTimeField()
+    roles = engine_db.ListField(engine_db.ReferenceField(Role), default=[])
+
+
+admin = Admin(app, name='Admin', template_mode='bootstrap3', base_template='my_master.html')
+
 
 from flask import render_template
 
+# setup security
+user_datastore = MongoEngineUserDatastore(engine_db, User, Role)
+security = Security(app, user_datastore)
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    print('woot got here')
-    if request.method == 'POST' and form.validate_on_submit():
-        user = db.users.find_one({"_id": form.username.data})
-        if user and User.validate_login(user['password'], form.password.data):
-            user_obj = User(user['_id'])
-            login_user(user_obj)
-            flash("Logged in successfully!", category='success')
-            return redirect(request.args.get("next") or url_for("write"))
-        flash("Wrong username or password!", category='error')
-    return render_template('login.html', title='login', form=form)
-
-
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('login'))
+from wsgi.admin_views import *
 
 
 # route to flask tutorial page
@@ -55,11 +58,3 @@ def index():
 def resume():
     return render_template('live_resume.html',
                            title='Resume')
-
-
-@login_manager.user_loader
-def load_user(username):
-    u = db.users.find_one({"_id": username})
-    if not u:
-        return None
-    return User(u['_id'])
