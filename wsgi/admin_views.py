@@ -7,6 +7,7 @@ from flask.ext.security import login_required
 from werkzeug.exceptions import abort
 from werkzeug.utils import redirect
 
+from wsgi.models import Resume
 from wsgi.views import admin, Role, User, engine_db, security
 
 class MyView(BaseView):
@@ -44,6 +45,8 @@ class MyModelView(mongoengine.ModelView):
 
 admin.add_view(MyModelView(Role))
 admin.add_view(MyModelView(User))
+
+admin.add_view(MyModelView(Resume))
 
 # admin.add_view(UserView(db.user, 'User'))
 @security.context_processor
