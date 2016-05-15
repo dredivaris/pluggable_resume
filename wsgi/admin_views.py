@@ -14,8 +14,8 @@ class MyView(BaseView):
         return self.render('admin/woot.html')
 
 admin.add_view(MyView(name='Woot'))
-admin.add_view(MyModelView(Role, engine_db))
-admin.add_view(MyModelView(User, engine_db))
+admin.add_view(MyModelView(Role))
+admin.add_view(MyModelView(User))
 
 # admin.add_view(UserView(db.user, 'User'))
 @security.context_processor
