@@ -22,9 +22,11 @@ with app.app_context():
 
 engine_db = MongoEngine(app)
 
+
 class Role(engine_db.Document, RoleMixin):
     name = engine_db.StringField(max_length=80, unique=True)
     description = engine_db.StringField(max_length=255)
+
 
 class User(engine_db.Document, UserMixin):
     email = engine_db.StringField(max_length=255)
@@ -42,6 +44,7 @@ from flask import render_template
 # setup security
 user_datastore = MongoEngineUserDatastore(engine_db, User, Role)
 security = Security(app, user_datastore)
+
 
 from wsgi.admin_views import *
 
