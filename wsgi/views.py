@@ -47,6 +47,7 @@ security = Security(app, user_datastore)
 
 
 from wsgi.admin_views import *
+from wsgi.resume_api import *
 
 
 # route to flask tutorial page

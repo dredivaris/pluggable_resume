@@ -2,6 +2,7 @@ from mongoengine import *
 from wsgi.views import engine_db as db
 
 
+# Resume models follow:
 class BasicInfo(EmbeddedDocument):
     location = StringField()
     email = EmailField(required=True)
