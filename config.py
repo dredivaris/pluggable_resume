@@ -27,6 +27,7 @@ SECURITY_POST_REGISTER_VIEW = "/admin/"
 SECURITY_REGISTERABLE = True
 SECURITY_SEND_REGISTER_EMAIL = False
 
+GOODREADS_DATABASE_NAME = 'Goodreads'
 
 # if os.environ.get(º'HEROKU') is None:
 #     SQLALCHEMY_DATABASE_URI = "postgresql://redditdbuser:redajisdg@localhost/redditclient"
