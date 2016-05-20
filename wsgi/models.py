@@ -44,10 +44,10 @@ class Certification(EmbeddedDocument):
 
 
 class SummaryInfo(EmbeddedDocument):
-    current_position = StringField(required=True)
+    current_position = StringField()
     previous_positions = ListField(StringField())
     previous_position = ListField(StringField())
-    summary = StringField(required=True)
+    summary = StringField()
 
 
 class School(EmbeddedDocument):
@@ -66,8 +66,24 @@ class Other(EmbeddedDocument):
 
 
 class Book(EmbeddedDocument):
-    name = StringField()
-
+    goodreads_id = IntField()
+    isbn = StringField()
+    isbn13 = StringField()
+    title = StringField()
+    image_url = URLField()
+    small_image_url = URLField()
+    link = URLField()
+    num_pages = IntField()
+    publisher = StringField()
+    average_rating = IntField()
+    description = StringField()
+    authors = ListField(StringField())
+    rating = IntField()
+    started_at = DateTimeField()
+    read_at = DateTimeField()
+    date_added = DateTimeField()
+    date_updated = DateTimeField()
+    review_body = StringField()
 
 class ReadingList(EmbeddedDocument):
     to_read = ListField(EmbeddedDocumentField(Book))
@@ -76,8 +92,13 @@ class ReadingList(EmbeddedDocument):
 
 
 # link to code eval github etc
-class OuterServiceLink:
-    pass
+class ServiceLink(EmbeddedDocument):
+    name = StringField()
+    user_id = StringField()
+    key = StringField()
+    secret = StringField()
+    oauth_key = StringField()
+    oauth_secret = StringField()
 
 
 class Resume(Document):
@@ -116,10 +137,10 @@ class Resume(Document):
 
     is_primary = BooleanField(default=True)
 
-    title = StringField(required=True)
-    headline = StringField(required=True)
-    name = StringField(required=True)
-    industry = StringField(required=True)
+    title = StringField()
+    headline = StringField()
+    name = StringField()
+    industry = StringField()
     connections = StringField()
     basic_info = EmbeddedDocumentField(BasicInfo)
     summary_info = EmbeddedDocumentField(SummaryInfo)
@@ -131,3 +152,4 @@ class Resume(Document):
     other = EmbeddedDocumentField(Other)
     languages = ListField(EmbeddedDocumentField(Language))
     reading_list = EmbeddedDocumentField(ReadingList)
+    service_links_list = ListField(EmbeddedDocumentField(ServiceLink))
