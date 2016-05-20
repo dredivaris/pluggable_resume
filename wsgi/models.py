@@ -1,11 +1,10 @@
 from mongoengine import *
-from wsgi.views import engine_db as db
 
 
 # Resume models follow:
 class BasicInfo(EmbeddedDocument):
     location = StringField()
-    email = EmailField(required=True)
+    email = EmailField()
     website = URLField()
     industry = StringField()
 
@@ -46,6 +45,7 @@ class Certification(EmbeddedDocument):
 
 class SummaryInfo(EmbeddedDocument):
     current_position = StringField(required=True)
+    previous_positions = ListField(StringField())
     previous_position = ListField(StringField())
     summary = StringField(required=True)
 
@@ -113,6 +113,8 @@ class Resume(Document):
     school
     causes
     '''
+
+    is_primary = BooleanField(default=True)
 
     title = StringField(required=True)
     headline = StringField(required=True)
