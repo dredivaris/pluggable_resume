@@ -3,7 +3,7 @@ from goodreads import client
 from wsgi.models import Book
 
 
-class GoodreadsUser:
+class GoodreadsClient:
     def __init__(self, key, secret, oauth_access_token, oauth_secret, user_id):
         self.gc = client.GoodreadsClient(key, secret)
         self.gc.authenticate(oauth_access_token, oauth_secret)
@@ -18,14 +18,14 @@ class GoodreadsUser:
             book_record = self.gc.book(doc['book']['id']['#text'])
             book = Book(
                 goodreads_id=int(doc['book']['id']['#text']),
-                isbn=doc['book']['isbn'],
-                isbn13=doc['book']['isbn13'],
+                isbn=str(doc['book']['isbn']),
+                isbn13=str(doc['book']['isbn13']),
                 title=doc['book']['title'],
                 image_url=book_record.image_url,
                 small_image_url=book_record.small_image_url,
                 link=book_record.link,
                 num_pages=book_record.num_pages,
-                publisher=book_record.publication_date,
+                publisher=book_record.publisher,
                 average_rating=book_record.average_rating,
                 description=book_record.description,
                 authors=[a.name for a in book_record.authors],

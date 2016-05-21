@@ -6,7 +6,7 @@ from flask import jsonify, request
 from flask.ext.restful import Api, Resource, reqparse, abort
 from flask.ext.security import auth_token_required
 
-from wsgi.api_exceptions import InvalidDataException
+from wsgi.exceptions import InvalidDataException
 from wsgi.models import *
 from wsgi.views import app
 
