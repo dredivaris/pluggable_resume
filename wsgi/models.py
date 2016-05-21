@@ -75,19 +75,21 @@ class Book(EmbeddedDocument):
     link = URLField()
     num_pages = IntField()
     publisher = StringField()
-    average_rating = IntField()
+    average_rating = StringField()
     description = StringField()
     authors = ListField(StringField())
-    rating = IntField()
+    rating = StringField()
     started_at = DateTimeField()
     read_at = DateTimeField()
     date_added = DateTimeField()
     date_updated = DateTimeField()
     review_body = StringField()
 
+
 class ReadingList(EmbeddedDocument):
     to_read = ListField(EmbeddedDocumentField(Book))
     currently_reading = ListField(EmbeddedDocumentField(Book))
+    finished_reading_general = ListField(EmbeddedDocumentField(Book))
     finished_reading = ListField(EmbeddedDocumentField(Book))
 
 

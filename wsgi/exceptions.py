@@ -7,3 +7,6 @@ class APIException(Exception):
 class InvalidDataException(APIException):
     pass
 
+
+class NotFoundException(Exception):
+    pass
