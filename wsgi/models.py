@@ -155,3 +155,9 @@ class Resume(Document):
     languages = ListField(EmbeddedDocumentField(Language))
     reading_list = EmbeddedDocumentField(ReadingList)
     service_links_list = ListField(EmbeddedDocumentField(ServiceLink))
+
+
+class ResumeSettings(Document):
+    enable_limited_resume = BooleanField(default=False)
+    limited_resume_url_specifier = StringField()
+    hidden_experiences = ListField(StringField())
