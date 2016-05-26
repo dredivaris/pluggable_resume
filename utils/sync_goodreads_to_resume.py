@@ -20,11 +20,17 @@ database
 
 
 def sync_bookshelves_from_goodreads(resume):
+    service_link = None
     for sl in resume.service_links_list:
         if sl.name == GOODREADS_DATABASE_NAME:
+            service_link = sl
             break
 
-    gr_client = GoodreadsClient(sl.key, sl.secret, sl.oauth_key, sl.oauth_secret, sl.user_id)
+    gr_client = GoodreadsClient(service_link.key,
+                                service_link.secret,
+                                service_link.oauth_key,
+                                service_link.oauth_secret,
+                                service_link.user_id)
 
     shelves = set(gr_client.list_shelves_by_name())
     if len(shelves_to_pull) != len(shelves_to_pull & shelves):
