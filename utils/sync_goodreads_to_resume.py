@@ -1,7 +1,7 @@
 from config import GOODREADS_DATABASE_NAME
 from wsgi.exceptions import NotFoundException
 from wsgi.goodreads_api import GoodreadsClient
-from wsgi.models import Resume, ReadingList
+from wsgi.models import Resume, ReadingList, ResumeSettings
 from wsgi.views import app
 
 shelves_to_pull = {'read-to-share', 'read-to-share-work', 'to-read-work', 'currently-reading-work'}
@@ -12,9 +12,14 @@ resume_mapping = {
     'currently-reading-work': 'currently_reading'
 }
 
+***REMOVED*** goodreads sync.
 
-def sync_bookshelves_from_goodreads(resume_model_id):
-    resume = Resume.objects.get(id=resume_model_id)
+Handles sync of goodreads book list data from goodreads to a user resume object specified in the
+database
+***REMOVED***
+
+
+def sync_bookshelves_from_goodreads(resume):
     for sl in resume.service_links_list:
         if sl.name == GOODREADS_DATABASE_NAME:
             break
@@ -34,8 +39,10 @@ def sync_bookshelves_from_goodreads(resume_model_id):
     resume.save()
 
 
-
-
-
-
-
+if __name__ == '__main__':
+    try:
+        resume = ResumeSettings.objects.all()[0]
+    except IndexError:
+        raise NotFoundException('Error: no ResumeSettings model object describing goodreads '
+                                'to resume linkage exists.')
+    sync_bookshelves_from_goodreads(resume)
