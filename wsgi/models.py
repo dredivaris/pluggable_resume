@@ -157,10 +157,10 @@ class Resume(Document):
     service_links_list = ListField(EmbeddedDocumentField(ServiceLink))
 
     def __repr__(self):
-        return self.title
+        return '<Resume: {}>'.format(self.title)
 
     def __str__(self):
-        return self.title
+        return '<Resume: {}>'.format(self.title)
 
 
 class ResumeSettings(Document):
