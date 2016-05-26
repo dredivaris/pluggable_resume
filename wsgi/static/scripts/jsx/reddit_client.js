@@ -281,3 +281,33 @@ ReactDOM.render(
   <SimpleRedditClient/>,
   document.getElementById('entries-list')
 );
+
+
+var SimpleRedditClient = React.createClass({
+  getInitialState: function() {
+    return {
+    };
+  },
+  onClickHome: function() {
+    this.setState({ is_home: true });
+  },
+  onClickFav: function() {
+    this.setState({ is_home: false });
+  },
+  render: function() {
+    var favorites_url = "/favoriting/api/v1.0/" + USER_ID + "/",
+      reddit_all = "reddit/api/v1.0/all/";
+    return (
+      <div>
+        <Button text="Home" disabled={this.state.is_home} onClick={this.onClickHome}></Button>
+        <Button text="TestingChange" disabled={!this.state.is_home} onClick={this.onClickFav}></Button>
+        { this.state.is_home ?
+          <RedditEntries url={reddit_all}/> : <RedditFavorites url={favorites_url} /> }
+      </div>
+    )
+  }
+});
+
+ReactDOM.render(
+  <AboutSectionContent/>, document.getElementById('about-section-content')
+);

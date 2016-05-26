@@ -156,8 +156,18 @@ class Resume(Document):
     reading_list = EmbeddedDocumentField(ReadingList)
     service_links_list = ListField(EmbeddedDocumentField(ServiceLink))
 
+    def __repr__(self):
+        return self.title
+
+    def __str__(self):
+        return self.title
+
 
 class ResumeSettings(Document):
     enable_limited_resume = BooleanField(default=False)
     limited_resume_url_specifier = StringField()
     hidden_experiences = ListField(StringField())
+
+    enable_goodreads_booklist_sync = BooleanField(default=False)
+    resume_to_sync = ReferenceField(document_type=Resume)
+

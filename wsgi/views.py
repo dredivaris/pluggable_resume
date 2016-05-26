@@ -59,6 +59,13 @@ def index():
 
 
 @app.route('/resume/')
-def resume():
+@app.route('/resume/<url_specifier>/')
+def resume(url_specifier=None):
     return render_template('live_resume.html',
-                           title='Resume')
+                           title='Resume',
+                           limited=True,
+                           url_specifier=url_specifier)
+
+
+
+
