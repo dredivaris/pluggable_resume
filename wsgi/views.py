@@ -45,11 +45,6 @@ from flask import render_template
 user_datastore = MongoEngineUserDatastore(engine_db, User, Role)
 security = Security(app, user_datastore)
 
-
-from wsgi.admin_views import *
-from wsgi.resume_api import *
-
-
 # route to flask tutorial page
 @app.route('/')
 def index():
@@ -65,6 +60,5 @@ def resume(url_specifier=None):
                            limited=True,
                            url_specifier=url_specifier)
 
-
-
-
+from wsgi.admin_views import *
+from wsgi.resume_api import *

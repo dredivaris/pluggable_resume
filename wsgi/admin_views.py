@@ -1,14 +1,12 @@
 from flask import url_for, request
-from flask.ext.admin import BaseView, expose
 from flask.ext.admin.contrib import mongoengine
 from flask.ext.login import current_user
 from flask_admin import helpers as admin_helpers
-from flask.ext.security import login_required
 from werkzeug.exceptions import abort
 from werkzeug.utils import redirect
 
 from wsgi.models import Resume, ResumeSettings
-from wsgi.views import admin, Role, User, engine_db, security
+from wsgi.views import admin, Role, User, security
 
 
 class MyModelView(mongoengine.ModelView):
@@ -39,6 +37,7 @@ admin.add_view(MyModelView(User))
 
 admin.add_view(MyModelView(Resume))
 admin.add_view(MyModelView(ResumeSettings))
+
 
 # admin.add_view(UserView(db.user, 'User'))
 @security.context_processor
