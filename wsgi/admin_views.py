@@ -10,14 +10,6 @@ from werkzeug.utils import redirect
 from wsgi.models import Resume, ResumeSettings
 from wsgi.views import admin, Role, User, engine_db, security
 
-class MyView(BaseView):
-    # @expose('/')
-    # @login_required
-    # def index(self):
-    #     return self.render('admin/woot.html')
-
-admin.add_view(MyView(name='Woot'))
-
 
 class MyModelView(mongoengine.ModelView):
 
