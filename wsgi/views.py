@@ -11,6 +11,12 @@ from flask.ext.mongoengine import MongoEngine
 
 app = Flask(__name__, template_folder='templates')
 app.config.from_object('config')
+
+import sys
+import logging
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
 # app.secret_key = "super secret key"
 # login_manager = LoginManager()
 # login_manager.login_view = 'login'
