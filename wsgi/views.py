@@ -8,6 +8,9 @@ from flask.ext.security import Security, login_required, \
   MongoEngineUserDatastore
 from flask.ext.security import RoleMixin, UserMixin
 from flask.ext.mongoengine import MongoEngine
+from pymongo import MongoClient
+
+from config import MONGO_URL
 
 app = Flask(__name__, template_folder='templates')
 app.config.from_object('config')
@@ -21,7 +24,8 @@ app.logger.setLevel(logging.ERROR)
 # login_manager = LoginManager()
 # login_manager.login_view = 'login'
 
-mongo = PyMongo(app)
+# mongo = PyMongo(app)
+mongo = MongoClient(MONGO_URL)
 with app.app_context():
   db = mongo.db
 # login_manager.init_app(app)
