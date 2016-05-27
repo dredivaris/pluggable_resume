@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 MONGODB_DB = 'andreas_website'
 MONGO_DBNAME = 'andreas_website'
 
-if os.environ.get('OPENSHIFT_MONGODB_IDENT') is None:
+if os.environ.get('OPENSHIFT_MONGODB_DB_PASSWORD'):
     MONGODB_HOST = 'localhost'
     MONGODB_PORT = os.environ.get('OPENSHIFT_MONGODB_DB_PORT')
     MONGODB_USERNAME = os.environ.get('OPENSHIFT_MONGODB_DB_USERNAME')
