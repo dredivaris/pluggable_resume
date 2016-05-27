@@ -10,11 +10,11 @@ if os.environ.get('OPENSHIFT_MONGODB_IDENT') is None:
     MONGODB_PORT = os.environ.get('OPENSHIFT_MONGODB_DB_PORT')
     MONGODB_USERNAME = os.environ.get('OPENSHIFT_MONGODB_DB_USERNAME')
     MONGODB_PASSWORD = os.environ.get('OPENSHIFT_MONGODB_DB_PASSWORD')
+    SECRET_KEY = os.environ.get('OPENSHIFT_SECRET_TOKEN')
 else:
     MONGODB_HOST = 'localhost'
     SESSION_TYPE = 'mongodb'
-
-SECRET_KEY = 'jkJKJGFDKJ*hG*&YD)JPSDGJLSKDJGOISUojidlsfkjasgd08adgpijG(HD('
+    SECRET_KEY = 'jkJKJGFDKJ*hG*&YD)JPSDGJLSKDJGOISUojidlsfkjasgd08adgpijG(HD('
 
 SECURITY_URL_PREFIX = "/"
 SECURITY_PASSWORD_HASH = "pbkdf2_sha512"
