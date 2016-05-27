@@ -10,6 +10,9 @@ if os.environ.get('OPENSHIFT_MONGODB_DB_PASSWORD'):
     MONGODB_PORT = int(os.environ.get('OPENSHIFT_MONGODB_DB_PORT'))
     MONGODB_USERNAME = os.environ.get('OPENSHIFT_MONGODB_DB_USERNAME')
     MONGODB_PASSWORD = os.environ.get('OPENSHIFT_MONGODB_DB_PASSWORD')
+    MONGODB_DB = 'andreaswebsite'
+    MONGO_DBNAME = 'andreaswebsite'
+
     # MONGO_URL = os.environ.get('OPENSHIFT_MONGODB_DB_URL')
     SECRET_KEY = os.environ.get('OPENSHIFT_SECRET_TOKEN')
 else:
