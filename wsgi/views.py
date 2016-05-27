@@ -52,6 +52,7 @@ from wsgi.resume_api import *
 
 # route to flask tutorial page
 @app.route('/')
+@login_required
 def index():
     return render_template('index.html',
                            title='Home')
