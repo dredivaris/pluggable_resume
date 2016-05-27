@@ -12,7 +12,6 @@ from wsgi.views import admin, Role, User, engine_db, security
 
 
 class MyModelView(mongoengine.ModelView):
-
     def is_accessible(self):
         if not current_user.is_active or not current_user.is_authenticated:
             return False
