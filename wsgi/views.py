@@ -25,7 +25,7 @@ app.logger.setLevel(logging.ERROR)
 # login_manager.login_view = 'login'
 
 # mongo = PyMongo(app)
-# mongo = MongoClient(MONGO_URL)
+# mongo = MongoClient(MONGO_URL + 'andreaswebsite')
 # with app.app_context():
 #   db = mongo.db
 # login_manager.init_app(app)
