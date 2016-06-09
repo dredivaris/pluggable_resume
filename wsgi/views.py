@@ -2,6 +2,7 @@
 from flask import Flask
 
 from flask_admin import Admin
+from flask.ext.pymongo import PyMongo
 
 from flask.ext.security import Security, login_required, \
   MongoEngineUserDatastore
