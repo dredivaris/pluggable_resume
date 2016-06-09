@@ -7,7 +7,7 @@ MONGO_DBNAME = 'andreaswebsite'
 
 if os.environ.get('OPENSHIFT_MONGODB_DB_PASSWORD'):
     MONGODB_HOST = os.environ.get('OPENSHIFT_MONGODB_DB_HOST')
-    MONGODB_PORT = os.environ.get('OPENSHIFT_MONGODB_DB_PORT')
+    MONGODB_PORT = int(os.environ.get('OPENSHIFT_MONGODB_DB_PORT'))
     MONGODB_USERNAME = os.environ.get('OPENSHIFT_MONGODB_DB_USERNAME')
     MONGODB_PASSWORD = os.environ.get('OPENSHIFT_MONGODB_DB_PASSWORD')
     MONGODB_DB = 'andreaswebsite'
