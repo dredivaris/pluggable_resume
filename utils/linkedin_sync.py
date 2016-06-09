@@ -1,6 +1,6 @@
 """linkedin_sync.
 
-Usage: linkedin_sync.py  [ADMIN_USERNAME ADMIN_PASSWORD LINKEDIN_USERNAME LINKEDIN_PASSWORD USER_TO_SCRAPE]
+Usage: linkedin_sync.py  [URL ADMIN_USERNAME ADMIN_PASSWORD LINKEDIN_USERNAME LINKEDIN_PASSWORD USER_TO_SCRAPE]
 
 Options:
   -h --help     Show this screen.
@@ -14,11 +14,10 @@ import requests
 from docopt import docopt
 from linkedin_selenium_scraper.profile_scraper import LinkedinProfile
 
-REMOTE_URL = 'http://localhost:5000'
-
 if __name__ == '__main__':
     args = docopt(__doc__, version='linkedin_sync 0.1')
     # print(args)
+    url = args['URL']
     username = args['ADMIN_USERNAME']
     admin_password = args['ADMIN_PASSWORD']
 
@@ -27,7 +26,7 @@ if __name__ == '__main__':
     linkedin_user_account_to_scrape = 'https://www.linkedin.com/in/{}'.format(args['USER_TO_SCRAPE'])
 
     # first get auth token
-    r = requests.post(REMOTE_URL + '/login/',
+    r = requests.post(url + '/login/',
                       data=json.dumps({'email': username, 'password': admin_password}),
                       headers={'content-type': 'application/json'})
     try:
@@ -44,6 +43,6 @@ if __name__ == '__main__':
     })
     headers = {'Content-Type': 'application/json',
                'Authentication-Token': auth_token}
-    r = requests.post(REMOTE_URL + '/resume/api/v1.0/', data=payload, headers=headers)
+    r = requests.post(url + '/resume/api/v1.0/', data=payload, headers=headers)
     print(r.status_code)
     print(r.content)
