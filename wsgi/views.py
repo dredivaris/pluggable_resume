@@ -2,15 +2,12 @@
 from flask import Flask
 
 from flask_admin import Admin
-from flask.ext.pymongo import PyMongo
 
 from flask.ext.security import Security, login_required, \
   MongoEngineUserDatastore
 from flask.ext.security import RoleMixin, UserMixin
 from flask.ext.mongoengine import MongoEngine
-from pymongo import MongoClient
 
-# from config import MONGO_URL
 
 app = Flask(__name__, template_folder='templates')
 app.config.from_object('config')
