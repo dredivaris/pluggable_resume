@@ -20,6 +20,7 @@ database
 
 
 def sync_bookshelves_from_goodreads(resume):
+
     service_link = None
     for sl in resume.service_links_list:
         if sl.name == GOODREADS_DATABASE_NAME:
