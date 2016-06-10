@@ -3,7 +3,7 @@
 echo "************ Cronny Started ***************"
 date >> ${OPENSHIFT_DATA_DIR}/ticktock-start.log
 
-source ${OPENSHIFT_HOMEDIR}/python/virtenv/bin/activate
+source ${OPENSHIFT_HOMEDIR}/python/virtenv/venv/bin/activate
 python ${OPENSHIFT_REPO_DIR}/utils/sync_goodreads_to_resume.py
 
 echo "************ Cronny Executed ***************"
