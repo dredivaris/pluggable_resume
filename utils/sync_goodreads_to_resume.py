@@ -39,7 +39,7 @@ def sync_bookshelves_from_goodreads(resume_setting):
 
     reading_lists = ReadingList()
     for shelf in shelves_to_pull:
-        book_list = [book for book in gr_client.get_books_for_shelf(resume_mapping[shelf])]
+        book_list = [book for book in gr_client.get_books_for_shelf(shelf)]
         setattr(reading_lists, resume_mapping[shelf], book_list)
 
     resume.reading_list = reading_lists
