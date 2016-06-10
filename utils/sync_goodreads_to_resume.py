@@ -19,8 +19,8 @@ database
 """
 
 
-def sync_bookshelves_from_goodreads(resume):
-
+def sync_bookshelves_from_goodreads(resume_setting):
+    resume = resume_setting.resume_to_sync
     service_link = None
     for sl in resume.service_links_list:
         if sl.name == GOODREADS_DATABASE_NAME:
@@ -48,8 +48,8 @@ def sync_bookshelves_from_goodreads(resume):
 
 if __name__ == '__main__':
     try:
-        resume = ResumeSettings.objects.all()[0]
+        resume_setting = ResumeSettings.objects.all()[0]
     except IndexError:
         raise NotFoundException('Error: no ResumeSettings model object describing goodreads '
                                 'to resume linkage exists.')
-    sync_bookshelves_from_goodreads(resume)
+    sync_bookshelves_from_goodreads(resume_setting)
