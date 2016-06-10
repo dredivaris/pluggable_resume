@@ -4,6 +4,7 @@ from wsgi.models import Book
 
 
 class GoodreadsClient:
+
     def __init__(self, key, secret, oauth_access_token, oauth_secret, user_id):
         self.gc = client.GoodreadsClient(key, secret)
         self.gc.authenticate(oauth_access_token, oauth_secret)
