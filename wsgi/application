@@ -21,4 +21,4 @@ try:
 except IOError:
     pass
 
-from views import app as application
+from wsgi import app as application
