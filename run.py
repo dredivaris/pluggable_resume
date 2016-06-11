@@ -1,2 +1,2 @@
-from wsgi.views import *
+from wsgi.setup import *
 app.run(debug=True)
