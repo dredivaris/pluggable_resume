@@ -6,7 +6,7 @@ from werkzeug.exceptions import abort
 from werkzeug.utils import redirect
 
 from wsgi.models import Resume, ResumeSettings
-from wsgi.views import admin, Role, User, security
+from wsgi.setup import admin, Role, User, security
 
 
 class MyModelView(mongoengine.ModelView):

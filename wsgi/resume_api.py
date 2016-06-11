@@ -8,7 +8,7 @@ from flask.ext.security import auth_token_required
 
 from wsgi.exceptions import InvalidDataException
 from wsgi.models import *
-from wsgi.views import app
+from wsgi.setup import app
 
 api = Api(app)
 
