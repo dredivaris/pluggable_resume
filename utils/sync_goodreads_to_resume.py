@@ -2,7 +2,7 @@ from config import GOODREADS_DATABASE_NAME
 from wsgi.exceptions import NotFoundException
 from wsgi.goodreads_api import GoodreadsClient
 from wsgi.models import Resume, ReadingList, ResumeSettings
-from wsgi.setup import app
+from wsgi.__init__ import app
 
 shelves_to_pull = {'read-to-share', 'read-to-share-work', 'to-read-work', 'currently-reading-work'}
 resume_mapping = {
