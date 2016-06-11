@@ -31,6 +31,10 @@ app.logger.setLevel(logging.ERROR)
 engine_db = MongoEngine(app)
 
 
+
+
+
+
 class Role(engine_db.Document, RoleMixin):
     name = engine_db.StringField(max_length=80, unique=True)
     description = engine_db.StringField(max_length=255)
