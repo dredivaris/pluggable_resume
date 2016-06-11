@@ -21,6 +21,7 @@ def real_db():
 
 @pytest.fixture(scope='session')
 def db(app, request, session):
+
     pass
     # def teardown():
     #     _db.drop_all()
