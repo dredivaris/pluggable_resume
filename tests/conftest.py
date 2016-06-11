@@ -1,6 +1,6 @@
 import pytest
 
-from wsgi.setup import app as app_runner, engine_db
+from wsgi.__init__ import app as app_runner, engine_db
 
 MONGODB_HOST = 'localhost'
 SESSION_TYPE = 'mongodb'

@@ -3,7 +3,7 @@ import re
 import jsonpickle as jsonpickle
 
 from utils.sync_goodreads_to_resume import sync_bookshelves_from_goodreads
-from wsgi.setup import engine_db
+from wsgi.__init__ import engine_db
 from wsgi.models import Resume, ResumeSettings
 
 
