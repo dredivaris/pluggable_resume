@@ -1,6 +1,5 @@
 from flask import Flask
 from flask.ext.mongoengine import MongoEngine
-from flask.ext.security import RoleMixin, UserMixin
 from flask.ext.security import Security, MongoEngineUserDatastore
 from flask_admin import Admin
 
@@ -26,19 +25,7 @@ app.logger.setLevel(logging.ERROR)
 engine_db = MongoEngine(app)
 
 
-
-class Role(engine_db.Document, RoleMixin):
-    name = engine_db.StringField(max_length=80, unique=True)
-    description = engine_db.StringField(max_length=255)
-
-
-class User(engine_db.Document, UserMixin):
-    email = engine_db.StringField(max_length=255)
-    password = engine_db.StringField(max_length=255)
-    active = engine_db.BooleanField(default=True)
-    confirmed_at = engine_db.DateTimeField()
-    roles = engine_db.ListField(engine_db.ReferenceField(Role), default=[])
-
+from wsgi.models import Role, User
 
 admin = Admin(app, name='Admin', template_mode='bootstrap3', base_template='my_master.html')
 
