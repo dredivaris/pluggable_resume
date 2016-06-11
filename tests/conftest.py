@@ -1,6 +1,6 @@
 import pytest
 
-from wsgi.__init__ import app as app_runner, engine_db
+from wsgi import app as app_runner, engine_db
 
 MONGODB_HOST = 'localhost'
 SESSION_TYPE = 'mongodb'
@@ -20,7 +20,7 @@ def real_db():
 
 
 @pytest.fixture(scope='session')
-def db(app, request):
+def db(app, request, session):
     pass
     # def teardown():
     #     _db.drop_all()
