@@ -23,5 +23,4 @@ except IOError:
 
 # from wsgi import app as application
 from wsgi import create_app
-app = create_app()
-app.run(debug=False)
+application = create_app()
