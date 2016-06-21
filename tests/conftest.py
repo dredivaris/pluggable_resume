@@ -2,16 +2,17 @@ import pytest
 
 from wsgi import create_app, engine_db
 
-MONGODB_HOST = 'localhost'
-SESSION_TYPE = 'mongodb'
-SECRET_KEY = 'jkJKJGFDKJ*hG*&YD)JPSDGJLSKDJGOISUojidlsfkjasgd08adgpijG(HD('
-MONGODB_DB = 'andreas_website_test'
-MONGO_DBNAME = 'andreaswebsitetest'
-
+test_settings = {
+    'MONGODB_HOST': 'localhost',
+    'SESSION_TYPE': 'mongodb',
+    'SECRET_KEY': 'jkJKJGFDKJ*hG*&YD)JPSDGJLSKDJGOISUojidlsfkjasgd08adgpijG(HD(',
+    'MONGODB_DB': 'andreas_website_test',
+    'MONGO_DBNAME': 'andreaswebsitetest'
+}
 
 @pytest.fixture
 def app(scope='session'):
-    return create_app()
+    return create_app(**test_settings)
 
 
 @pytest.fixture
