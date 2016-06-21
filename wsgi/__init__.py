@@ -2,26 +2,46 @@ from flask import Flask
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.security import Security, MongoEngineUserDatastore
 from flask_admin import Admin
+from flask_admin import helpers as admin_helpers
+
+from wsgi.models import Resume, ResumeSettings
+from wsgi.views import frontend
+
+engine_db = MongoEngine()
+admin = Admin(name='Admin', template_mode='bootstrap3', base_template='my_master.html')
+security = Security()
 
 
-app = Flask(__name__, template_folder='templates')
-app.config.from_object('config')
+def create_app(**config_overrides):
+    global security
+    app = Flask(__name__, template_folder='templates')
+    app.config.from_object('config')
+    app.config.update(config_overrides
+                      )
+    import sys
+    import logging
+    app.logger.addHandler(logging.StreamHandler(sys.stdout))
+    app.logger.setLevel(logging.ERROR)
+    engine_db.init_app(app)
 
-import sys
-import logging
-app.logger.addHandler(logging.StreamHandler(sys.stdout))
-app.logger.setLevel(logging.ERROR)
+    # setup security
+    from wsgi import admin_views
 
-engine_db = MongoEngine(app)
+    def security_context_processor():
+        return dict(
+            admin_base_template=admin.base_template,
+            admin_view=admin.index_view,
+            h=admin_helpers,
+        )
 
-from wsgi.models import Role, User
+    from wsgi.authentication_models import User, Role
+    user_datastore = MongoEngineUserDatastore(engine_db, User, Role)
+    security = Security(app)
+    security._state = security.init_app(app, user_datastore)
+    security.context_processor(security_context_processor)
+    admin.init_app(app)
 
-admin = Admin(app, name='Admin', template_mode='bootstrap3', base_template='my_master.html')
+    app.register_blueprint(frontend)
 
-# setup security
-user_datastore = MongoEngineUserDatastore(engine_db, User, Role)
-security = Security(app, user_datastore)
+    return app
 
-
-from wsgi.admin_views import *
-from wsgi.views import *

@@ -1,16 +1,16 @@
-from flask import render_template
+from flask import render_template, Blueprint
 
-from wsgi.__init__ import app
+frontend = Blueprint('frontend', __name__)
 
 
-@app.route('/')
+@frontend.route('/')
 def index():
     return render_template('index.html',
                            title='Home')
 
 
-@app.route('/resume/')
-@app.route('/resume/<url_specifier>/')
+@frontend.route('/resume/')
+@frontend.route('/resume/<url_specifier>/')
 def resume(url_specifier=None):
     return render_template('live_resume.html',
                            title='Resume',

@@ -1,6 +1,6 @@
 import pytest
 
-from wsgi import app as app_runner, engine_db
+from wsgi import create_app, engine_db
 
 MONGODB_HOST = 'localhost'
 SESSION_TYPE = 'mongodb'
@@ -11,7 +11,7 @@ MONGO_DBNAME = 'andreaswebsitetest'
 
 @pytest.fixture
 def app(scope='session'):
-    return app_runner
+    return create_app()
 
 
 @pytest.fixture
