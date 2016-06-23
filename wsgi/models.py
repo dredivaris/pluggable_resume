@@ -1,9 +1,23 @@
 from mongoengine import *
 
+from flask.ext.mongoengine import MongoEngine
+from mongoengine.base import BaseList, BaseDocument
+
+engine_db = MongoEngine()
+
+
+def is_empty(doc):
+    if doc is None:
+        return True
+    if isinstance(doc, BaseList):
+        return False if doc else True
+    if isinstance(doc, BaseDocument):
+        return all(not getattr(doc, field, None) for field in doc._fields.keys())
+    else:
+        return False if doc else True
+
 
 # Resume models follow:
-
-
 class BasicInfo(EmbeddedDocument):
     location = StringField()
     email = EmailField()
@@ -14,6 +28,8 @@ class BasicInfo(EmbeddedDocument):
 class Skill(EmbeddedDocument):
     name = StringField()
     url = URLField()
+    skill_level = IntField()  # 1 - 10
+    description = StringField()
 
 
 class Language(EmbeddedDocument):
@@ -32,6 +48,7 @@ class Experience(EmbeddedDocument):
     from_date = StringField()
     to_date = StringField()
     description = StringField()
+    sensitive = BooleanField(default=False)
 
 
 class Certification(EmbeddedDocument):
@@ -105,6 +122,12 @@ class ServiceLink(EmbeddedDocument):
     oauth_secret = StringField()
 
 
+class SiteLink(EmbeddedDocument):
+    site_name = StringField()
+    css_name = StringField()
+    url = URLField()
+
+
 class Resume(Document):
     '''
     About me +
@@ -142,10 +165,12 @@ class Resume(Document):
     is_primary = BooleanField(default=True)
 
     title = StringField()
+    github_username = StringField()
     headline = StringField()
     name = StringField()
     industry = StringField()
     connections = StringField()
+    site_links = ListField(EmbeddedDocumentField(SiteLink))
     basic_info = EmbeddedDocumentField(BasicInfo)
     summary_info = EmbeddedDocumentField(SummaryInfo)
     top_skills = ListField(EmbeddedDocumentField(Skill))

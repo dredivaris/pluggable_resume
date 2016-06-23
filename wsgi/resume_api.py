@@ -8,9 +8,9 @@ from flask.ext.security import auth_token_required
 
 from wsgi.exceptions import InvalidDataException
 from wsgi.models import *
-from wsgi.__init__ import app
+from wsgi import create_app
 
-api = Api(app)
+api = Api(create_app())
 
 
 def process_resume_object(data, resume_id):

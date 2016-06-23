@@ -1,13 +1,13 @@
 from flask import Flask
-from flask.ext.mongoengine import MongoEngine
 from flask.ext.security import Security, MongoEngineUserDatastore
 from flask_admin import Admin
 from flask_admin import helpers as admin_helpers
 
-from wsgi.models import Resume, ResumeSettings
+from wsgi.models import Resume, ResumeSettings, engine_db
+from wsgi.filters import filters
 from wsgi.views import frontend
 
-engine_db = MongoEngine()
+
 admin = Admin(name='Admin', template_mode='bootstrap3', base_template='my_master.html')
 security = Security()
 
@@ -42,6 +42,7 @@ def create_app(**config_overrides):
     admin.init_app(app)
 
     app.register_blueprint(frontend)
+    app.register_blueprint(filters)
 
     return app
 

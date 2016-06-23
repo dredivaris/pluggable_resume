@@ -5,14 +5,12 @@
         <img class="profile-image img-responsive pull-left" src="{{ url_for('static', filename='images/profile.jpg') }}
         " alt="James Lee" />
         <div class="profile-content pull-left">
-            <h1 class="name">Andreas Divaris</h1>
-            <h2 class="desc">Web App Developer</h2>
+            <h1 class="name">{{ resume.name }}</h1>
+            <h2 class="desc">{{ resume.headline }}</h2>
             <ul class="social list-inline">
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-github-alt"></i></a></li>
-                <li class="last-item"><a href="#"><i class="fa fa-hacker-news"></i></a></li>
+                {% for site_link in resume.site_links %}
+                    <li {% if loop.last %}class="last-item"{% endif %}><a href="{{ site_link.url }}"><i class="fa {{ site_link.css_name }}"></i></a></li>
+                {% endfor %}
             </ul>
         </div><!--//profile-->
         <a class="btn btn-cta-primary pull-right" href="http://themes.3rdwavemedia.com/" target="_blank"><i class="fa fa-paper-plane"></i> Contact Me</a>
@@ -20,6 +18,7 @@
 {% endblock header %}
 
 {% block content %}
+    <div class="hidden" id="github-username" github-username="{{ resume.github_username }}"></div>
     {% include 'resume_content.html' %}
 {% endblock content %}
 
