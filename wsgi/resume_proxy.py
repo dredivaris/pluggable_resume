@@ -3,8 +3,10 @@ from wsgi.models import Resume, is_empty
 
 def combined_resume(hide_work_experience=False):
     resumes = [r for r in Resume.objects.all()]
-    for resume in resumes:
-        if resume.is_primary:
+    resume = None
+    for res in resumes:
+        if res.is_primary:
+            resume = res
             break
     base = resume
     resumes.remove(resume)

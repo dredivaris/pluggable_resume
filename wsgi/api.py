@@ -17,7 +17,6 @@ class ReadingList(Resource):
 
     def get(self):
         resume = combined_resume()
-        print(self.attribute)
         reading_list = [{'title': r.title, 'id': i}
                         for i, r in enumerate(getattr(resume.reading_list, self.attribute, None))]
     ***REMOVED***'success': True,
