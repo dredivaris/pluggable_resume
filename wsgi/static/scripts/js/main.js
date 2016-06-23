@@ -56,7 +56,6 @@ jQuery(document).ready(function($) {
     
     /* Github Calendar - https://github.com/IonicaBizau/github-calendar */
     var github_username = $('#github-username').attr('github-username');
-    console.log('github username: ', github_username);
     GitHubCalendar("#github-graph", github_username);
     
     
