@@ -308,6 +308,8 @@ var SimpleRedditClient = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <AboutSectionContent/>, document.getElementById('about-section-content')
-);
+// ReactDOM.render(
+//   <AboutSectionContent/>, document.getElementById('about-section-content')
+// );
+
+// ReactDom.
