@@ -314,8 +314,9 @@ class ReadingList extends React.Component {
   constructor() {
     super();
     this.endpoint = '';
-    this.state = {};
-    this.state.reading_list = null;
+    this.state = {
+      reading_list: null
+***REMOVED***;
   }
   _get_reading_list() {
     if (!this.state.reading_list) {
@@ -338,11 +339,9 @@ class ReadingList extends React.Component {
   render() {
     var reading_list;
     if (this.state.reading_list && this.state.reading_list.length) {
-      console.log('setting up the reading list');
-
-
       // reading_list = this.state.reading_list.map((item) => (<li key={item.id}>{item.title}</li>))
-      reading_list = this.state.reading_list.map(function(item) {return (<li key={item.id}>{item.title}</li>)}  )
+      reading_list = this.state.reading_list.map(
+        function(item) {return (<li key={item.id}>{item.title}</li>)}  )
 ***REMOVED***
     else {
       reading_list = [];
