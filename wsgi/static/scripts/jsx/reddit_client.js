@@ -311,42 +311,89 @@ var SimpleRedditClient = React.createClass({
 
 
 class ReadingList extends React.Component {
+  constructor() {
+    super();
+    this.endpoint = '';
+    this.state = {};
+    this.state.reading_list = null;
+  }
   _get_reading_list() {
-    return (
-      <div></div>
-    )
+    if (!this.state.reading_list) {
+      $.ajax({
+        url: this.endpoint,
+        dataType: 'json',
+        cache: false,
+        success: function(data) {
+          if (data.success === true) {
+            console.log('getting data reading list', data.reading_list);
+            this.setState({reading_list: data.reading_list});
+          }
+        }.bind(this),
+        error: function(xhr, status, err) {
+          console.log(this.props.url, status, err.toString());
+        }.bind(this)
+      });
+    }
   }
   render() {
+    var reading_list;
+    if (this.state.reading_list && this.state.reading_list.length) {
+      console.log('setting up the reading list');
+      reading_list = this.state.reading_list.map((item) => <li key={item.id}>{item.title}</li>)
+    }
+    else {
+      reading_list = [];
+      this._get_reading_list();
+    }
     return (
       <div>
-        Testing its working woot!: {this._get_reading_list()}
+        Testing its working woot!:
+        <ul>{reading_list}</ul>
       </div>
     );
   }
 }
 
+class ReadingListBooksCurrentlyReading extends ReadingList {
+  constructor() {
+    super();
+    this.endpoint = '../api/v1.0/reading_list/currently_reading/';
+  }
+}
+
+
 class ReadingListBooksFinished extends ReadingList {
   constructor() {
     super();
-    this.endpoint = 'reading_list/api/v1.0/read/'; // TODO
-  }
-  _get_reading_list() {
-    return 'books read'
+    this.endpoint = '../api/v1.0/reading_list/finished_reading/';
   }
 }
+
+class ReadingListBooksFinishedGeneral extends ReadingList {
+  constructor() {
+    super();
+    this.endpoint = '../api/v1.0/reading_list/finished_reading_general/';
+  }
+}
+
 
 class ReadingListBooksToRead extends ReadingList {
-  _get_reading_list() {
-    return 'books to read'
+  constructor() {
+    super();
+    this.endpoint = '../api/v1.0/reading_list/to_read/';
   }
 }
-
-// ReactDOM.render(
-//   <AboutSectionContent/>, document.getElementById('about-section-content')
-// );
 
 ReactDom.render(
   <ReadingListBooksFinished/>, document.getElementById('reading-list-books-finished')
+);
+
+ReactDom.render(
+  <ReadingListBooksCurrentlyReading/>, document.getElementById('reading-list-books-currently-reading')
+);
+
+ReactDom.render(
+  <ReadingListBooksFinishedGeneral/>, document.getElementById('reading-list-books-finished-general')
 );
 
 ReactDom.render(
