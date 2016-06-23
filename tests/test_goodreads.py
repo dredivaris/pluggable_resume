@@ -18,8 +18,6 @@ def resume(request):
     res = Resume(
         title='goodreads testing',
         service_links_list=[sl for sl in resume_to_sync_old.service_links_list])
-    print('new test res')
-    print(['%s' % i.name for i in res.service_links_list])
     res.save()
     settings.resume_to_sync = res
     settings.save()

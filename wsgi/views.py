@@ -15,6 +15,7 @@ def index():
 @frontend.route('/resume/<url_specifier>/')
 def resume(url_specifier=None):
     matching_specifier = False
+    combined_res = None
     if url_specifier:
         settings = ResumeSettings.objects.first()
         if settings.enable_limited_resume and settings.limited_resume_url_specifier:
@@ -22,12 +23,12 @@ def resume(url_specifier=None):
                 matching_specifier = True
 
     if matching_specifier:
-        resume = combined_resume(hide_work_experience=True)
+        combined_res = combined_resume(hide_work_experience=True)
     else:
-        resume = combined_resume()
+        combined_res = combined_resume()
 
     return render_template('live_resume.html',
-                           title=resume.title,
-                           resume=resume,
+                           title=combined_res.title,
+                           resume=combined_res,
                            limited=True,
                            url_specifier=url_specifier)
