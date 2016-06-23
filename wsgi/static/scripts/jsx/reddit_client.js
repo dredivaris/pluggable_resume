@@ -339,7 +339,10 @@ class ReadingList extends React.Component {
     var reading_list;
     if (this.state.reading_list && this.state.reading_list.length) {
       console.log('setting up the reading list');
-      reading_list = this.state.reading_list.map((item) => <li key={item.id}>{item.title}</li>)
+
+
+      // reading_list = this.state.reading_list.map((item) => (<li key={item.id}>{item.title}</li>))
+      reading_list = this.state.reading_list.map(function(item) {return (<li key={item.id}>{item.title}</li>)}  )
 ***REMOVED***
     else {
       reading_list = [];
