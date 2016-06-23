@@ -44,5 +44,8 @@ def create_app(**config_overrides):
     app.register_blueprint(frontend)
     app.register_blueprint(filters)
 
+    from wsgi.api import api
+    api.init_app(app)
+
     return app
 
