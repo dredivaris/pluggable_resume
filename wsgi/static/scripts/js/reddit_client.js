@@ -19334,7 +19334,11 @@ class ReadingList extends React.Component {
   }
 }
 
-class ReadingListBooksRead extends ReadingList {
+class ReadingListBooksFinished extends ReadingList {
+  constructor() {
+    super();
+    this.endpoint = 'reading_list/api/v1.0/read/'; // TODO
+  }
   _get_reading_list() {
     return 'books read'
   }
@@ -19351,7 +19355,7 @@ class ReadingListBooksToRead extends ReadingList {
 // );
 
 ReactDom.render(
-  React.createElement(ReadingListBooksRead, null), document.getElementById('reading-list-books-read')
+  React.createElement(ReadingListBooksFinished, null), document.getElementById('reading-list-books-finished')
 );
 
 ReactDom.render(
