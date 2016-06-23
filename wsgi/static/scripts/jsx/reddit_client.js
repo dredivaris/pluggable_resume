@@ -4,6 +4,7 @@
 const USER_ID = 1;
 const ENTRIES_PER_PAGE = 8;
 var React = require('react');
+var ReactDom = require('react-dom');
 
 
 function loadFavorites() {
@@ -277,10 +278,10 @@ var SimpleRedditClient = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <SimpleRedditClient/>,
-  document.getElementById('entries-list')
-);
+// ReactDOM.render(
+//   <SimpleRedditClient/>,
+//   document.getElementById('entries-list')
+// );
 
 
 var SimpleRedditClient = React.createClass({
@@ -308,8 +309,46 @@ var SimpleRedditClient = React.createClass({
   }
 });
 
+
+class ReadingList extends React.Component {
+  _get_reading_list() {
+    return (
+      <div></div>
+    )
+  }
+  render() {
+    return (
+      <div>
+        Testing its working woot!: {this._get_reading_list()}
+      </div>
+    );
+  }
+}
+
+class ReadingListBooksRead extends ReadingList {
+  constructor() {
+    this.endpoint = ''; // TODO
+  }
+  _get_reading_list() {
+    return 'books read'
+  }
+}
+
+class ReadingListBooksToRead extends ReadingList {
+  _get_reading_list() {
+    return 'books to read'
+  }
+}
+
 // ReactDOM.render(
 //   <AboutSectionContent/>, document.getElementById('about-section-content')
 // );
 
-// ReactDom.
+ReactDom.render(
+  <ReadingListBooksRead/>, document.getElementById('reading-list-books-read')
+);
+
+ReactDom.render(
+  <ReadingListBooksToRead/>, document.getElementById('reading-list-books-to-read')
+);
+
