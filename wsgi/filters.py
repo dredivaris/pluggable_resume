@@ -14,7 +14,7 @@ def process_newlines_short(val):
 
 
 def level_to_proficiency(val):
-    val = int(val)
+    val = int(val) if val else 5
     proficiency_dict = {
         (10,10): 'Expert',
         (9, 8): 'Pro',
