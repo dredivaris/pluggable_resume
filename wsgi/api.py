@@ -6,7 +6,7 @@ from flask.ext.restful import Api, Resource, reqparse, abort
 # from app import app, db
 # from app.models import User, FavoriteLink
 # from app.reddit import get_submissions
-
+from wsgi import ResumeSettings
 from wsgi.resume_proxy import combined_resume
 
 api = Api(prefix='/api/v1.0')  # Note, no app
@@ -38,7 +38,19 @@ class ReadingListFinishedReadingGeneral(ReadingList):
 class ReadingListToRead(ReadingList):
     attribute = 'to_read'
 
+
+class Email(Resource):
+    def get(self):
+        settings = ResumeSettings.objects.first()
+        if hasattr(settings, 'mail_to'):
+            return {'success': True,
+                    'mail_to': settings.mail_to}
+        else:
+            return {'success': False}
+
+
 api.add_resource(ReadingListCurrentlyReading, '/reading_list/currently_reading/')
 api.add_resource(ReadingListFinishedReading, '/reading_list/finished_reading/')
 api.add_resource(ReadingListFinishedReadingGeneral, '/reading_list/finished_reading_general/')
 api.add_resource(ReadingListToRead, '/reading_list/to_read/')
+api.add_resource(Email, '/email/')

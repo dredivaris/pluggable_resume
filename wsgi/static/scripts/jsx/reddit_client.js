@@ -386,6 +386,26 @@ class ReadingListBooksToRead extends ReadingList {
   }
 }
 
+class SendEmail extends React.Component {
+  render() {
+    return (
+      <a onClick={this._handleClick.bind(this)} className="btn btn-cta-primary pull-right" href="#" target="_blank"><i className="fa fa-paper-plane"></i> Contact Me</a>
+    )
+  }
+  _handleClick() {
+    $.get( '../api/v1.0/email/', function(data) {
+      if (data.success) {
+        window.location = `mailto:${data.mail_to}`;
+      }
+    })
+  }
+}
+
+ReactDom.render(
+  <SendEmail/>, document.getElementById('contact-me')
+);
+
+
 ReactDom.render(
   <ReadingListBooksFinished/>, document.getElementById('reading-list-books-finished')
 );

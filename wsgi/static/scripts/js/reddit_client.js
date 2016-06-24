@@ -19395,6 +19395,26 @@ class ReadingListBooksToRead extends ReadingList {
   }
 }
 
+class SendEmail extends React.Component {
+  render() {
+    return (
+      React.createElement("a", {onClick: this._handleClick.bind(this), className: "btn btn-cta-primary pull-right", href: "#", target: "_blank"}, React.createElement("i", {className: "fa fa-paper-plane"}), " Contact Me")
+    )
+  }
+  _handleClick() {
+    $.get( '../api/v1.0/email/', function(data) {
+      if (data.success) {
+        window.location = `mailto:${data.mail_to}`;
+      }
+    })
+  }
+}
+
+ReactDom.render(
+  React.createElement(SendEmail, null), document.getElementById('contact-me')
+);
+
+
 ReactDom.render(
   React.createElement(ReadingListBooksFinished, null), document.getElementById('reading-list-books-finished')
 );

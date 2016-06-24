@@ -192,6 +192,7 @@ class Resume(Document):
 
 class ResumeSettings(Document):
     enable_limited_resume = BooleanField(default=False)
+    mail_to = StringField()
     limited_resume_url_specifier = StringField()
     hidden_experiences = ListField(StringField())
 
