@@ -53,4 +53,4 @@ if __name__ == '__main__':
     except IndexError:
         raise NotFoundException('Error: no ResumeSettings model object describing goodreads '
                                 'to resume linkage exists.')
-    sync_bookshelves_from_goodreads(resume_setting)
+    sync_bookshelves_from_goodreads(resume_setting.resume_to_sync)
