@@ -339,9 +339,9 @@ class ReadingList extends React.Component {
   render() {
     var reading_list;
     if (this.state.reading_list && this.state.reading_list.length) {
-      // reading_list = this.state.reading_list.map((item) => (<li key={item.id}>{item.title}</li>))
-      reading_list = this.state.reading_list.map(
-        function(item) {return (<li key={item.id}>{item.title}</li>)}  )
+      reading_list = this.state.reading_list.map((item) => (<li key={item.id}>{item.title}</li>));
+      // reading_list = this.state.reading_list.map(
+      //   function(item) {return (<li key={item.id}>{item.title}</li>)}  )
 ***REMOVED***
     else {
       reading_list = [];
@@ -358,7 +358,7 @@ class ReadingList extends React.Component {
 class ReadingListBooksCurrentlyReading extends ReadingList {
   constructor() {
     super();
-    this.endpoint = '../api/v1.0/reading_list/currently_reading/';
+    this.endpoint == '../api/v1.0/reading_list/currently_reading/';
   }
 }
 
