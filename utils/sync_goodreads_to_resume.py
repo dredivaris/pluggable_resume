@@ -2,7 +2,9 @@ from config import GOODREADS_DATABASE_NAME
 from wsgi.exceptions import NotFoundException
 from wsgi.goodreads_api import GoodreadsClient
 from wsgi.models import Resume, ReadingList, ResumeSettings
-from wsgi.__init__ import app
+
+from wsgi import create_app
+app = create_app()
 
 shelves_to_pull = {'read-to-share', 'read-to-share-work', 'to-read-work', 'currently-reading-work'}
 resume_mapping = {
@@ -19,8 +21,7 @@ database
 """
 
 
-def sync_bookshelves_from_goodreads(resume_setting):
-    resume = resume_setting.resume_to_sync
+def sync_bookshelves_from_goodreads(resume):
     service_link = None
     for sl in resume.service_links_list:
         if sl.name == GOODREADS_DATABASE_NAME:
