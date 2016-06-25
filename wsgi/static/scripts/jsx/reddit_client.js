@@ -349,7 +349,6 @@ class ReadingList extends React.Component {
     }
     return (
       <div>
-        Testing its working woot!:
         <ul>{reading_list}</ul>
       </div>
     );
