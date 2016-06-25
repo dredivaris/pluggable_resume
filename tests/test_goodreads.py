@@ -22,7 +22,6 @@ def resume(request):
     settings.resume_to_sync = res
     settings.save()
 
-
     def fin():
         res.delete()
         settings.resume_to_sync = resume_to_sync_old
