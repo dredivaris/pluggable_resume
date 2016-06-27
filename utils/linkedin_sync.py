@@ -39,7 +39,6 @@ if __name__ == '__main__':
     profile = LinkedinProfile(linkedin_user_account_to_scrape, email, password)
     pickled_profile = jsonpickle.encode(profile)
     payload = json.dumps({
-        'resume_id': 0,
         'data': pickled_profile
 ***REMOVED***)
     headers = {'Content-Type': 'application/json',

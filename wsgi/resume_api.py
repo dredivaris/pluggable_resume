@@ -12,11 +12,10 @@ from wsgi.models import *
 resume_api = Api(prefix='/api/v1.0')
 
 
-def process_resume_object(data, resume_id):
+def process_resume_object(data):
     linkedin_resume = jsonpickle.decode(data)
 
-    resume = Resume.objects.get(id=resume_id) if resume_id else Resume()
-
+    resume = Resume.objects.filter(is_primary=False)[0]
 
     resume.name = linkedin_resume.name
     resume.headline = linkedin_resume.headline
@@ -95,11 +94,7 @@ class ResumeAPI(Resource):
         error = None
         json_data = request.get_json(force=True)
         try:
-            resume_id = json_data['resume_id']
-        except KeyError:
-            error = 'missing resume_id'
-        try:
-            obj_id = process_resume_object(json_data['data'], resume_id)
+            obj_id = process_resume_object(json_data['data'])
         except InvalidDataException:
             error = 'Invalid resume json object'
 
