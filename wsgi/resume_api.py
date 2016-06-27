@@ -29,14 +29,19 @@ def process_resume_object(data):
         current_position=linkedin_resume.summary_info.current_position,
         previous_positions=linkedin_resume.summary_info.previous_position)
 
-    existing_top_skills = list(resume.top_skills)
-    existing_other_skills = list(resume.other_skills)
+    # existing_top_skills = list(resume.top_skills)
+    # existing_other_skills = list(resume.other_skills)
+    existing_skills = resume.skills
 
     top_skills = \
         [Skill(name=top_skill.name, url=top_skill.url) for top_skill in linkedin_resume.top_skills]
+
     other_skills = \
         [Skill(name=other_skill.name, url=other_skill.url) for
          other_skill in linkedin_resume.other_skills]
+
+    # decided to combine all skills in resume
+    skills = top_skills + other_skills
 
     def overwrite_level(skills_to_overwrite, skills_to_check):
         for skill in skills_to_overwrite:
@@ -44,11 +49,10 @@ def process_resume_object(data):
             for other_skill in skills_to_check:
                 if skill.name == other_skill.name:
                     skill.skill_level = other_skill.skill_level
-    overwrite_level(top_skills, existing_top_skills)
-    overwrite_level(other_skills, existing_other_skills)
-    resume.top_skills = top_skills
-    resume.other_skills = other_skills
-    # TODO: test
+                    skill.order_by = other_skill.order_by
+    overwrite_level(skills, existing_skills)
+
+    resume.skills = skills
 
     resume.work_experiences = \
         [Experience(company_title=ex.company_title,
