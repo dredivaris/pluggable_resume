@@ -358,7 +358,7 @@ class ReadingList extends React.Component {
 class ReadingListBooksCurrentlyReading extends ReadingList {
   constructor() {
     super();
-    this.endpoint == '../api/v1.0/reading_list/currently_reading/';
+    this.endpoint = '../api/v1.0/reading_list/currently_reading/';
   }
 }
 
