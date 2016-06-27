@@ -45,7 +45,9 @@ def create_app(**config_overrides):
     app.register_blueprint(filters)
 
     from wsgi.api import api
+    from wsgi.resume_api import resume_api
     api.init_app(app)
+    resume_api.init_app(app)
 
     return app
 

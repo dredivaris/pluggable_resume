@@ -8,9 +8,8 @@ from flask.ext.security import auth_token_required
 
 from wsgi.exceptions import InvalidDataException
 from wsgi.models import *
-from wsgi import create_app
 
-api = Api(create_app())
+resume_api = Api(prefix='/api/v1.0')
 
 
 def process_resume_object(data, resume_id):
@@ -92,13 +91,13 @@ class ResumeAPI(Resource):
     decorators = [auth_token_required]
 
     def post(self):
+        print('in post processing resume from linkedin')
         error = None
         json_data = request.get_json(force=True)
         try:
             resume_id = json_data['resume_id']
         except KeyError:
             error = 'missing resume_id'
-        print('resume id ', resume_id)
         try:
             obj_id = process_resume_object(json_data['data'], resume_id)
         except InvalidDataException:
@@ -106,6 +105,5 @@ class ResumeAPI(Resource):
 
         return {'success': False, 'error: ': error} if error else {'success': True, 'id': obj_id}
 
-
-api.add_resource(ResumeAPI, '/resume/api/v1.0/')
+resume_api.add_resource(ResumeAPI, '/resume/')
 

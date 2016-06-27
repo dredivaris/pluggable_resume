@@ -15,6 +15,7 @@ from docopt import docopt
 from linkedin_selenium_scraper.profile_scraper import LinkedinProfile
 
 if __name__ == '__main__':
+    auth_token = None
     args = docopt(__doc__, version='linkedin_sync 0.1')
     # print(args)
     url = args['URL']
@@ -43,6 +44,7 @@ if __name__ == '__main__':
     })
     headers = {'Content-Type': 'application/json',
                'Authentication-Token': auth_token}
-    r = requests.post(url + '/resume/api/v1.0/', data=payload, headers=headers)
+    print('posting with', url + '/api/v1.0/resume/', headers)
+    r = requests.post(url + '/api/v1.0/resume/', data=payload, headers=headers)
     print(r.status_code)
     print(r.content)
