@@ -358,7 +358,7 @@ class ReadingList extends React.Component {
 class ReadingListBooksCurrentlyReading extends ReadingList {
   constructor() {
     super();
-    this.endpoint = '../api/v1.0/reading_list/currently_reading/';
+    this.endpoint = '/api/v1.0/reading_list/currently_reading/';
   }
 }
 
@@ -366,14 +366,14 @@ class ReadingListBooksCurrentlyReading extends ReadingList {
 class ReadingListBooksFinished extends ReadingList {
   constructor() {
     super();
-    this.endpoint = '../api/v1.0/reading_list/finished_reading/';
+    this.endpoint = '/api/v1.0/reading_list/finished_reading/';
   }
 }
 
 class ReadingListBooksFinishedGeneral extends ReadingList {
   constructor() {
     super();
-    this.endpoint = '../api/v1.0/reading_list/finished_reading_general/';
+    this.endpoint = '/api/v1.0/reading_list/finished_reading_general/';
   }
 }
 
@@ -381,7 +381,7 @@ class ReadingListBooksFinishedGeneral extends ReadingList {
 class ReadingListBooksToRead extends ReadingList {
   constructor() {
     super();
-    this.endpoint = '../api/v1.0/reading_list/to_read/';
+    this.endpoint = '/api/v1.0/reading_list/to_read/';
   }
 }
 

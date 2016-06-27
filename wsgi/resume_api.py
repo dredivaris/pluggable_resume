@@ -17,6 +17,8 @@ def process_resume_object(data, resume_id):
     linkedin_resume = jsonpickle.decode(data)
 
     resume = Resume.objects.get(id=resume_id) if resume_id else Resume()
+
+
     resume.name = linkedin_resume.name
     resume.headline = linkedin_resume.headline
     resume.industry = linkedin_resume.industry
@@ -27,10 +29,26 @@ def process_resume_object(data, resume_id):
     resume.summary_info = SummaryInfo(summary=linkedin_resume.summary_info.summary,
                                       current_position=linkedin_resume.summary_info.current_position,
                                       previous_positions=linkedin_resume.summary_info.previous_position)
-    resume.top_skills = \
+
+    existing_top_skills = list(resume.top_skills)
+    existing_other_skills = list(resume.top_skills)
+
+    top_skills = \
         [Skill(name=top_skill.name, url=top_skill.url) for top_skill in linkedin_resume.top_skills]
-    resume. other_skills = \
+    other_skills = \
         [Skill(name=other_skill.name, url=other_skill.url) for other_skill in linkedin_resume.other_skills]
+
+    def overwrite_level(skills_to_overwrite, skills_to_check):
+        for skill in skills_to_overwrite:
+            skill.skill_level = 0
+            for other_skill in skills_to_check:
+                if skill.name == other_skill.name:
+                    skill.skill_level = other_skill.skill_level
+    overwrite_level(top_skills, existing_top_skills)
+    overwrite_level(other_skills, existing_other_skills)
+    resume.top_skills = top_skills
+    resume.other_skills = other_skills
+    # TODO: test
 
     resume.work_experiences = \
         [Experience(company_title=ex.company_title,

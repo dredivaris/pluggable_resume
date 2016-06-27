@@ -23,12 +23,11 @@ def resume(url_specifier=None):
                 matching_specifier = True
 
     if matching_specifier:
-        combined_res = combined_resume(hide_work_experience=True)
+        combined_res = combined_resume(hide_work_experience=False)
     else:
         combined_res = combined_resume()
 
     return render_template('live_resume.html',
                            title=combined_res.title,
                            resume=combined_res,
-                           limited=True,
                            url_specifier=url_specifier)
