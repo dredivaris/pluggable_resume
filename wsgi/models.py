@@ -29,6 +29,7 @@ class Skill(EmbeddedDocument):
     name = StringField()
     url = URLField()
     skill_level = IntField()  # 1 - 10
+    order_by = IntField() # 1-10
     description = StringField()
 
 
@@ -173,8 +174,7 @@ class Resume(Document):
     site_links = ListField(EmbeddedDocumentField(SiteLink))
     basic_info = EmbeddedDocumentField(BasicInfo)
     summary_info = EmbeddedDocumentField(SummaryInfo)
-    top_skills = ListField(EmbeddedDocumentField(Skill))
-    other_skills = ListField(EmbeddedDocumentField(Skill))
+    skills = ListField(EmbeddedDocumentField(Skill))
     work_experiences = ListField(EmbeddedDocumentField(Experience))
     certifications = ListField(EmbeddedDocumentField(Certification))
     schools = ListField(EmbeddedDocumentField(School))
