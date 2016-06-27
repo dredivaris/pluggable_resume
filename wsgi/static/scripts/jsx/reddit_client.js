@@ -336,14 +336,6 @@ class ReadingList extends React.Component {
       });
     }
   }
-  _show_hidden(rl) {
-    if (!rl) {
-      return 'hidden';
-    }
-    else {
-      return '';
-    }
-  }
   render() {
     var reading_list;
     if (this.state.reading_list && this.state.reading_list.length) {
@@ -357,7 +349,7 @@ class ReadingList extends React.Component {
     }
     return (
       <div>
-        <ul className="list-group {this._show_hidden(reading_list)}">{reading_list}</ul>
+        <ul className="list-group">{reading_list}</ul>
       </div>
     );
   }
