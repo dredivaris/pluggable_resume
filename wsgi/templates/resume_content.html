@@ -199,7 +199,7 @@
                         Intro about your skills goes here. Keep the list lean and only show your primary skillset. You can always provide a link to your Linkedin or Coderwall profile so people can get more info there.</p>
 
                     <div class="skillset">
-                        {% for skill in resume.top_skills %}
+                        {% for skill in resume.skills %}
                             <div class="item">
                                 <h3 class="level-title"> {{ skill.name }}<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to add more info...">{{ skill.skill_level|level_to_proficiency }}</span></h3>
                                 <div class="level-bar">
