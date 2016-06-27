@@ -24,17 +24,19 @@ def process_resume_object(data):
     resume.title = 'linkedin resume'
 
     resume.basic_info = BasicInfo(industry=resume.industry, location=linkedin_resume.locality)
-    resume.summary_info = SummaryInfo(summary=linkedin_resume.summary_info.summary,
-                                      current_position=linkedin_resume.summary_info.current_position,
-                                      previous_positions=linkedin_resume.summary_info.previous_position)
+    resume.summary_info = SummaryInfo(
+        summary=linkedin_resume.summary_info.summary,
+        current_position=linkedin_resume.summary_info.current_position,
+        previous_positions=linkedin_resume.summary_info.previous_position)
 
     existing_top_skills = list(resume.top_skills)
-    existing_other_skills = list(resume.top_skills)
+    existing_other_skills = list(resume.other_skills)
 
     top_skills = \
         [Skill(name=top_skill.name, url=top_skill.url) for top_skill in linkedin_resume.top_skills]
     other_skills = \
-        [Skill(name=other_skill.name, url=other_skill.url) for other_skill in linkedin_resume.other_skills]
+        [Skill(name=other_skill.name, url=other_skill.url) for
+         other_skill in linkedin_resume.other_skills]
 
     def overwrite_level(skills_to_overwrite, skills_to_check):
         for skill in skills_to_overwrite:
