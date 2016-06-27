@@ -336,10 +336,18 @@ class ReadingList extends React.Component {
       });
     }
   }
+  _show_hidden(rl) {
+    if (!rl) {
+      return 'hidden';
+    }
+    else {
+      return '';
+    }
+  }
   render() {
     var reading_list;
     if (this.state.reading_list && this.state.reading_list.length) {
-      reading_list = this.state.reading_list.map((item) => (<li key={item.id}>{item.title}</li>));
+      reading_list = this.state.reading_list.map((item) => (<li className="list-group-item" key={item.id}>{item.title}</li>));
       // reading_list = this.state.reading_list.map(
       //   function(item) {return (<li key={item.id}>{item.title}</li>)}  )
     }
@@ -349,7 +357,7 @@ class ReadingList extends React.Component {
     }
     return (
       <div>
-        <ul>{reading_list}</ul>
+        <ul className="list-group {this._show_hidden(reading_list)}">{reading_list}</ul>
       </div>
     );
   }
