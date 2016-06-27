@@ -164,6 +164,7 @@ class Resume(Document):
     '''
 
     is_primary = BooleanField(default=True)
+    meta = {'strict': False}
 
     title = StringField()
     github_username = StringField()
