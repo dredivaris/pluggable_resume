@@ -27,7 +27,11 @@ def combined_resume(hide_work_experience=True):
             if is_empty(getattr(base, key, None)) and not is_empty(getattr(resume, key, None)):
                 setattr(base, key, getattr(resume, key))
     if base.skills:
-        base.skills = sorted(base.skills, key=lambda skill: skill.order_by)
+        try:
+            base.skills = sorted(base.skills, key=lambda skill: skill.order_by)
+        except TypeError:
+            # if order_by hasn't been filled in; just don't do the sort
+    ***REMOVED***
 
     if hide_work_experience:
         for experience in list(base.work_experiences):
