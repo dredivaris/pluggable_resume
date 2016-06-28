@@ -28,7 +28,7 @@ class BasicInfo(EmbeddedDocument):
 class Skill(EmbeddedDocument):
     name = StringField()
     url = URLField()
-    skill_level = IntField()  # 1 - 10
+    skill_level = IntField(default=3)  # 1 - 10
     order_by = IntField(default=9)  # 1-10
     description = StringField()
 
