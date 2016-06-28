@@ -239,7 +239,7 @@
                     {% for item in resume.schools %}
                         <div class="item">
                             <h3 class="title"><i class="fa fa-graduation-cap"></i> {{ item.degree }}</h3>
-                            <h4 class="university">{{ item.name }} <span class="year">({{ item.from_date }}{{ item.to_date }})</span></h4>
+                            <a href="{{ item.url }}"><h4 class="university">{{ item.name }} <span class="year">({{ item.from_date }}{{ item.to_date }})</span></h4></a>
                         </div><!--//item-->
                     {% endfor %}
                 </div><!--//content-->
