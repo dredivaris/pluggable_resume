@@ -14,7 +14,7 @@ class ReadingList extends React.Component {
       reading_list: null
 ***REMOVED***;
   }
-  _get_reading_list() {
+  _fetch_reading_list() {
     if (!this.state.reading_list) {
       $.ajax({
         method: 'GET',
@@ -33,12 +33,19 @@ class ReadingList extends React.Component {
 ***REMOVED***
   }
   componentWillMount() {
-    this._get_reading_list();
+    this._fetch_reading_list();
+  }
+  componentDidMount() {
+    this._timer = setInterval(() => this._fetch_reading_list(), 10000);
+  }
+  componentWillUnmount() {
+    clearInterval(this._timer);
   }
   render() {
     var reading_list;
     if (this.state.reading_list && this.state.reading_list.length) {
-      reading_list = this.state.reading_list.map((item) => (<li className="list-group-item" key={item.id}>{item.title}</li>));
+      reading_list = this.state.reading_list.map((item) => (<li className="list-group-item"
+                                                                key={item.id}>{item.title}</li>));
       // reading_list = this.state.reading_list.map(
       //   function(item) {return (<li key={item.id}>{item.title}</li>)}  )
 ***REMOVED***
