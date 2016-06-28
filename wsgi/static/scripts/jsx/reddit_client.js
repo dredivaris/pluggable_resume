@@ -23,7 +23,6 @@ class ReadingList extends React.Component {
         cache: false,
         success: (data) => {
           if (data.success === true) {
-            console.log('getting data reading list', data.reading_list);
             this.setState({reading_list: data.reading_list});
           }
         },
@@ -32,6 +31,9 @@ class ReadingList extends React.Component {
         }
       });
     }
+  }
+  componentWillMount() {
+    this._get_reading_list();
   }
   render() {
     var reading_list;
@@ -42,7 +44,6 @@ class ReadingList extends React.Component {
     }
     else {
       reading_list = [];
-      this._get_reading_list();
     }
     return (
       <div>
