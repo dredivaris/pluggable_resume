@@ -17,18 +17,19 @@ class ReadingList extends React.Component {
   _get_reading_list() {
     if (!this.state.reading_list) {
       $.ajax({
+        method: 'GET',
         url: this.endpoint,
         dataType: 'json',
         cache: false,
-        success: function(data) {
+        success: (data) => {
           if (data.success === true) {
             console.log('getting data reading list', data.reading_list);
             this.setState({reading_list: data.reading_list});
           }
-        }.bind(this),
-        error: function(xhr, status, err) {
+        },
+        error: (xhr, status, err) => {
           console.log(this.props.url, status, err.toString());
-        }.bind(this)
+        }
       });
     }
   }
