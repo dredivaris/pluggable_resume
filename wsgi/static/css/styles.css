@@ -535,7 +535,7 @@ iframe {
   text-align: center;
 }
 .goodreads-icon.icon-home {
-  background: url('andreaswebsite-andreasdivaris.rhcloud.com/static/images/goodreads_icon_200x200.png');
+  background: url('http://andreaswebsite-andreasdivaris.rhcloud.com/static/images/goodreads_icon_200x200.png');
   background-size: cover;
 }
 .goodreads-icon.normal {
