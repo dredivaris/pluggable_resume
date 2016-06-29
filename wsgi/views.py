@@ -27,5 +27,5 @@ def resume(url_specifier=None):
                                          title=combined_res.title,
                                          resume=combined_res,
                                          url_specifier=url_specifier))
-    resp.headers['X-Frame-Options'] = 'ALLOWALL'
+    resp.headers['X-Frame-Options'] = 'SAMEORIGIN, GOFORIT'
     return resp
