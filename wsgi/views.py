@@ -6,11 +6,6 @@ frontend = Blueprint('frontend', __name__)
 
 
 @frontend.route('/')
-def index():
-    return render_template('index.html',
-                           title='Home')
-
-
 @frontend.route('/resume/')
 @frontend.route('/resume/<url_specifier>/')
 def resume(url_specifier=None):
