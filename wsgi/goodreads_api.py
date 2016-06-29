@@ -23,8 +23,8 @@ class GoodreadsClient:
             if 'nophoto' in book_record.image_url:
                 try:
                     page = requests.get(book_record.link).text
-                    doc = html.fromstring(page)
-                    image_url = doc.get_element_by_id('coverImage').get('src')
+                    html_doc = html.fromstring(page)
+                    image_url = html_doc.get_element_by_id('coverImage').get('src')
                 except:
                     image_url = book_record.image_url
             else:
