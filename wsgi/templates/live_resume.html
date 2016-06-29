@@ -54,19 +54,14 @@
     <script src="{{ url_for('static', filename='scripts/js/main.js') }}"></script>
 
     <script type="application/javascript">
-        var call_number = 0;
         function reorder_on_resize() {
             console.log('reorder on resize called with size of', $(window).width());
             var w = $(window).width();
-            if (w < 976 && $('#reading-lists').children().length > 1) {
+            if (w <= 980 && $('#reading-lists').children().length > 1) {
                 $('#reading-lists').prependTo( $('#ending') );
-            } else if (w > 976 && $('#reading-lists').children().length > 1) {
+            } else if (w > 980 && $('#reading-lists').children().length > 1) {
                 $('#reading-lists').prependTo( $('#beginning') );
             }
-            else if (call_number === 0 && w < 981 && $('#reading-lists').children().length > 1) {
-                $('#reading-lists').prependTo( $('#ending') );
-            }
-            call_number++;
         }
         $(document).ready(reorder_on_resize);
 
