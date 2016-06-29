@@ -16,8 +16,9 @@ def process_newlines_short(val):
 def level_to_proficiency(val):
     val = int(val) if val is not None else 5
     proficiency_dict = {
-        (10,10): 'Expert',
-        (9, 8): 'Pro',
+        (10, 10): 'Guru',
+        (9, 9): 'Expert',
+        (8, 8): 'Pro',
         (7, 6): 'Advanced',
         (5, 5): 'Intermediate',
         (4, 4): 'Skilled',
@@ -29,7 +30,12 @@ def level_to_proficiency(val):
         if high >= val >= low:
             return v
 
+
+def process_urls(url):
+    return url.strip('http://').strip('https://')
+
 filters.add_app_template_filter(process_newlines, 'process_newlines')
 filters.add_app_template_filter(level_to_proficiency, 'level_to_proficiency')
 filters.add_app_template_filter(process_newlines_short, 'process_newlines_short')
+filters.add_app_template_filter(process_urls, 'process_urls')
 

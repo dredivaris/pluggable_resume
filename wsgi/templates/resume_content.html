@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" xmlns="http://www.w3.org/1999/html">
     <div class="primary col-md-8 col-sm-12 col-xs-12">
         <section class="about section">
             <div class="section-inner">
@@ -144,35 +144,38 @@
             <div class="primary-inner-left col-md-6 col-sm-12 col-xs-12">
                 <aside class="books aside section">
                     <div class="section-inner">
-                        <h2 class="heading">Books I'm currently reading</h2>
+                        <span class="goodreads-icon icon-home medium"></span>
+                        <h2 class="heading-small">Books I'm currently reading</h2>
                         <div class="content" id="reading-list-books-currently-reading">
                         </div><!--//content-->
                     </div><!--//section-inner-->
                 </aside><!--//section-->
                 <aside class="books aside section">
                     <div class="section-inner">
-                        <h2 class="heading">Non-software books I would recommend</h2>
+                        <span class="goodreads-icon icon-home medium"></span>
+                        <h2 class="heading-small">Recommended non-software books</h2>
                         <div class="content" id="reading-list-books-finished-general">
                         </div><!--//content-->
                     </div><!--//section-inner-->
-                </aside><!--//section-->`
+                </aside><!--//section-->
             </div>
             <div class="primary-inner-right col-md-6 col-sm-12 col-xs-12">
                 <aside class="books aside section">
                     <div class="section-inner">
-                        <h2 class="heading">Books I've read</h2>
+                        <span class="goodreads-icon icon-home medium"></span>
+                        <h2 class="heading-small">Books I've read </h2>
                         <div class="content" id="reading-list-books-finished">
                         </div><!--//content-->
                     </div><!--//section-inner-->
                 </aside><!--//section-->
                 <aside class="books aside section">
                     <div class="section-inner">
-                        <h2 class="heading">Software books on my list</h2>
+                        <span class="goodreads-icon icon-home medium"></span>
+                        <h2 class="heading-small">Software books on my list </h2>
                         <div class="content" id="reading-list-books-to-read">
                         </div><!--//content-->
                     </div><!--//section-inner-->
                 </aside><!--//section-->
-
             </div>
         </div>
 
@@ -185,7 +188,7 @@
                     <ul class="list-unstyled">
                         <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>{{ resume.basic_info.location }}</li>
                         <li class="hidden"><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#"></a></li>
-                        <li class="hidden"><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://www.website.com</a></li>
+                        {% if resume.basic_info.website %}<li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="{{ resume.basic_info.website }}">{{ resume.basic_info.website|process_urls }}</a></li> {% endif %}
                     </ul>
                 </div><!--//content-->
             </div><!--//section-inner-->
@@ -310,7 +313,7 @@
             </div><!--//section-inner-->
         </aside><!--//section-->
 
-        <aside class="credits aside section">
+        <aside class="credits aside section hidden">
             <div class="section-inner">
                 <h2 class="heading">Credits</h2>
                 <div class="content">
