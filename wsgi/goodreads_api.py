@@ -16,7 +16,7 @@ class GoodreadsClient:
         return [shelf['name'] for shelf in self.user.shelves()]
 
     def get_books_for_shelf(self, shelf_name):
-        books = self.user.shelf(shelf_name)
+        books = self.user.shelf(shelf_name, per_page=200)
         for doc in books:
             book_record = self.gc.book(doc['book']['id']['#text'])
 
