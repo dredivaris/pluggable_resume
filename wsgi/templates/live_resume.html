@@ -54,14 +54,18 @@
     <script src="{{ url_for('static', filename='scripts/js/main.js') }}"></script>
 
     <script type="application/javascript">
-        // quick fix to reorder reading lists on small resize
-        $(window).resize(function() {
+        function reorder_on_resize() {
             var w = $(window).width();
             if (w < 976 && $('#reading-lists').children().length > 1) {
                 $('#reading-lists').prependTo( $('#ending') );
         ***REMOVED*** else if (w > 976 && $('#reading-lists').children().length > 1) {
                 $('#reading-lists').prependTo( $('#beginning') );
         ***REMOVED***
-    ***REMOVED***);
+    ***REMOVED***
+
+        $(window).load(reorder_on_resize);
+
+        // quick fix to reorder reading lists on small resize
+        $(window).resize(reorder_on_resize);
     </script>
 {% endblock extrabody %}
