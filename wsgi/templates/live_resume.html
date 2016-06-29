@@ -55,6 +55,7 @@
 
     <script type="application/javascript">
         function reorder_on_resize() {
+            console.log('reorder on resize called with size of', $(window).width());
             var w = $(window).width();
             if (w < 976 && $('#reading-lists').children().length > 1) {
                 $('#reading-lists').prependTo( $('#ending') );
@@ -62,8 +63,7 @@
                 $('#reading-lists').prependTo( $('#beginning') );
         ***REMOVED***
     ***REMOVED***
-
-        $(window).load(reorder_on_resize);
+        $(document).ready(reorder_on_resize);
 
         // quick fix to reorder reading lists on small resize
         $(window).resize(reorder_on_resize);
