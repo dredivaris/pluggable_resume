@@ -17,7 +17,7 @@ class ReadingList(Resource):
 
     def get(self):
         resume = combined_resume()
-        reading_list = [{'title': r.title, 'id': i}
+        reading_list = [{'title': r.title, 'id': i, 'url': r.link, 'image_url': r.small_image_url }
                         for i, r in enumerate(getattr(resume.reading_list, self.attribute, None))]
         return {'success': True,
                 'reading_list': reading_list}

@@ -44,10 +44,18 @@ class ReadingList extends React.Component {
   render() {
     var reading_list;
     if (this.state.reading_list && this.state.reading_list.length) {
-      reading_list = this.state.reading_list.map((item) => (<li className="list-group-item"
-                                                                key={item.id}>{item.title}</li>));
-      // reading_list = this.state.reading_list.map(
-      //   function(item) {return (<li key={item.id}>{item.title}</li>)}  )
+      reading_list = this.state.reading_list.map((item) =>
+        (<li className="list-group-item" key={item.id}>
+          <div className="row">
+            <div className="col-md-3">
+              <img src={item.image_url} className="img-responsive" alt=''/>
+            </div>
+            <div className="col-md-9">
+              <a href={item.url}> {item.title} </a>
+            </div>
+          </div>
+
+        </li>));
     }
     else {
       reading_list = [];
