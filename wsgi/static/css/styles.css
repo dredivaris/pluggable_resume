@@ -557,6 +557,10 @@ iframe {
 .books {
   position: relative;
 }
+div.col-md-9 a {
+  color: #778492;
+  font-size: 14px;
+}
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
   .header {
