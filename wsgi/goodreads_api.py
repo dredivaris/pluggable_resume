@@ -1,6 +1,8 @@
 from goodreads import client
 
 from wsgi.models import Book
+import requests
+from lxml import html
 
 
 class GoodreadsClient:
@@ -17,12 +19,23 @@ class GoodreadsClient:
         books = self.user.shelf(shelf_name)
         for doc in books:
             book_record = self.gc.book(doc['book']['id']['#text'])
+
+            if 'nophoto' in book_record.image_url:
+                try:
+                    page = requests.get(book_record.link).text
+                    doc = html.fromstring(page)
+                    image_url = doc.get_element_by_id('coverImage').get('src')
+                except:
+                    image_url = book_record.image_url
+    ***REMOVED***
+                image_url = book_record.image_url
+
             book = Book(
                 goodreads_id=int(doc['book']['id']['#text']),
                 isbn=str(doc['book']['isbn']),
                 isbn13=str(doc['book']['isbn13']),
                 title=doc['book']['title'],
-                image_url=book_record.image_url,
+                image_url=image_url,
                 small_image_url=book_record.small_image_url,
                 link=book_record.link,
                 num_pages=book_record.num_pages,
