@@ -142,7 +142,8 @@
             <div class="primary-inner-left col-md-6 col-sm-12 col-xs-12">
                 <aside class="books aside section">
                     <div class="section-inner">
-                        <span class="goodreads-icon icon-home medium"></span>
+                        {% if not_mobile %}
+                            <span class="goodreads-icon icon-home medium"></span> {% endif %}
                         <h2 class="heading-small">Books I'm currently reading</h2>
                         <div class="content" id="reading-list-books-currently-reading">
                         </div><!--//content-->
@@ -150,7 +151,8 @@
                 </aside><!--//section-->
                 <aside class="books aside section">
                     <div class="section-inner">
-                        <span class="goodreads-icon icon-home medium"></span>
+                        {% if not_mobile %}
+                            <span class="goodreads-icon icon-home medium"></span> {% endif %}
                         <h2 class="heading-small">Books I've read </h2>
                         <div class="content" id="reading-list-books-finished">
                         </div><!--//content-->
@@ -160,7 +162,8 @@
             <div class="primary-inner-right col-md-6 col-sm-12 col-xs-12">
                 <aside class="books aside section">
                     <div class="section-inner">
-                        <span class="goodreads-icon icon-home medium"></span>
+                        {% if not_mobile %}
+                            <span class="goodreads-icon icon-home medium"></span> {% endif %}
                         <h2 class="heading-small">Recommended non-software books</h2>
                         <div class="content" id="reading-list-books-finished-general">
                         </div><!--//content-->
@@ -168,7 +171,8 @@
                 </aside><!--//section-->
                 <aside class="books aside section">
                     <div class="section-inner">
-                        <span class="goodreads-icon icon-home medium"></span>
+                        {% if not_mobile %}
+                            <span class="goodreads-icon icon-home medium"></span> {% endif %}
                         <h2 class="heading-small">Software books on my list to-read</h2>
                         <div class="content" id="reading-list-books-to-read">
                         </div><!--//content-->

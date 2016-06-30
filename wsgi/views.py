@@ -1,4 +1,6 @@
-from flask import render_template, Blueprint, make_response
+from flask import render_template, Blueprint, make_response, request
+from user_agents import parse
+
 from wsgi.models import engine_db as db, Resume, ResumeSettings
 from wsgi.resume_proxy import combined_resume
 
@@ -22,10 +24,13 @@ def resume(url_specifier=None):
         combined_res = combined_resume(hide_work_experience=False)
     else:
         combined_res = combined_resume()
-    # resp.headers['Access-Control-Allow-Origin'] = '*'
+    user_agent = parse(request.user_agent.string)
+
     resp = make_response(render_template('live_resume.html',
                                          title=combined_res.title,
                                          resume=combined_res,
+                                         not_mobile=False if user_agent.is_mobile else True,
                                          url_specifier=url_specifier))
-    resp.headers['X-Frame-Options'] = 'SAMEORIGIN, GOFORIT'
+
     return resp
+

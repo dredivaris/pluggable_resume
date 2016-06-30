@@ -21,8 +21,8 @@ def level_to_proficiency(val):
         (8, 8): 'Pro',
         (7, 6): 'Advanced',
         (5, 5): 'Intermediate',
-        (4, 4): 'Skilled',
-        (3, 2): 'Beginner',
+        (4, 3): 'Skilled',
+        (2, 2): 'Beginner',
         (1, 0): 'Novice'
     }
     for k, v in proficiency_dict.items():

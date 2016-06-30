@@ -12,17 +12,12 @@ def combined_resume(hide_work_experience=True):
             break
     base = resume
     resumes.remove(resume)
-    print('starting')
     for resume in resumes:
         for key, value in resume._fields.items():
-            print('key currently is ', key)
             if key in ['reading_list', 'service_links_list']:
                 continue
             if key in 'work_experiences':
-                print('key in work experiences')
-
                 for experience in resume.work_experiences:
-                    print('appending', experience.position_title)
                     base.work_experiences.append(experience)
             if is_empty(getattr(base, key, None)) and not is_empty(getattr(resume, key, None)):
                 setattr(base, key, getattr(resume, key))
