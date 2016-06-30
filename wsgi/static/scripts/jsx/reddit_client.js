@@ -104,7 +104,8 @@ class SendEmail extends React.Component {
       <a onClick={this._handleClick.bind(this)} className="btn btn-cta-primary pull-right" href="#" target="_blank"><i className="fa fa-paper-plane"></i> Contact Me</a>
     )
   }
-  _handleClick() {
+  _handleClick(event) {
+    event.preventDefault();
     $.get( '../api/v1.0/email/', function(data) {
       if (data.success) {
         window.location = `mailto:${data.mail_to}`;
