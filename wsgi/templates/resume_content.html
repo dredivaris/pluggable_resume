@@ -185,7 +185,7 @@
                             {% if matching_specifier %}
                                 <li><i class="fa fa-eye"></i><span>{{ looking_for }}</span></li>
                                 {% if resume_link %}
-                                    <li><i class="fa fa-file"></i><span class="sr-only">Resume PDDF:</span><a href="{{ resume_link }}">Resume</a></li>
+                                    <li><i class="fa fa-file"></i><span class="sr-only">Resume PDF:</span><a href="{{ resume_link }}">Resume</a></li>
                                 {% endif %}
                             {% endif %}
                             {% if resume.basic_info.website %}<li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="{{ resume.basic_info.website }}">{{ resume.basic_info.website|process_urls }}</a></li> {% endif %}
