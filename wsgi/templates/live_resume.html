@@ -59,8 +59,13 @@
             var w = $(window).width();
             if (w <= 980 && $('#reading-lists').children().length > 1) {
                 $('#reading-lists').prependTo( $('#ending') );
+                $('#rightmost-reading-list').prependTo( $('#rightmost-reading-list-ending') );
+
             } else if (w > 980 && $('#reading-lists').children().length > 1) {
                 $('#reading-lists').prependTo( $('#beginning') );
+                $('#rightmost-reading-list').prependTo( $('#rightmost-reading-list-normal') );
+
+
             }
         }
         $(document).ready(reorder_on_resize);
