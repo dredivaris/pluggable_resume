@@ -196,6 +196,8 @@ class ResumeSettings(Document):
     mail_to = StringField()
     limited_resume_url_specifier = StringField()
     hidden_experiences = ListField(StringField())
+    looking_for = StringField()
+    hide_basic_info = BooleanField(default=False)
 
     enable_goodreads_booklist_sync = BooleanField(default=False)
     resume_to_sync = ReferenceField(document_type=Resume)
