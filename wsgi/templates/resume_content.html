@@ -183,18 +183,23 @@
     </div><!--//primary-->
 
     <div class="secondary col-md-4 col-sm-12 col-xs-12">
-        <aside class="info aside section">
-            <div class="section-inner">
-                <h2 class="heading sr-only">Basic Information</h2>
-                <div class="content">
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>{{ resume.basic_info.location }}</li>
-                        <li class="hidden"><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#"></a></li>
-                        {% if resume.basic_info.website %}<li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="{{ resume.basic_info.website }}">{{ resume.basic_info.website|process_urls }}</a></li> {% endif %}
-                    </ul>
-                </div><!--//content-->
-            </div><!--//section-inner-->
-        </aside><!--//aside-->
+        {% if not hide_basic_info %}
+            <aside class="info aside section">
+                <div class="section-inner">
+                    <h2 class="heading sr-only">Basic Information</h2>
+                    <div class="content">
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>{{ resume.basic_info.location }}</li>
+                            <li class="hidden"><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#"></a></li>
+                            {% if matching_specifier %}
+                                <li><i class="fa fa-eye"></i><span>{{ looking_for }}</span></li>
+                            {% endif %}
+                            {% if resume.basic_info.website %}<li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="{{ resume.basic_info.website }}">{{ resume.basic_info.website|process_urls }}</a></li> {% endif %}
+                        </ul>
+                    </div><!--//content-->
+                </div><!--//section-inner-->
+            </aside><!--//aside-->
+        {% endif %}
 
         <aside class="skills aside section">
             <div class="section-inner">
@@ -211,7 +216,7 @@
                                     <div class="level-bar-inner" data-level="{{ skill.skill_level * 10 }}%">
                                     </div>
                                 </div><!--//level-bar-->
-                        </div><!--//item-->
+                            </div><!--//item-->
                         {% endfor %}
 
                         <p class="hidden"><a class="more-link" href="#"><i class="fa fa-external-link"></i> More on Coderwall</a></p>
