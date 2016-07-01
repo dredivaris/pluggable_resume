@@ -55,10 +55,7 @@ jQuery(document).ready(function($) {
     /* Github Calendar - https://github.com/IonicaBizau/github-calendar */
     var github_username = $('#github-username').attr('github-username');
     GitHubCalendar("#github-graph", github_username);
-    
-    
+  
     /* Github Activity Feed - https://github.com/caseyscarborough/github-activity */
     GitHubActivity.feed({ username: github_username, selector: "#ghfeed" });
-
-
 });
