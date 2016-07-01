@@ -169,15 +169,6 @@
                         </div><!--//content-->
                     </div><!--//section-inner-->
                 </aside><!--//section-->
-                <aside class="books aside section">
-                    <div class="section-inner">
-                        {% if not_mobile %}
-                            <span class="goodreads-icon icon-home medium"></span> {% endif %}
-                        <h2 class="heading-small">Software books on my list to-read</h2>
-                        <div class="content" id="reading-list-books-to-read">
-                        </div><!--//content-->
-                    </div><!--//section-inner-->
-                </aside><!--//section-->
             </div>
         </div>
     </div><!--//primary-->
@@ -348,6 +339,19 @@
                 </div><!--//content-->
             </div><!--//section-inner-->
         </aside><!--//section-->
+        <div id="rightmost-reading-list-normal"></div>
+        <aside class="books aside section" id="rightmost-reading-list">
+            <div class="section-inner">
+                {% if not_mobile %}
+                    <span class="goodreads-icon icon-home medium"></span> {% endif %}
+                <h2 class="heading-small">Software books on my list to-read</h2>
+                <div class="content" id="reading-list-books-to-read">
+                </div><!--//content-->
+            </div><!--//section-inner-->
+        </aside><!--//section-->
+
     </div><!--//secondary-->
+
     <div id="ending"></div>
+    <div id="rightmost-reading-list-ending"></div>
 </div><!--//row-->
