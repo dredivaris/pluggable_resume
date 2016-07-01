@@ -21,6 +21,15 @@ def combined_resume(hide_work_experience=True):
                     base.work_experiences.append(experience)
             if is_empty(getattr(base, key, None)) and not is_empty(getattr(resume, key, None)):
                 setattr(base, key, getattr(resume, key))
+            elif not is_empty(getattr(base, key, None)) and \
+                    not is_empty(getattr(resume, key, None)) and \
+                    hasattr(getattr(base, key), '_fields'):
+                current, other = getattr(base, key), getattr(resume, key)
+                for field in getattr(base, key)._fields:
+                    if is_empty(getattr(current, field, None)) and not \
+                            is_empty(getattr(other, field, None)):
+                        setattr(current, field, getattr(other, field))
+
     if base.skills:
         try:
             base.skills = sorted(base.skills, key=lambda skill: skill.order_by)

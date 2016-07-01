@@ -1,6 +1,5 @@
-from mongoengine import *
-
 from flask.ext.mongoengine import MongoEngine
+from mongoengine import *
 from mongoengine.base import BaseList, BaseDocument
 
 engine_db = MongoEngine()
@@ -168,6 +167,7 @@ class Resume(Document):
 
     title = StringField()
     github_username = StringField()
+
     headline = StringField()
     name = StringField()
     industry = StringField()
