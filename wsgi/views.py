@@ -30,6 +30,7 @@ def resume(url_specifier=None):
                                          resume=combined_res,
                                          looking_for=settings.looking_for,
                                          hide_basic_info=settings.hide_basic_info,
+                                         resume_link=settings.resume_link,
                                          not_mobile=False if user_agent.is_mobile else True,
                                          matching_specifier=matching_specifier))
 
