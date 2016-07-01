@@ -1,9 +1,6 @@
-import json
-from functools import wraps
 import jsonpickle
-
-from flask import jsonify, request
-from flask.ext.restful import Api, Resource, reqparse, abort
+from flask import request
+from flask.ext.restful import Api, Resource
 from flask.ext.security import auth_token_required
 
 from wsgi.exceptions import InvalidDataException
