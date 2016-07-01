@@ -47,10 +47,10 @@ class ReadingList extends React.Component {
       reading_list = this.state.reading_list.map((item) =>
         (<li className="list-group-item" key={item.id}>
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-md-3 col-sm-3 col-xs-4">
               <img src={item.image_url} className="img-responsive" alt=''/>
             </div>
-            <div className="col-md-9">
+            <div className="col-md-9 col-sm-9 col-xs-8">
               <a href={item.url}> {item.title} </a>
             </div>
           </div>
