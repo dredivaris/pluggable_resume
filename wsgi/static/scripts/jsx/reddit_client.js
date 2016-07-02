@@ -54,7 +54,6 @@ class ReadingList extends React.Component {
               <a href={item.url}> {item.title} </a>
             </div>
           </div>
-
         </li>));
 ***REMOVED***
     else {

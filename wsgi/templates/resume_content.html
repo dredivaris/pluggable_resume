@@ -188,7 +188,8 @@
                                     <li><i class="fa fa-file"></i><span class="sr-only">Resume PDF:</span><a href="{{ resume_link }}">Resume</a></li>
                                 {% endif %}
                             {% endif %}
-                            {% if resume.basic_info.website %}<li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="{{ resume.basic_info.website }}">{{ resume.basic_info.website|process_urls }}</a></li> {% endif %}
+                            {% if resume.basic_info.website %}<li><i class="fa fa-link"></i><span class="sr-only">Website:</span>
+                                <a href="{{ resume.basic_info.website }}{% if matching_specifier %}/{{ url_specifier }}/{% endif %}">{{ resume.basic_info.website|process_urls }}</a></li> {% endif %}
                         </ul>
                     </div><!--//content-->
                 </div><!--//section-inner-->
