@@ -8,6 +8,7 @@ frontend = Blueprint('frontend', __name__)
 
 
 @frontend.route('/')
+@frontend.route('/<url_specifier>/')
 @frontend.route('/resume/')
 @frontend.route('/resume/<url_specifier>/')
 def resume(url_specifier=None):
