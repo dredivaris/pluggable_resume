@@ -1,8 +1,5 @@
-/** @jsx React.DOM */
+import $ from "jquery";
 
-// the user is hardcoded for now
-const USER_ID = 1;
-const ENTRIES_PER_PAGE = 8;
 var React = require('react');
 var ReactDom = require('react-dom');
 
@@ -14,6 +11,7 @@ class ReadingList extends React.Component {
       reading_list: null
     };
   }
+
   _fetch_reading_list() {
     if (!this.state.reading_list) {
       $.ajax({
@@ -32,15 +30,19 @@ class ReadingList extends React.Component {
       });
     }
   }
+
   componentWillMount() {
     this._fetch_reading_list();
   }
+
   componentDidMount() {
     this._timer = setInterval(() => this._fetch_reading_list(), 10000);
   }
+
   componentWillUnmount() {
     clearInterval(this._timer);
   }
+
   render() {
     var reading_list;
     if (this.state.reading_list && this.state.reading_list.length) {
@@ -100,12 +102,14 @@ class ReadingListBooksToRead extends ReadingList {
 class SendEmail extends React.Component {
   render() {
     return (
-      <a onClick={this._handleClick.bind(this)} className="btn btn-cta-primary pull-right" href="#" target="_blank"><i className="fa fa-paper-plane"></i> Contact Me</a>
+      <a onClick={this._handleClick.bind(this)} className="btn btn-cta-primary pull-right" href="#"
+         target="_blank"><i className="fa fa-paper-plane"></i> Contact Me</a>
     )
   }
+
   _handleClick(event) {
     event.preventDefault();
-    $.get( '../api/v1.0/email/', function(data) {
+    $.get('../api/v1.0/email/', function (data) {
       if (data.success) {
         window.location = `mailto:${data.mail_to}`;
       }
