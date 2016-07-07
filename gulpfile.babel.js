@@ -1,12 +1,12 @@
 'use strict';
 
 // requirements
-var gulp = require('gulp'),
-    browserify = require('gulp-browserify'),
-    size = require('gulp-size'),
-    clean = require('gulp-clean'),
-    sourcemaps = require("gulp-sourcemaps"),
-    babel = require("gulp-babel");
+import gulp from "gulp";
+import browserify from "gulp-browserify";
+import size from "gulp-size";
+import clean from "gulp-clean";
+import eslint from "gulp-eslint";
+import babel from "gulp-babel";
 
 gulp.task('transform', function () {
   return gulp.src('./wsgi/static/scripts/jsx/reddit_client.js')
@@ -21,6 +21,15 @@ gulp.task('clean', function () {
   return gulp.src(['./wsgi/static/scripts/js'], {read: false})
     .pipe(clean());
 });
+
+gulp.task('lint', () => {
+  return gulp.src(['./wsgi/static/scripts/jsx/reddit_client.js', 'gulpfile.babel.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+});
+
+gulp.task('transpile', ['lint'], () => bundle());
+
 
 gulp.task('default', function() {
   gulp.start('transform');
