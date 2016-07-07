@@ -9,7 +9,7 @@ import eslint from "gulp-eslint";
 import babel from "gulp-babel";
 
 gulp.task('transform', function () {
-  return gulp.src('./wsgi/static/scripts/jsx/reddit_client.js')
+  return gulp.src('./wsgi/static/scripts/jsx/live_reading_list.js')
     .pipe(browserify({transform: ['reactify']}))
     .on('error', onError)
     .pipe(babel())
@@ -23,17 +23,17 @@ gulp.task('clean', function () {
 });
 
 gulp.task('lint', () => {
-  return gulp.src(['./wsgi/static/scripts/jsx/reddit_client.js', 'gulpfile.babel.js'])
+  return gulp.src(['./wsgi/static/scripts/jsx/live_reading_list.js', 'gulpfile.babel.js'])
     .pipe(eslint())
     .pipe(eslint.format())
 });
 
-gulp.task('transpile', ['lint'], () => bundle());
+gulp.task('transpile', ['lint'], () => bundle()); // TODO
 
 
 gulp.task('default', function() {
   gulp.start('transform');
-  gulp.watch('./wsgi/static/scripts/jsx/reddit_client.js', ['transform']);
+  gulp.watch('./wsgi/static/scripts/jsx/live_reading_list.js', ['transform']);
 });
 
 function onError(err) {
