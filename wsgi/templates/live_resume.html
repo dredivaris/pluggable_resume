@@ -35,12 +35,11 @@
 
 {% block extrabody %}
     <!-- Javascript -->
-    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='bower_components/react/react.js') }}"></script>
-    <script src="{{ url_for('static', filename='bower_components/react/react-dom.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/js/live_reading_list.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/dist/bundle.js') }}"></script>
     <!-- Resume Template Javascript -->
-    {# <script type="text/javascript" src="assets/plugins/jquery-1.11.3.min.js"></script>#}
+    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/dist/main.js') }}"></script>
+
     <script src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='plugins/jquery-rss/dist/jquery.rss.min.js') }}"></script>
     <!-- github calendar plugin -->
@@ -51,9 +50,10 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
     <script src="{{ url_for('static', filename='plugins/github-activity/src/github-activity.js') }}"></script>
     <!-- custom js -->
-    <script src="{{ url_for('static', filename='scripts/js/main.js') }}"></script>
+{#    <script src="{{ url_for('static', filename='scripts/js/main.js') }}"></script>#}
 
     <script type="application/javascript">
+        // TODO: move this
         function reorder_on_resize() {
             console.log('reorder on resize called with size of', $(window).width());
             var w = $(window).width();

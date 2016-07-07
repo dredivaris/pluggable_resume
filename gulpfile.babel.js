@@ -2,28 +2,31 @@
 
 // requirements
 import gulp from "gulp";
-import browserify from "gulp-browserify";
-import size from "gulp-size";
+import browserify from "browserify";
 import clean from "gulp-clean";
 import eslint from "gulp-eslint";
-import babel from "gulp-babel";
+import babelify from "babelify";
+import source from "vinyl-source-stream";
+import transform from "vinyl-transform";
+
 
 gulp.task('transform', function () {
-  return gulp.src('./wsgi/static/scripts/jsx/live_reading_list.js')
-    .pipe(browserify({transform: ['reactify']}))
+  return browserify('./wsgi/static/scripts/src/app.js')
+    // .transform('reactify')
+    .transform(babelify, {presets: ["es2015", "react"]})
+    .bundle()
     .on('error', onError)
-    .pipe(babel())
-    .pipe(gulp.dest('./wsgi/static/scripts/js'))
-    .pipe(size());
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest('./wsgi/static/scripts/dist'));
 });
 
 gulp.task('clean', function () {
-  return gulp.src(['./wsgi/static/scripts/js'], {read: false})
+  return gulp.src(['./wsgi/static/scripts/dist'], {read: false})
     .pipe(clean());
 });
 
 gulp.task('lint', () => {
-  return gulp.src(['./wsgi/static/scripts/jsx/live_reading_list.js', 'gulpfile.babel.js'])
+  return gulp.src(['./wsgi/static/scripts/src/app.js', 'gulpfile.babel.js'])
     .pipe(eslint())
     .pipe(eslint.format())
 });
@@ -31,9 +34,9 @@ gulp.task('lint', () => {
 gulp.task('transpile', ['lint'], () => bundle()); // TODO
 
 
-gulp.task('default', function() {
+gulp.task('default', function () {
   gulp.start('transform');
-  gulp.watch('./wsgi/static/scripts/jsx/live_reading_list.js', ['transform']);
+  gulp.watch('./wsgi/static/scripts/src/*.js', ['transform']);
 });
 
 function onError(err) {
