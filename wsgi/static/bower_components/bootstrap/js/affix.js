@@ -47,7 +47,7 @@
     if (this.affixed == 'bottom') {
       if (offsetTop != null) return (scrollTop + this.unpin <= position.top) ? false : 'bottom'
       return (scrollTop + targetHeight <= scrollHeight - offsetBottom) ? false : 'bottom'
-***REMOVED***
+    }
 
     var initializing   = this.affixed == null
     var colliderTop    = initializing ? scrollTop : position.top
@@ -103,13 +103,13 @@
         .removeClass(Affix.RESET)
         .addClass(affixType)
         .trigger(affixType.replace('affix', 'affixed') + '.bs.affix')
-***REMOVED***
+    }
 
     if (affix == 'bottom') {
       this.$element.offset({
         top: scrollHeight - height - offsetBottom
-  ***REMOVED***)
-***REMOVED***
+      })
+    }
   }
 
 
@@ -124,7 +124,7 @@
 
       if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
       if (typeof option == 'string') data[option]()
-***REMOVED***)
+    })
   }
 
   var old = $.fn.affix
@@ -156,7 +156,7 @@
       if (data.offsetTop    != null) data.offset.top    = data.offsetTop
 
       Plugin.call($spy, data)
-***REMOVED***)
+    })
   })
 
 }(jQuery);

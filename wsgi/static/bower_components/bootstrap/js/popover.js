@@ -88,7 +88,7 @@
       if (!data && /destroy|hide/.test(option)) return
       if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
       if (typeof option == 'string') data[option]()
-***REMOVED***)
+    })
   }
 
   var old = $.fn.popover

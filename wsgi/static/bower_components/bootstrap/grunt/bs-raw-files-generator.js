@@ -18,11 +18,11 @@ function getFiles(type) {
   glob.sync(type + globExpr)
     .filter(function (path) {
       return type === 'fonts' ? true : new RegExp('\\.' + type + '$').test(path);
-***REMOVED***)
+    })
     .forEach(function (fullPath) {
       var relativePath = fullPath.replace(/^[^/]+\//, '');
       files[relativePath] = type === 'fonts' ? btoa(fs.readFileSync(fullPath)) : fs.readFileSync(fullPath, 'utf8');
-***REMOVED***);
+    });
   return 'var __' + type + ' = ' + JSON.stringify(files) + '\n';
 }
 

@@ -18,11 +18,11 @@
     {
       "name": "Sascha Depold",
       "email": "sascha@depold.com"
-***REMOVED***,
+    },
     {
       "name": "Steffen Schröder",
       "email": "steffen@schroeder-blog.de"
-***REMOVED***
+    }
   ],
   "main": "src/jquery.rss.js",
   "scripts": {

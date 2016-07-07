@@ -50,7 +50,7 @@
     if (!$.isWindow(this.$scrollElement[0])) {
       offsetMethod = 'position'
       offsetBase   = this.$scrollElement.scrollTop()
-***REMOVED***
+    }
 
     this.$body
       .find(this.selector)
@@ -63,12 +63,12 @@
           && $href.length
           && $href.is(':visible')
           && [[$href[offsetMethod]().top + offsetBase, href]]) || null
-  ***REMOVED***)
+      })
       .sort(function (a, b) { return a[0] - b[0] })
       .each(function () {
         that.offsets.push(this[0])
         that.targets.push(this[1])
-  ***REMOVED***)
+      })
   }
 
   ScrollSpy.prototype.process = function () {
@@ -82,23 +82,23 @@
 
     if (this.scrollHeight != scrollHeight) {
       this.refresh()
-***REMOVED***
+    }
 
     if (scrollTop >= maxScroll) {
       return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
-***REMOVED***
+    }
 
     if (activeTarget && scrollTop < offsets[0]) {
       this.activeTarget = null
       return this.clear()
-***REMOVED***
+    }
 
     for (i = offsets.length; i--;) {
       activeTarget != targets[i]
         && scrollTop >= offsets[i]
         && (offsets[i + 1] === undefined || scrollTop < offsets[i + 1])
         && this.activate(targets[i])
-***REMOVED***
+    }
   }
 
   ScrollSpy.prototype.activate = function (target) {
@@ -118,7 +118,7 @@
       active = active
         .closest('li.dropdown')
         .addClass('active')
-***REMOVED***
+    }
 
     active.trigger('activate.bs.scrollspy')
   }
@@ -141,7 +141,7 @@
 
       if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
       if (typeof option == 'string') data[option]()
-***REMOVED***)
+    })
   }
 
   var old = $.fn.scrollspy
@@ -166,7 +166,7 @@
     $('[data-spy="scroll"]').each(function () {
       var $spy = $(this)
       Plugin.call($spy, $spy.data())
-***REMOVED***)
+    })
   })
 
 }(jQuery);

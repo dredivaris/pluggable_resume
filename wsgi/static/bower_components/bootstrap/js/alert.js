@@ -29,7 +29,7 @@
     if (!selector) {
       selector = $this.attr('href')
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
-***REMOVED***
+    }
 
     var $parent = $(selector)
 
@@ -37,7 +37,7 @@
 
     if (!$parent.length) {
       $parent = $this.closest('.alert')
-***REMOVED***
+    }
 
     $parent.trigger(e = $.Event('close.bs.alert'))
 
@@ -48,7 +48,7 @@
     function removeElement() {
       // detach from parent, fire event then clean up data
       $parent.detach().trigger('closed.bs.alert').remove()
-***REMOVED***
+    }
 
     $.support.transition && $parent.hasClass('fade') ?
       $parent
@@ -68,7 +68,7 @@
 
       if (!data) $this.data('bs.alert', (data = new Alert(this)))
       if (typeof option == 'string') data[option].call($this)
-***REMOVED***)
+    })
   }
 
   var old = $.fn.alert

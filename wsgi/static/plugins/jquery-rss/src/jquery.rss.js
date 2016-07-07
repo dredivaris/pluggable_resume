@@ -24,15 +24,15 @@
       offsetEnd: false,
       error: function () {
         console.log('jQuery RSS: url doesn\'t link to RSS-Feed');
-  ***REMOVED***,
+      },
       onData: function () {},
       success: function () {}
-***REMOVED***, options || {});
+    }, options || {});
 
     // The current SSL certificate is only valid for *.herokuapp.com
     if (this.options.ssl && (this.options.host === 'www.feedrapp.info')) {
       this.options.host = 'feedrapp.herokuapp.com';
-***REMOVED***
+    }
 
     this.callback = callback || this.options.success;
   };
@@ -58,15 +58,15 @@
     // set limit to offsetEnd if offset has been set
     if (this.options.offsetStart && this.options.offsetEnd) {
       this.options.limit = this.options.offsetEnd;
-***REMOVED***
+    }
 
     if (this.options.limit !== null) {
       apiUrl += '&num=' + this.options.limit;
-***REMOVED***
+    }
 
     if (this.options.key !== null) {
       apiUrl += '&key=' + this.options.key;
-***REMOVED***
+    }
 
     $.getJSON(apiUrl, callback);
   };
@@ -78,11 +78,11 @@
       try {
         self.feed    = data.responseData.feed;
         self.entries = data.responseData.feed.entries;
-  ***REMOVED*** catch (e) {
+      } catch (e) {
         self.entries = [];
         self.feed    = null;
         return self.options.error.call(self);
-  ***REMOVED***
+      }
 
       var html = self.generateHTMLForEntries();
 
@@ -91,17 +91,17 @@
       if (html.entries.length !== 0) {
         if ($.isFunction(self.options.onData)) {
           self.options.onData.call(self);
-    ***REMOVED***
+        }
 
         self.appendEntriesAndApplyEffects($('entries', html.layout), html.entries);
-  ***REMOVED***
+      }
 
       if (self.effectQueue.length > 0) {
         self.executeEffectQueue(self.callback);
-  ***REMOVED*** else if ($.isFunction(self.callback)) {
+      } else if ($.isFunction(self.callback)) {
         self.callback.call(self);
-  ***REMOVED***
-***REMOVED***);
+      }
+    });
   };
 
   RSS.prototype.appendEntriesAndApplyEffects = function (target, entries) {
@@ -112,12 +112,12 @@
 
       if (self.options.effect === 'show') {
         target.before($html);
-  ***REMOVED*** else {
+      } else {
         $html.css({ display: 'none' });
         target.before($html);
         self.applyEffect($html, self.options.effect);
-  ***REMOVED***
-***REMOVED***);
+      }
+    });
 
     target.remove();
   };
@@ -141,9 +141,9 @@
             );
 
             result.entries.push(evaluatedString);
-      ***REMOVED***
-    ***REMOVED***
-  ***REMOVED*** else {
+          }
+        }
+      } else {
         // no offset
         if (self.isRelevant(entry, result.entries)) {
           evaluatedString = self.evaluateStringForEntry(
@@ -151,19 +151,19 @@
           );
 
           result.entries.push(evaluatedString);
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***);
+        }
+      }
+    });
 
     if (!!this.options.entryTemplate) {
       // we have an entryTemplate
       result.layout = this.wrapContent(
         this.options.layoutTemplate.replace('{entries}', '<entries></entries>')
       );
-***REMOVED*** else {
+    } else {
       // no entryTemplate available
       result.layout = this.wrapContent('<div><entries></entries></div>');
-***REMOVED***
+    }
 
     return result;
   };
@@ -172,10 +172,10 @@
     if ($.trim(content).indexOf('<') !== 0) {
       // the content has no html => create a surrounding div
       return $('<div>' + content + '</div>');
-***REMOVED*** else {
+    } else {
       // the content has html => don't touch it
       return $(content);
-***REMOVED***
+    }
   };
 
   RSS.prototype.applyEffect = function ($element, effect, callback) {
@@ -194,7 +194,7 @@
       case 'slideFastSynced':
         self.effectQueue.push({ element: $element, effect: 'slideFast' });
         break;
-***REMOVED***
+    }
   };
 
   RSS.prototype.executeEffectQueue = function (callback) {
@@ -207,10 +207,10 @@
 
       if (item) {
         self.applyEffect(item.element, item.effect, executeEffectQueueItem);
-  ***REMOVED*** else if (callback) {
+      } else if (callback) {
         callback();
-  ***REMOVED***
-***REMOVED***;
+      }
+    };
 
     executeEffectQueueItem();
   };
@@ -223,7 +223,7 @@
       var token = this.toString();
 
       result = result.replace(token, self.getValueForToken(token, entry));
-***REMOVED***);
+    });
 
     return result;
   };
@@ -234,34 +234,34 @@
     if (this.options.filter) {
       if (this.options.filterLimit && (this.options.filterLimit === entries.length)) {
         return false;
-  ***REMOVED*** else {
+      } else {
         return this.options.filter(entry, tokenMap);
-  ***REMOVED***
-***REMOVED*** else {
+      }
+    } else {
       return true;
-***REMOVED***
+    }
   };
 
   RSS.prototype.getFormattedDate = function (dateString) {
     // If a custom formatting function is provided, use that.
     if (this.options.dateFormatFunction) {
       return this.options.dateFormatFunction(dateString);
-***REMOVED*** else if (typeof moment !== 'undefined') {
+    } else if (typeof moment !== 'undefined') {
       // If moment.js is available and dateFormatFunction is not overriding it,
       // use it to format the date.
       var date = moment(new Date(dateString));
 
       if (date.locale) {
         date = date.locale(this.options.dateLocale);
-  ***REMOVED*** else {
+      } else {
         date = date.lang(this.options.dateLocale);
-  ***REMOVED***
+      }
 
       return date.format(this.options.dateFormat);
-***REMOVED*** else {
+    } else {
       // If all else fails, just use the date as-is.
       return dateString;
-***REMOVED***
+    }
   };
 
   RSS.prototype.getTokenMap = function (entry) {
@@ -270,7 +270,7 @@
 
       delete feed.entries;
       this.feedTokens = feed;
-***REMOVED***
+    }
 
     return $.extend({
       feed:      this.feedTokens,
@@ -288,10 +288,10 @@
 
         for (var i = 0; i < RSS.htmlTags.length; i++) {
           result = result.replace(new RegExp('<' + RSS.htmlTags[i], 'gi'), '');
-    ***REMOVED***
+        }
 
         return result;
-  ***REMOVED***)(entry),
+      })(entry),
 
       shortBodyPlain: entry.contentSnippet.replace(/<\/?[^>]+>/gi, ''),
       index:          $.inArray(entry, this.entries),
@@ -300,21 +300,21 @@
       teaserImage:    (function (entry) {
         try {
           return entry.content.match(/(<img.*?>)/gi)[0];
-    ***REMOVED***
+        }
         catch (e) {
           return '';
-    ***REMOVED***
-  ***REMOVED***)(entry),
+        }
+      })(entry),
 
       teaserImageUrl: (function (entry) {
         try {
           return entry.content.match(/(<img.*?>)/gi)[0].match(/src="(.*?)"/)[1];
-    ***REMOVED***
+        }
         catch (e) {
           return '';
-    ***REMOVED***
-  ***REMOVED***)(entry)
-***REMOVED***, this.options.tokens);
+        }
+      })(entry)
+    }, this.options.tokens);
   };
 
   RSS.prototype.getValueForToken = function (_token, entry) {
@@ -324,9 +324,9 @@
 
     if (typeof result !== 'undefined') {
       return ((typeof result === 'function') ? result(entry, tokenMap) : result);
-***REMOVED*** else {
+    } else {
       throw new Error('Unknown token: ' + _token + ', url:' + this.url);
-***REMOVED***
+    }
   };
 
   $.fn.rss = function (url, options, callback) {

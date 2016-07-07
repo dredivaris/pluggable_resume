@@ -24,7 +24,7 @@ def level_to_proficiency(val):
         (4, 3): 'Skilled',
         (2, 2): 'Beginner',
         (1, 0): 'Novice'
-***REMOVED***
+    }
     for k, v in proficiency_dict.items():
         high, low = k
         if high >= val >= low:

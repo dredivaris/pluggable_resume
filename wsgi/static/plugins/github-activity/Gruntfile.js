@@ -18,33 +18,33 @@ module.exports = function(grunt) {
             cwd: '<%= config.bower %>/octicons/octicons',
             src: 'octicons.ttf',
             dest: '<%= config.dist %>/octicons'
-      ***REMOVED***,
+          },
           {
             expand: true,
             cwd: '<%= config.bower %>/octicons/octicons',
             src: 'octicons.woff',
             dest: '<%= config.dist %>/octicons'
-      ***REMOVED***,
+          },
           {
             expand: true,
             cwd: '<%= config.bower %>/octicons/octicons',
             src: 'octicons.eot',
             dest: '<%= config.dist %>/octicons'
-      ***REMOVED***,
+          },
           {
             expand: true,
             cwd: '<%= config.bower %>/octicons/octicons',
             src: 'octicons.svg',
             dest: '<%= config.dist %>/octicons'
-      ***REMOVED***
+          }
         ]
-  ***REMOVED***
-***REMOVED***,
+      }
+    },
     cssmin: {
       add_banner: {
         options: {
           banner: config.banner
-    ***REMOVED***,
+        },
         files: {
           '<%= config.dist %>/github-activity-<%= pkg.version %>.min.css': [
             '<%= config.src %>/github-activity.css'
@@ -52,13 +52,13 @@ module.exports = function(grunt) {
           '<%= config.dist %>/octicons/octicons.min.css': [
             '<%= config.bower %>/octicons/octicons/octicons.css'
           ]
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***,
+        }
+      }
+    },
     uglify: {
       options: {
         banner: config.banner
-  ***REMOVED***,
+      },
       dist: {
         files: {
           '<%= config.dist %>/github-activity-<%= pkg.version %>.min.js': [
@@ -67,14 +67,14 @@ module.exports = function(grunt) {
           '<%= config.dist %>/mustache/mustache.min.js': [
             '<%= config.bower %>/mustache/mustache.js'
           ]
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***,
+        }
+      }
+    },
     clean: {
       build: {
         src: ["dist/*"]
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-clean');

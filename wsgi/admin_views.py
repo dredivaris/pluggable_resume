@@ -20,14 +20,14 @@ class MyModelView(mongoengine.ModelView):
         return False
 
     def _handle_view(self, name, **kwargs):
-    ***REMOVED***
+        """
         Override builtin _handle_view in order to redirect users when a view is not accessible.
-    ***REMOVED***
+        """
         if not self.is_accessible():
             if current_user.is_authenticated:
                 # permission denied
                 abort(403)
-    ***REMOVED***
+            else:
                 # login
                 return redirect(url_for('security.login', next=request.url))
 

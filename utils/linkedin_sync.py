@@ -1,4 +1,4 @@
-***REMOVED***linkedin_sync.
+"""linkedin_sync.
 
 Usage: linkedin_sync.py  [URL ADMIN_USERNAME ADMIN_PASSWORD LINKEDIN_USERNAME LINKEDIN_PASSWORD USER_TO_SCRAPE]
 
@@ -6,7 +6,7 @@ Options:
   -h --help     Show this screen.
   --version     Show version.
 
-***REMOVED***
+"""
 import jsonpickle
 import json
 import requests
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     pickled_profile = jsonpickle.encode(profile)
     payload = json.dumps({
         'data': pickled_profile
-***REMOVED***)
+    })
     headers = {'Content-Type': 'application/json',
                'Authentication-Token': auth_token}
     print('posting with', url + '/api/v1.0/resume/', headers)

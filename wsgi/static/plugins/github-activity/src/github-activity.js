@@ -17,12 +17,12 @@ var GitHubActivity = (function() {
       if (!title) { title = url; }
       if (typeof(cssClass) === 'undefined') cssClass = "";
       return Mustache.render('<a class="' + cssClass + '" href="{{url}}" target="_blank">{{{title}}}</a>', { url: url, title: title });
-***REMOVED***,
+    },
     renderGitHubLink: function(url, title, cssClass) {
       if (!title) { title = url; }
       if (typeof(cssClass) === 'undefined') cssClass = "";
       return methods.renderLink('https://github.com/' + url, title, cssClass);
-***REMOVED***,
+    },
     getMessageFor: function(data) {
       var p = data.payload;
       data.repoLink = methods.renderGitHubLink(data.repo.name);
@@ -32,11 +32,11 @@ var GitHubActivity = (function() {
       if (p.ref) {
         if (p.ref.substring(0, 11) === 'refs/heads/') {
           data.branch = p.ref.substring(11);
-    ***REMOVED*** else {
+        } else {
           data.branch = p.ref;
-    ***REMOVED***
+        }
         data.branchLink = methods.renderGitHubLink(data.repo.name + '/tree/' + data.branch, data.branch) + ' at ';
-  ***REMOVED***
+      }
 
       // Only show the first 6 characters of the SHA of each commit if given.
       if (p.commits) {
@@ -45,25 +45,25 @@ var GitHubActivity = (function() {
         if (length === 2) {
           // If there are 2 commits, show message 'View comparison for these 2 commits >>'
           data.commitsMessage = Mustache.render('<a href="https://github.com/{{repo}}/compare/{{shaDiff}}">View comparison for these 2 commits &raquo;</a>', { repo: data.repo.name, shaDiff: shaDiff });
-    ***REMOVED*** else if (length > 2) {
+        } else if (length > 2) {
           // If there are more than two, show message '(numberOfCommits - 2) more commits >>'
           data.commitsMessage = Mustache.render('<a href="https://github.com/{{repo}}/compare/{{shaDiff}}">{{length}} more ' + pluralize('commit', length - 2) + ' &raquo;</a>', { repo: data.repo.name, shaDiff: shaDiff, length: p.size - 2 });
-    ***REMOVED***
+        }
 
         p.commits.forEach(function(d, i) {
           if (d.message.length > 66) {
             d.message = d.message.substring(0, 66) + '...';
-      ***REMOVED***
+          }
           if (i < 2) {
             d.shaLink = methods.renderGitHubLink(data.repo.name + '/commit/' + d.sha, d.sha.substring(0, 6), 'gha-sha');
             d.committerGravatar = Mustache.render('<img class="gha-gravatar-commit" src="https://gravatar.com/avatar/{{hash}}?s=30&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="16" />', { hash: md5(d.author.email) });
-      ***REMOVED*** else {
+          } else {
             // Delete the rest of the commits after the first 2, and then break out of the each loop.
             p.commits.splice(2, p.size);
             return false;
-      ***REMOVED***
-    ***REMOVED***);
-  ***REMOVED***
+          }
+        });
+      }
 
       // Get the link if this is an IssueEvent.
       if (p.issue) {
@@ -72,8 +72,8 @@ var GitHubActivity = (function() {
         data.issueType = "issue";
         if (p.issue.pull_request) {
           data.issueType = "pull request";
-    ***REMOVED***
-  ***REMOVED***
+        }
+      }
 
       // Retrieve the pull request link if this is a PullRequestEvent.
       if (p.pull_request) {
@@ -86,31 +86,31 @@ var GitHubActivity = (function() {
           p.action = "merged";
           var message = '{{c}} ' + pluralize('commit', pr.commits) + ' with {{a}} ' + pluralize('addition', pr.additions) + ' and {{d}} ' + pluralize('deletion', pr.deletions);
           data.mergeMessage = Mustache.render('<br><small class="gha-message-merge">' + message + '</small>', { c: pr.commits, a: pr.additions, d: pr.deletions });
-    ***REMOVED***
-  ***REMOVED***
+        }
+      }
 
       // Get the link if this is a PullRequestReviewCommentEvent
       if (p.comment && p.comment.pull_request_url) {
         var title = data.repo.name + "#" + p.comment.pull_request_url.split('/').pop();
         data.pullRequestLink = methods.renderGitHubLink(p.comment.pull_request_url, title);
-  ***REMOVED***
+      }
 
       // Get the comment if one exists, and trim it to 150 characters.
       if (p.comment && p.comment.body) {
         data.comment = p.comment.body;
         if (data.comment.length > 150) {
           data.comment = data.comment.substring(0, 150) + '...';
-    ***REMOVED***
+        }
         if (p.comment.html_url && p.comment.commit_id) {
           var title = data.repo.name + '@' + p.comment.commit_id.substring(0, 10);
           data.commentLink = methods.renderLink(p.comment.html_url, title);
-    ***REMOVED***
-  ***REMOVED***
+        }
+      }
 
       if (data.type === 'ReleaseEvent') {
         data.tagLink = methods.renderLink(p.release.html_url, p.release.tag_name);
         data.zipLink = methods.renderLink(p.release.zipball_url, 'Download Source Code (zip)');
-  ***REMOVED***
+      }
 
       // Wiki event
       if (data.type === 'GollumEvent') {
@@ -118,7 +118,7 @@ var GitHubActivity = (function() {
         data.actionType = page.action;
         data.message = data.actionType.charAt(0).toUpperCase() + data.actionType.slice(1) + ' ';
         data.message += methods.renderGitHubLink(page.html_url, page.title);
-  ***REMOVED***
+      }
 
       if (data.type === 'FollowEvent') data.targetLink = methods.renderGitHubLink(p.target.login);
       if (data.type === 'ForkEvent')   data.forkLink   = methods.renderGitHubLink(p.forkee.full_name);
@@ -127,7 +127,7 @@ var GitHubActivity = (function() {
       if (p.gist) {
         data.actionType = p.action === 'fork' ? p.action + 'ed' : p.action + 'd';
         data.gistLink = methods.renderLink(p.gist.html_url, 'gist: ' + p.gist.id);
-  ***REMOVED***
+      }
 
       var message = Mustache.render(templates[data.type], data);
       var timeString = millisecondsToStr(new Date() - new Date(data.created_at));
@@ -136,44 +136,44 @@ var GitHubActivity = (function() {
       if (data.type == 'CreateEvent' && (['repository', 'branch', 'tag'].indexOf(p.ref_type) >= 0)) {
         // Display separate icons depending on type of create event.
         icon = icons[data.type + '_' + p.ref_type];
-  ***REMOVED*** else {
+      } else {
         icon = icons[data.type]
-  ***REMOVED***
+      }
       var activity = { message: message, icon: icon, timeString: timeString, userLink: methods.renderGitHubLink(data.actor.login) };
 
       if (singleLineActivities.indexOf(data.type) > -1) {
         return Mustache.render(templates.SingleLineActivity, activity);
-  ***REMOVED***
+      }
       return Mustache.render(templates.Activity, activity);
-***REMOVED***,
+    },
     getHeaderHTML: function(data) {
       if (data.name) {
         data.userNameLink = methods.renderLink(data.html_url, data.name);
-  ***REMOVED*** else {
+      } else {
         data.withoutName = ' without-name';
-  ***REMOVED***
+      }
       data.userLink = methods.renderLink(data.html_url, data.login);
       data.gravatarLink = methods.renderLink(data.html_url, '<img src="' + data.avatar_url + '">');
 
       return Mustache.render(templates.UserHeader, data);
-***REMOVED***,
+    },
     getActivityHTML: function(data, limit) {
       var text = '';
       var dataLength = data.length;
       if (limit && limit > dataLength) {
           limit = dataLength;
-  ***REMOVED***
+      }
       limit = limit ? limit : dataLength;
 
       if (limit === 0) {
         return Mustache.render(templates.NoActivity, {});
-  ***REMOVED***
+      }
       for (var i = 0; i < limit; i++) {
         text += methods.getMessageFor(data[i]);
-  ***REMOVED***
+      }
 
       return text;
-***REMOVED***,
+    },
     getOutputFromRequest: function(url, callback) {
       var request = new XMLHttpRequest();
       request.open('GET', url);
@@ -184,41 +184,41 @@ var GitHubActivity = (function() {
           if (request.status >= 200 && request.status < 300){
             var data = JSON.parse(request.responseText);
             callback(undefined, data);
-      ***REMOVED*** else {
+          } else {
             callback('request for ' + url + ' yielded status ' + request.status);
-      ***REMOVED***
-    ***REMOVED***
-  ***REMOVED***;
+          }
+        }
+      };
 
       request.onerror = function() { callback('An error occurred connecting to ' + url); };
       request.send();
-***REMOVED***,
+    },
     renderStream: function(output, div) {
       div.innerHTML = Mustache.render(templates.Stream, { text: output, footer: templates.Footer });
       div.style.position = 'relative';
-***REMOVED***,
+    },
     writeOutput: function(selector, content) {
       var div = selector.charAt(0) === '#' ? document.getElementById(selector.substring(1)) : document.getElementsByClassName(selector.substring(1));
       if (div instanceof HTMLCollection) {
         for (var i = 0; i < div.length; i++) {
           methods.renderStream(content, div[i]);
-    ***REMOVED***
-  ***REMOVED*** else {
+        }
+      } else {
         methods.renderStream(content, div);
-  ***REMOVED***
-***REMOVED***,
+      }
+    },
     renderIfReady: function(selector, header, activity) {
       if (header && activity) {
         methods.writeOutput(selector, header + activity);
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   };
 
   obj.feed = function(options) {
     if (!options.username || !options.selector) {
       throw "You must specify the username and selector options for the activity stream.";
       return false;
-***REMOVED***
+    }
 
     var selector = options.selector,
         userUrl   = 'https://api.github.com/users/' + options.username,
@@ -228,45 +228,45 @@ var GitHubActivity = (function() {
 
     if (!!options.repository){
       eventsUrl = 'https://api.github.com/repos/' + options.username + '/' + options.repository + '/events';
-***REMOVED***
+    }
 
     if (options.clientId && options.clientSecret) {
       var authString = '?client_id=' + options.clientId + '&client_secret=' + options.clientSecret;
       userUrl   += authString;
       eventsUrl += authString;
-***REMOVED***
+    }
 
     if (!!options.eventsUrl){
       eventsUrl = options.eventsUrl;
-***REMOVED***
+    }
 
     // Allow templates override
     if (typeof options.templates == 'object') {
       for (var template in templates) {
         if (typeof options.templates[template] == 'string') {
           templates[template] = options.templates[template];
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+        }
+      }
+    }
 
     methods.getOutputFromRequest(userUrl, function(error, output) {
       if (error) {
         header = Mustache.render(templates.UserNotFound, { username: options.username });
-  ***REMOVED*** else {
+      } else {
         header = methods.getHeaderHTML(output)
-  ***REMOVED***
+      }
       methods.renderIfReady(selector, header, activity)
-***REMOVED***);
+    });
 
     methods.getOutputFromRequest(eventsUrl, function(error, output) {
       if (error) {
         activity = Mustache.render(templates.EventsNotFound, { username: options.username });
-  ***REMOVED*** else {
+      } else {
         var limit = options.limit != 'undefined' ? parseInt(options.limit, 10) : null;
         activity = methods.getActivityHTML(output, limit);
-  ***REMOVED***
+      }
       methods.renderIfReady(selector, header, activity);
-***REMOVED***);
+    });
   };
 
   return obj;

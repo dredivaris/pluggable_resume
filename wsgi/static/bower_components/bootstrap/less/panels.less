@@ -67,28 +67,28 @@
     .list-group-item {
       border-width: 1px 0;
       border-radius: 0;
-***REMOVED***
+    }
 
     // Add border top radius for first one
     &:first-child {
       .list-group-item:first-child {
         border-top: 0;
         .border-top-radius((@panel-border-radius - 1));
-  ***REMOVED***
-***REMOVED***
+      }
+    }
 
     // Add border bottom radius for last one
     &:last-child {
       .list-group-item:last-child {
         border-bottom: 0;
         .border-bottom-radius((@panel-border-radius - 1));
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   }
   > .panel-heading + .panel-collapse > .list-group {
     .list-group-item:first-child {
       .border-top-radius(0);
-***REMOVED***
+    }
   }
 }
 // Collapse space between when there's no additional content.
@@ -115,7 +115,7 @@
     caption {
       padding-left: @panel-body-padding;
       padding-right: @panel-body-padding;
-***REMOVED***
+    }
   }
   // Add border top radius for first one
   > .table:first-child,
@@ -131,13 +131,13 @@
         td:first-child,
         th:first-child {
           border-top-left-radius: (@panel-border-radius - 1);
-    ***REMOVED***
+        }
         td:last-child,
         th:last-child {
           border-top-right-radius: (@panel-border-radius - 1);
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+        }
+      }
+    }
   }
   // Add border bottom radius for last one
   > .table:last-child,
@@ -153,13 +153,13 @@
         td:first-child,
         th:first-child {
           border-bottom-left-radius: (@panel-border-radius - 1);
-    ***REMOVED***
+        }
         td:last-child,
         th:last-child {
           border-bottom-right-radius: (@panel-border-radius - 1);
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+        }
+      }
+    }
   }
   > .panel-body + .table,
   > .panel-body + .table-responsive,
@@ -181,31 +181,31 @@
         > th:first-child,
         > td:first-child {
           border-left: 0;
-    ***REMOVED***
+        }
         > th:last-child,
         > td:last-child {
           border-right: 0;
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+        }
+      }
+    }
     > thead,
     > tbody {
       > tr:first-child {
         > td,
         > th {
           border-bottom: 0;
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+        }
+      }
+    }
     > tbody,
     > tfoot {
       > tr:last-child {
         > td,
         > th {
           border-bottom: 0;
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+        }
+      }
+    }
   }
   > .table-responsive {
     border: 0;
@@ -229,7 +229,7 @@
 
     + .panel {
       margin-top: 5px;
-***REMOVED***
+    }
   }
 
   .panel-heading {
@@ -238,14 +238,14 @@
     + .panel-collapse > .panel-body,
     + .panel-collapse > .list-group {
       border-top: 1px solid @panel-inner-border;
-***REMOVED***
+    }
   }
 
   .panel-footer {
     border-top: 0;
     + .panel-collapse .panel-body {
       border-bottom: 1px solid @panel-inner-border;
-***REMOVED***
+    }
   }
 }
 

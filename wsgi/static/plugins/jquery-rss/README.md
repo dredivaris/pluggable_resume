@@ -18,7 +18,7 @@ Chances are that you are experiencing a downtime on feedrapp.info. Please update
         <script>
           jQuery(function($) {
             $("#rss-feeds").rss("http://feeds.feedburner.com/premiumpixels")
-      ***REMOVED***)
+          })
         </script>
       </head>
       <body>
@@ -74,7 +74,7 @@ If you do not want to include Moment.js, you may opt for providing your own date
         tokens: {
           foo: 'bar',
           bar: function(entry, tokens) { return entry.title }
-    ***REMOVED***,
+        },
 
         // formats the date with moment.js (optional)
         // default: 'dddd MMM Do'
@@ -109,7 +109,7 @@ If you do not want to include Moment.js, you may opt for providing your own date
         // a callback, which gets triggered once data was received but before the rendering.
         // this can be useful when you need to remove a spinner or something similar
         onData: function(){}
-  ***REMOVED***,
+      },
 
       // callback function
       // called after feeds are successfully loaded and after animations are done
@@ -165,8 +165,8 @@ You can also define custom tokens using the ```tokens``` option:
         dynamic: function(entry, tokens){ return "dynamic-stuff: " + entry.title },
         "re-use": function(entry, tokens){ return encodeURIComponent(tokens.teaserImageUrl) },
         static: "static"
-  ***REMOVED***
-***REMOVED***)
+      }
+    })
 
 Please make sure to NOT define infinite loops. The following example is really BAD:
 
@@ -175,15 +175,15 @@ Please make sure to NOT define infinite loops. The following example is really B
       tokens: {
         whoops: function(entry, tokens) { return tokens.loop() }
         loop: function(entry, tokens) { return tokens.whoops() }
-  ***REMOVED***
-***REMOVED***)
+      }
+    })
 
 Here is a real-world example:
 
     $('#foo').rss(url, {
       layoutTemplate: "<table><tr><th>Title</th></tr>{entries}</table>",
       entryTemplate:  "<tr><td>{title}</td></tr>"
-***REMOVED***)
+    })
 
 ## Filtering
 
@@ -194,8 +194,8 @@ The plugin also allows you to filter specific entries in order to only print the
       filterLimit: 10,
       filter: function(entry, tokens) {
         return tokens.title.indexOf('my filter') > -1
-  ***REMOVED***
-***REMOVED***)
+      }
+    })
 
 This will request 100 entries via the Feed API and renders the first 10 matching entries.
 

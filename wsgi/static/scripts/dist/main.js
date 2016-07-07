@@ -12,9 +12,9 @@ jQuery(document).ready(function ($) {
 
       $(this).animate({
         width: itemWidth
-  ***REMOVED***, 800);
+      }, 800);
 
-***REMOVED***);
+    });
 
   });
 
@@ -49,7 +49,7 @@ jQuery(document).ready(function ($) {
       // valid values: any string
       entryTemplate: '<h3 class="title"><a href="{url}" target="_blank">{title}</a></h3><div><p>{shortBodyPlain}</p><a class="more-link" href="{url}" target="_blank"><i class="fa fa-external-link"></i>Read more</a></div>'
 
-***REMOVED***
+    }
   );
 
   /* Github Calendar - https://github.com/IonicaBizau/github-calendar */

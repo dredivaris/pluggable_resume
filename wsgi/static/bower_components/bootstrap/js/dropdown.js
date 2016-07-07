@@ -27,7 +27,7 @@
     if (!selector) {
       selector = $this.attr('href')
       selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
-***REMOVED***
+    }
 
     var $parent = selector && $(selector)
 
@@ -52,7 +52,7 @@
 
       $this.attr('aria-expanded', 'false')
       $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
-***REMOVED***)
+    })
   }
 
   Dropdown.prototype.toggle = function (e) {
@@ -72,7 +72,7 @@
           .addClass('dropdown-backdrop')
           .insertAfter($(this))
           .on('click', clearMenus)
-  ***REMOVED***
+      }
 
       var relatedTarget = { relatedTarget: this }
       $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
@@ -86,7 +86,7 @@
       $parent
         .toggleClass('open')
         .trigger($.Event('shown.bs.dropdown', relatedTarget))
-***REMOVED***
+    }
 
     return false
   }
@@ -107,7 +107,7 @@
     if (!isActive && e.which != 27 || isActive && e.which == 27) {
       if (e.which == 27) $parent.find(toggle).trigger('focus')
       return $this.trigger('click')
-***REMOVED***
+    }
 
     var desc = ' li:not(.disabled):visible a'
     var $items = $parent.find('.dropdown-menu' + desc)
@@ -134,7 +134,7 @@
 
       if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
       if (typeof option == 'string') data[option].call($this)
-***REMOVED***)
+    })
   }
 
   var old = $.fn.dropdown

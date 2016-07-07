@@ -25,7 +25,7 @@ module.exports = function generateGlyphiconsData(grunt) {
 
     if (match !== null) {
       glyphiconsData += '- ' + match[1] + '\n';
-***REMOVED***
+    }
   }
 
   // Create the `_data` directory if it doesn't already exist

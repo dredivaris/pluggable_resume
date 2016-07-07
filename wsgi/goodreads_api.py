@@ -27,7 +27,7 @@ class GoodreadsClient:
                     image_url = html_doc.get_element_by_id('coverImage').get('src')
                 except:
                     image_url = book_record.image_url
-    ***REMOVED***
+            else:
                 image_url = book_record.image_url
 
             book = Book(

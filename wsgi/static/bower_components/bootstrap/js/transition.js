@@ -21,13 +21,13 @@
       MozTransition    : 'transitionend',
       OTransition      : 'oTransitionEnd otransitionend',
       transition       : 'transitionend'
-***REMOVED***
+    }
 
     for (var name in transEndEventNames) {
       if (el.style[name] !== undefined) {
-    ***REMOVED*** end: transEndEventNames[name] }
-  ***REMOVED***
-***REMOVED***
+        return { end: transEndEventNames[name] }
+      }
+    }
 
     return false // explicit for ie8 (  ._.)
   }
@@ -52,8 +52,8 @@
       delegateType: $.support.transition.end,
       handle: function (e) {
         if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   })
 
 }(jQuery);

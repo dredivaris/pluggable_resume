@@ -9,7 +9,7 @@ class ReadingList extends React.Component {
     this.endpoint = '';
     this.state = {
       reading_list: null
-***REMOVED***;
+    };
   }
 
   _fetch_reading_list() {
@@ -22,13 +22,13 @@ class ReadingList extends React.Component {
         success: (data) => {
           if (data.success === true) {
             this.setState({reading_list: data.reading_list});
-      ***REMOVED***
-    ***REMOVED***,
+          }
+        },
         error: (xhr, status, err) => {
           console.log(this.props.url, status, err.toString());
-    ***REMOVED***
-  ***REMOVED***);
-***REMOVED***
+        }
+      });
+    }
   }
 
   componentWillMount() {
@@ -57,10 +57,10 @@ class ReadingList extends React.Component {
             </div>
           </div>
         </li>));
-***REMOVED***
+    }
     else {
       reading_list = [];
-***REMOVED***
+    }
     return (
       <div>
         <ul className="list-group">{reading_list}</ul>
@@ -112,8 +112,8 @@ class SendEmail extends React.Component {
     $.get('../api/v1.0/email/', function (data) {
       if (data.success) {
         window.location = `mailto:${data.mail_to}`;
-  ***REMOVED***
-***REMOVED***)
+      }
+    })
   }
 }
 

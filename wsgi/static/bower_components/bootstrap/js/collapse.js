@@ -22,9 +22,9 @@
 
     if (this.options.parent) {
       this.$parent = this.getParent()
-***REMOVED*** else {
+    } else {
       this.addAriaAndCollapsedClass(this.$element, this.$trigger)
-***REMOVED***
+    }
 
     if (this.options.toggle) this.toggle()
   }
@@ -51,7 +51,7 @@
     if (actives && actives.length) {
       activesData = actives.data('bs.collapse')
       if (activesData && activesData.transitioning) return
-***REMOVED***
+    }
 
     var startEvent = $.Event('show.bs.collapse')
     this.$element.trigger(startEvent)
@@ -60,7 +60,7 @@
     if (actives && actives.length) {
       Plugin.call(actives, 'hide')
       activesData || actives.data('bs.collapse', null)
-***REMOVED***
+    }
 
     var dimension = this.dimension()
 
@@ -82,7 +82,7 @@
       this.transitioning = 0
       this.$element
         .trigger('shown.bs.collapse')
-***REMOVED***
+    }
 
     if (!$.support.transition) return complete.call(this)
 
@@ -121,7 +121,7 @@
         .removeClass('collapsing')
         .addClass('collapse')
         .trigger('hidden.bs.collapse')
-***REMOVED***
+    }
 
     if (!$.support.transition) return complete.call(this)
 
@@ -141,7 +141,7 @@
       .each($.proxy(function (i, element) {
         var $element = $(element)
         this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
-  ***REMOVED***, this))
+      }, this))
       .end()
   }
 
@@ -175,7 +175,7 @@
       if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
       if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
-***REMOVED***)
+    })
   }
 
   var old = $.fn.collapse

@@ -14,11 +14,11 @@ resume_mapping = {
     'currently-reading-work': 'currently_reading'
 }
 
-***REMOVED*** goodreads sync.
+""" goodreads sync.
 
 Handles sync of goodreads book list data from goodreads to a user resume object specified in the
 database
-***REMOVED***
+"""
 
 
 def sync_bookshelves_from_goodreads(resume):

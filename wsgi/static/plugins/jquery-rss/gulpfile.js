@@ -49,5 +49,5 @@ gulp.task('test-integration', function () {
       libs: ['lib/*.js', 'node_modules/moment/min/moment-with-locales.min.js'],
       sources: ['dist/jquery.rss.min.js'],
       useHeadlessBrowser: true
-***REMOVED***));
+    }));
 });

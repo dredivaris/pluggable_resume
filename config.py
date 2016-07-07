@@ -40,17 +40,3 @@ SECURITY_REGISTERABLE = True
 SECURITY_SEND_REGISTER_EMAIL = False
 
 GOODREADS_DATABASE_NAME = 'Goodreads'
-
-# if os.environ.get(º'HEROKU') is None:
-#     SQLALCHEMY_DATABASE_URI = "postgresql://redditdbuser:redajisdg@localhost/redditclient"
-# else:
-#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
-
-'''mongo credentials:
-   Root User:     admin
-   Root Password: j22AkGKNvIMW
-   Database Name: andreaswebsite
-'''
-
-# SQLALCHEMY_TRACK_MODIFICATIONS = True
-# SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')

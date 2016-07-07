@@ -31,17 +31,17 @@
     if (!selector) {
       selector = $this.attr('href')
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
-***REMOVED***
+    }
 
     if ($this.parent('li').hasClass('active')) return
 
     var $previous = $ul.find('.active:last a')
     var hideEvent = $.Event('hide.bs.tab', {
       relatedTarget: $this[0]
-***REMOVED***)
+    })
     var showEvent = $.Event('show.bs.tab', {
       relatedTarget: $previous[0]
-***REMOVED***)
+    })
 
     $previous.trigger(hideEvent)
     $this.trigger(showEvent)
@@ -55,12 +55,12 @@
       $previous.trigger({
         type: 'hidden.bs.tab',
         relatedTarget: $this[0]
-  ***REMOVED***)
+      })
       $this.trigger({
         type: 'shown.bs.tab',
         relatedTarget: $previous[0]
-  ***REMOVED***)
-***REMOVED***)
+      })
+    })
   }
 
   Tab.prototype.activate = function (element, container, callback) {
@@ -86,9 +86,9 @@
       if (transition) {
         element[0].offsetWidth // reflow for transition
         element.addClass('in')
-  ***REMOVED*** else {
+      } else {
         element.removeClass('fade')
-  ***REMOVED***
+      }
 
       if (element.parent('.dropdown-menu').length) {
         element
@@ -97,10 +97,10 @@
           .end()
           .find('[data-toggle="tab"]')
             .attr('aria-expanded', true)
-  ***REMOVED***
+      }
 
       callback && callback()
-***REMOVED***
+    }
 
     $active.length && transition ?
       $active
@@ -122,7 +122,7 @@
 
       if (!data) $this.data('bs.tab', (data = new Tab(this)))
       if (typeof option == 'string') data[option]()
-***REMOVED***)
+    })
   }
 
   var old = $.fn.tab

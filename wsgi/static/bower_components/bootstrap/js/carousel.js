@@ -47,7 +47,7 @@
       case 37: this.prev(); break
       case 39: this.next(); break
       default: return
-***REMOVED***
+    }
 
     e.preventDefault()
   }
@@ -97,7 +97,7 @@
     if (this.$element.find('.next, .prev').length && $.support.transition) {
       this.$element.trigger($.support.transition.end)
       this.cycle(true)
-***REMOVED***
+    }
 
     this.interval = clearInterval(this.interval)
 
@@ -127,7 +127,7 @@
     var slideEvent = $.Event('slide.bs.carousel', {
       relatedTarget: relatedTarget,
       direction: direction
-***REMOVED***)
+    })
     this.$element.trigger(slideEvent)
     if (slideEvent.isDefaultPrevented()) return
 
@@ -139,7 +139,7 @@
       this.$indicators.find('.active').removeClass('active')
       var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)])
       $nextIndicator && $nextIndicator.addClass('active')
-***REMOVED***
+    }
 
     var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
     if ($.support.transition && this.$element.hasClass('slide')) {
@@ -154,15 +154,15 @@
           that.sliding = false
           setTimeout(function () {
             that.$element.trigger(slidEvent)
-      ***REMOVED***, 0)
-    ***REMOVED***)
+          }, 0)
+        })
         .emulateTransitionEnd(Carousel.TRANSITION_DURATION)
-***REMOVED*** else {
+    } else {
       $active.removeClass('active')
       $next.addClass('active')
       this.sliding = false
       this.$element.trigger(slidEvent)
-***REMOVED***
+    }
 
     isCycling && this.cycle()
 
@@ -184,7 +184,7 @@
       if (typeof option == 'number') data.to(option)
       else if (action) data[action]()
       else if (options.interval) data.pause().cycle()
-***REMOVED***)
+    })
   }
 
   var old = $.fn.carousel
@@ -218,7 +218,7 @@
 
     if (slideIndex) {
       $target.data('bs.carousel').to(slideIndex)
-***REMOVED***
+    }
 
     e.preventDefault()
   }
@@ -231,7 +231,7 @@
     $('[data-ride="carousel"]').each(function () {
       var $carousel = $(this)
       Plugin.call($carousel, $carousel.data())
-***REMOVED***)
+    })
   })
 
 }(jQuery);

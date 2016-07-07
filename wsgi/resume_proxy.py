@@ -35,7 +35,7 @@ def combined_resume(hide_work_experience=True):
             base.skills = sorted(base.skills, key=lambda skill: skill.order_by)
         except TypeError:
             # if order_by hasn't been filled in; just don't do the sort
-    ***REMOVED***
+            pass
 
     if hide_work_experience:
         for experience in list(base.work_experiences):
@@ -50,7 +50,7 @@ def sort_work_experiences(work_experiences):
         val = val.to_date
         if val in 'present' or val in 'current':
             return datetime.now()
-***REMOVED***
+        else:
             try:
                 return datetime.strptime(val, '%Y')
             except ValueError:

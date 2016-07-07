@@ -135,7 +135,7 @@ Tokenizer.prototype.shift = function () {
     var result = this._shift();
     if (result === undefined) {
       continue;
-***REMOVED***
+    }
     return result;
   }
 };
@@ -151,9 +151,9 @@ Parser.prototype.parseFile = function () {
     if (section === null) {
       if (this._tokenizer.shift() !== null) {
         throw new Error('Unexpected unparsed section of file remains!');
-  ***REMOVED***
+      }
       return sections;
-***REMOVED***
+    }
     sections.push(section);
   }
 };
@@ -185,10 +185,10 @@ Parser.prototype.parseSubSections = function (section) {
         // Presume an implicit initial subsection
         subsection = new SubSection('');
         this.parseVars(subsection);
-  ***REMOVED*** else {
+      } else {
         break;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
     section.addSubSection(subsection);
   }
 
@@ -213,7 +213,7 @@ Parser.prototype.parseVars = function (subsection) {
     var variable = this.parseVar();
     if (variable === null) {
       return;
-***REMOVED***
+    }
     subsection.addVar(variable);
   }
 };

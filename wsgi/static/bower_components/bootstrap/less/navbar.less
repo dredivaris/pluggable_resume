@@ -70,11 +70,11 @@
       height: auto !important;
       padding-bottom: 0; // Override default setting
       overflow: visible !important;
-***REMOVED***
+    }
 
     &.in {
       overflow-y: visible;
-***REMOVED***
+    }
 
     // Undo the collapse side padding for navbars with containers to ensure
     // alignment of right-aligned contents.
@@ -83,7 +83,7 @@
     .navbar-fixed-bottom & {
       padding-left: 0;
       padding-right: 0;
-***REMOVED***
+    }
   }
 }
 
@@ -94,7 +94,7 @@
 
     @media (max-device-width: @screen-xs-min) and (orientation: landscape) {
       max-height: 200px;
-***REMOVED***
+    }
   }
 }
 
@@ -113,7 +113,7 @@
     @media (min-width: @grid-float-breakpoint) {
       margin-right: 0;
       margin-left:  0;
-***REMOVED***
+    }
   }
 }
 
@@ -180,7 +180,7 @@
     .navbar > .container &,
     .navbar > .container-fluid & {
       margin-left: -@navbar-padding-horizontal;
-***REMOVED***
+    }
   }
 }
 
@@ -251,15 +251,15 @@
       > li > a,
       .dropdown-header {
         padding: 5px 15px 5px 25px;
-  ***REMOVED***
+      }
       > li > a {
         line-height: @line-height-computed;
         &:hover,
         &:focus {
           background-image: none;
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+        }
+      }
+    }
   }
 
   // Uncollapse the nav
@@ -272,8 +272,8 @@
       > a {
         padding-top:    @navbar-padding-vertical;
         padding-bottom: @navbar-padding-vertical;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   }
 }
 
@@ -301,8 +301,8 @@
 
       &:last-child {
         margin-bottom: 0;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   }
 
   // Vertically center in expanded, horizontal navbar
@@ -383,7 +383,7 @@
 
     ~ .navbar-right {
       margin-right: 0;
-***REMOVED***
+    }
   }
 }
 
@@ -402,7 +402,7 @@
     &:focus {
       color: @navbar-default-brand-hover-color;
       background-color: @navbar-default-brand-hover-bg;
-***REMOVED***
+    }
   }
 
   .navbar-text {
@@ -417,24 +417,24 @@
       &:focus {
         color: @navbar-default-link-hover-color;
         background-color: @navbar-default-link-hover-bg;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
     > .active > a {
       &,
       &:hover,
       &:focus {
         color: @navbar-default-link-active-color;
         background-color: @navbar-default-link-active-bg;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
     > .disabled > a {
       &,
       &:hover,
       &:focus {
         color: @navbar-default-link-disabled-color;
         background-color: @navbar-default-link-disabled-bg;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   }
 
   .navbar-toggle {
@@ -442,10 +442,10 @@
     &:hover,
     &:focus {
       background-color: @navbar-default-toggle-hover-bg;
-***REMOVED***
+    }
     .icon-bar {
       background-color: @navbar-default-toggle-icon-bar-bg;
-***REMOVED***
+    }
   }
 
   .navbar-collapse,
@@ -462,8 +462,8 @@
       &:focus {
         background-color: @navbar-default-link-active-bg;
         color: @navbar-default-link-active-color;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
 
     @media (max-width: @grid-float-breakpoint-max) {
       // Dropdowns get custom display when collapsed
@@ -474,26 +474,26 @@
           &:focus {
             color: @navbar-default-link-hover-color;
             background-color: @navbar-default-link-hover-bg;
-      ***REMOVED***
-    ***REMOVED***
+          }
+        }
         > .active > a {
           &,
           &:hover,
           &:focus {
             color: @navbar-default-link-active-color;
             background-color: @navbar-default-link-active-bg;
-      ***REMOVED***
-    ***REMOVED***
+          }
+        }
         > .disabled > a {
           &,
           &:hover,
           &:focus {
             color: @navbar-default-link-disabled-color;
             background-color: @navbar-default-link-disabled-bg;
-      ***REMOVED***
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+          }
+        }
+      }
+    }
   }
 
 
@@ -505,7 +505,7 @@
     color: @navbar-default-link-color;
     &:hover {
       color: @navbar-default-link-hover-color;
-***REMOVED***
+    }
   }
 
   .btn-link {
@@ -513,14 +513,14 @@
     &:hover,
     &:focus {
       color: @navbar-default-link-hover-color;
-***REMOVED***
+    }
     &[disabled],
     fieldset[disabled] & {
       &:hover,
       &:focus {
         color: @navbar-default-link-disabled-color;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   }
 }
 
@@ -536,7 +536,7 @@
     &:focus {
       color: @navbar-inverse-brand-hover-color;
       background-color: @navbar-inverse-brand-hover-bg;
-***REMOVED***
+    }
   }
 
   .navbar-text {
@@ -551,24 +551,24 @@
       &:focus {
         color: @navbar-inverse-link-hover-color;
         background-color: @navbar-inverse-link-hover-bg;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
     > .active > a {
       &,
       &:hover,
       &:focus {
         color: @navbar-inverse-link-active-color;
         background-color: @navbar-inverse-link-active-bg;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
     > .disabled > a {
       &,
       &:hover,
       &:focus {
         color: @navbar-inverse-link-disabled-color;
         background-color: @navbar-inverse-link-disabled-bg;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   }
 
   // Darken the responsive nav toggle
@@ -577,10 +577,10 @@
     &:hover,
     &:focus {
       background-color: @navbar-inverse-toggle-hover-bg;
-***REMOVED***
+    }
     .icon-bar {
       background-color: @navbar-inverse-toggle-icon-bar-bg;
-***REMOVED***
+    }
   }
 
   .navbar-collapse,
@@ -596,51 +596,51 @@
       &:focus {
         background-color: @navbar-inverse-link-active-bg;
         color: @navbar-inverse-link-active-color;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
 
     @media (max-width: @grid-float-breakpoint-max) {
       // Dropdowns get custom display
       .open .dropdown-menu {
         > .dropdown-header {
           border-color: @navbar-inverse-border;
-    ***REMOVED***
+        }
         .divider {
           background-color: @navbar-inverse-border;
-    ***REMOVED***
+        }
         > li > a {
           color: @navbar-inverse-link-color;
           &:hover,
           &:focus {
             color: @navbar-inverse-link-hover-color;
             background-color: @navbar-inverse-link-hover-bg;
-      ***REMOVED***
-    ***REMOVED***
+          }
+        }
         > .active > a {
           &,
           &:hover,
           &:focus {
             color: @navbar-inverse-link-active-color;
             background-color: @navbar-inverse-link-active-bg;
-      ***REMOVED***
-    ***REMOVED***
+          }
+        }
         > .disabled > a {
           &,
           &:hover,
           &:focus {
             color: @navbar-inverse-link-disabled-color;
             background-color: @navbar-inverse-link-disabled-bg;
-      ***REMOVED***
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***
+          }
+        }
+      }
+    }
   }
 
   .navbar-link {
     color: @navbar-inverse-link-color;
     &:hover {
       color: @navbar-inverse-link-hover-color;
-***REMOVED***
+    }
   }
 
   .btn-link {
@@ -648,13 +648,13 @@
     &:hover,
     &:focus {
       color: @navbar-inverse-link-hover-color;
-***REMOVED***
+    }
     &[disabled],
     fieldset[disabled] & {
       &:hover,
       &:focus {
         color: @navbar-inverse-link-disabled-color;
-  ***REMOVED***
-***REMOVED***
+      }
+    }
   }
 }

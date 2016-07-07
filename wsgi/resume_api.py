@@ -101,7 +101,7 @@ class ResumeAPI(Resource):
         except InvalidDataException:
             error = 'Invalid resume json object'
 
-    ***REMOVED***'success': False, 'error: ': error} if error else {'success': True, 'id': obj_id}
+        return {'success': False, 'error: ': error} if error else {'success': True, 'id': obj_id}
 
 resume_api.add_resource(ResumeAPI, '/resume/')
 

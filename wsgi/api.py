@@ -19,7 +19,7 @@ class ReadingList(Resource):
         resume = combined_resume()
         reading_list = [{'title': r.title, 'id': i, 'url': r.link, 'image_url': r.image_url }
                         for i, r in enumerate(getattr(resume.reading_list, self.attribute, None))]
-    ***REMOVED***'success': True,
+        return {'success': True,
                 'reading_list': reading_list}
 
 
@@ -43,10 +43,10 @@ class Email(Resource):
     def get(self):
         settings = ResumeSettings.objects.first()
         if hasattr(settings, 'mail_to'):
-        ***REMOVED***'success': True,
+            return {'success': True,
                     'mail_to': settings.mail_to}
-***REMOVED***
-        ***REMOVED***'success': False}
+        else:
+            return {'success': False}
 
 
 api.add_resource(ReadingListCurrentlyReading, '/reading_list/currently_reading/')

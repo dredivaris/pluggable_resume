@@ -24,16 +24,16 @@
     var g;
     if (typeof window !== "undefined") {
       g = window;
-***REMOVED*** else if (typeof global !== "undefined") {
+    } else if (typeof global !== "undefined") {
       g = global;
-***REMOVED*** else if (typeof self !== "undefined") {
+    } else if (typeof self !== "undefined") {
       g = self;
-***REMOVED*** else {
+    } else {
       // works providing we're not in "use strict";
       // needed for Java 8 Nashorn
       // see https://github.com/facebook/react/issues/3037
       g = this;
-***REMOVED***
+    }
     g.ReactDOM = f(g.React);
   }
 

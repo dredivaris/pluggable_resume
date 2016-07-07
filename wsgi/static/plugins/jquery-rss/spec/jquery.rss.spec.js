@@ -23,19 +23,19 @@ describe('jquery.rss', function () {
               entries: [{
                 content: content,
                 contentSnippet: content
-          ***REMOVED***]
-        ***REMOVED***
-      ***REMOVED***
-    ***REMOVED***);
-  ***REMOVED***;
-***REMOVED***;
+              }]
+            }
+          }
+        });
+      };
+    };
   });
 
   after(function () {
     if (typeof this.originalGetJSON === 'function') {
       $.getJSON = this.originalGetJSON;
       this.originalGetJSON = null;
-***REMOVED***
+    }
   });
 
   it('renders an unordered list by default', function (done) {
@@ -46,7 +46,7 @@ describe('jquery.rss', function () {
 
       expect(renderedContent).toMatch(/<ul>.*<\/ul>/);
       done();
-***REMOVED***);
+    });
   });
 
   it('renders 2 list entries if limit is set to 2', function (done) {
@@ -54,10 +54,10 @@ describe('jquery.rss', function () {
 
     $container.rss(this.feedUrl, {
       limit: 2
-***REMOVED***, function () {
+    }, function () {
       expect($('li', $container).length).toEqual(2);
       done();
-***REMOVED***);
+    });
   });
 
   it('renders the defined entry template', function (done) {
@@ -66,14 +66,14 @@ describe('jquery.rss', function () {
     $container.rss(this.feedUrl, {
       limit: 1,
       entryTemplate: '<li>foo</li>'
-***REMOVED***, function () {
+    }, function () {
       var renderedContent = $container.html().split('\n').map(function (s) {
         return s.trim();
-  ***REMOVED***).join('').trim();
+      }).join('').trim();
 
       expect(renderedContent).toMatch(/<ul><li>foo<\/li><\/ul>/);
       done();
-***REMOVED***);
+    });
   });
 
   it('renders the defined layout template', function (done) {
@@ -82,12 +82,12 @@ describe('jquery.rss', function () {
     $container.rss(this.feedUrl, {
       limit: 1,
       layoutTemplate: 'foo<ul>{entries}</ul>bar'
-***REMOVED***, function () {
+    }, function () {
       var renderedContent = $container.html().replace(/\n/g, '');
 
       expect(renderedContent).toMatch(/foo<ul>.*<\/ul>/);
       done();
-***REMOVED***);
+    });
   });
 
   it('supports custom tokens', function (done) {
@@ -100,16 +100,16 @@ describe('jquery.rss', function () {
         myCustomStaticToken: 'static',
         myCustomDynamicToken: function () {
           return 'dynamic';
-    ***REMOVED***
-  ***REMOVED***
-***REMOVED***, function () {
+        }
+      }
+    }, function () {
       var renderedContent = $container.html().split('\n').map(function (s) {
         return s.trim();
-  ***REMOVED***).join('').trim();
+      }).join('').trim();
 
       expect(renderedContent).toMatch(new RegExp('<ul><li>static dynamic</li></ul>'));
       done();
-***REMOVED***);
+    });
   });
 
   it('removes p-tags but not the content', function (done) {
@@ -120,14 +120,14 @@ describe('jquery.rss', function () {
     $container.rss(this.feedUrl, {
       limit: 1,
       entryTemplate: '<li>{bodyPlain}</li>'
-***REMOVED***, function () {
+    }, function () {
       var renderedContent = $container.html().split('\n').map(function (s) {
         return s.trim();
-  ***REMOVED***).join('').trim();
+      }).join('').trim();
 
       expect(renderedContent).toMatch(/<ul><li>May the fourth be with you!<\/li><\/ul>/);
       done();
-***REMOVED***);
+    });
   });
 
   it('calls the error callback if something went wrong', function (done) {
@@ -135,8 +135,8 @@ describe('jquery.rss', function () {
       error: function () {
         expect(1).toEqual(1);
         done();
-  ***REMOVED***
-***REMOVED***);
+      }
+    });
   });
 
   it('calls the success callback', function (done) {
@@ -146,8 +146,8 @@ describe('jquery.rss', function () {
       success: function () {
         expect(1).toEqual(1);
         done();
-  ***REMOVED***
-***REMOVED***);
+      }
+    });
   });
 
   it('renders the defined entry template in the layout template', function (done) {
@@ -157,12 +157,12 @@ describe('jquery.rss', function () {
       limit: 1,
       entryTemplate: '<li>bazinga</li>',
       layoutTemplate: '<ul><li>topic</li>{entries}</ul>'
-***REMOVED***, function () {
+    }, function () {
       var renderedContent = $container.html().replace(/\n/g, '');
 
       expect(renderedContent).toEqual('<ul><li>topic</li><li>bazinga</li></ul>');
       done();
-***REMOVED***);
+    });
   });
 
   describe('ssl', function () {
@@ -170,28 +170,28 @@ describe('jquery.rss', function () {
       this.ajaxStub = this.stub($, 'getJSON', function (apiUrl) {
         expect(apiUrl).toMatch(/https:\/\/feedrapp\.herokuapp\.com/);
         done();
-  ***REMOVED***);
+      });
 
       this.element.rss(this.feedUrl, { ssl: true });
-***REMOVED***);
+    });
 
     it('uses feedrapp.info if ssl is turned off', function (done) {
       this.ajaxStub = this.stub($, 'getJSON', function (apiUrl) {
         expect(apiUrl).toMatch(/http:\/\/www\.feedrapp\.info/);
         done();
-  ***REMOVED***);
+      });
 
       this.element.rss(this.feedUrl, { ssl: false });
-***REMOVED***);
+    });
 
     it('does not overwrite the host if it was specified manually', function (done) {
       this.ajaxStub = this.stub($, 'getJSON', function (apiUrl) {
         expect(apiUrl).toMatch(/https:\/\/foo\.com/);
         done();
-  ***REMOVED***);
+      });
 
       this.element.rss(this.feedUrl, { ssl: true, host: 'foo.com' });
-***REMOVED***);
+    });
   });
 
   describe('tokens', function () {
@@ -207,16 +207,16 @@ describe('jquery.rss', function () {
             something: function (entry, tokens) {
               expect(tokens.feed.entries).not.toBeDefined();
               return tokens.feed.title;
-        ***REMOVED***
-      ***REMOVED***
-    ***REMOVED***, function () {
+            }
+          }
+        }, function () {
           var renderedContent = $container.html().replace(/\n/g, '');
 
           expect(renderedContent).toEqual('<ul><li>XML-RSS.de Website-Feed</li></ul>');
           done();
-    ***REMOVED***);
-  ***REMOVED***);
-***REMOVED***);
+        });
+      });
+    });
 
     describe('> bodyPlain', function () {
       describe('> XSS >', function () {
@@ -226,36 +226,36 @@ describe('jquery.rss', function () {
           $container.rss(this.feedUrl, {
             limit: 1,
             entryTemplate: '<li>{bodyPlain}</li>'
-      ***REMOVED***, function () {
+          }, function () {
             var renderedContent = $container.html().split('\n').map(function (s) {
               return s.trim();
-        ***REMOVED***).join('').trim();
+            }).join('').trim();
 
             expect(renderedContent).toMatch(/<ul><li><\/li><\/ul>/);
 
             done();
-      ***REMOVED***);
-    ***REMOVED***);
+          });
+        });
 
         it('removes script tags if they are plain', function () {
           this.fakeGetJSON('<script>alert(1)</script>');
-    ***REMOVED***);
+        });
 
         it('removes script tags with attributes', function () {
           this.fakeGetJSON('<script type="text/javascript">alert(1)</script>');
-    ***REMOVED***);
+        });
 
         it('removes script tags with capital letters', function () {
           this.fakeGetJSON('<SCRIPT SRC=http://ha.ckers.org/xss.js>hallo</SCRIPT>');
-    ***REMOVED***);
+        });
 
         it('strips unsecure image tags with embedded linebreak', function () {
           this.fakeGetJSON('<IMG SRC="jav&#x09;ascript:alert(\'XSS\');">');
-    ***REMOVED***);
+        });
 
         it('strips unsecure image tags with embedded carriage return', function () {
           this.fakeGetJSON('<IMG SRC="jav&#x0D;ascript:alert(\'XSS\');">');
-    ***REMOVED***);
+        });
 
         it('strips unsecure image tags with real carriage return', function () {
           /* jshint ignore:start */
@@ -263,87 +263,87 @@ describe('jquery.rss', function () {
           this.fakeGetJSON('<IMG\nSRC\n=\n"\nj\na\nv\na\ns\nc\nr\ni\np\nt\n:\na\nl\ne\nr\nt\n(\n\'\nX\nS\nS\n\'\n)\n"\n>\n');
           /* jscs:enable */
           /* jshint ignore:end */
-    ***REMOVED***);
+        });
 
         it('strips unsecure image tags with \0 in \'javascript\'', function () {
           this.fakeGetJSON('<IMG SRC=java\0script:alert("XSS")>');
-    ***REMOVED***);
+        });
 
         it('strips unsecure image tags with meta char before javascript tag', function () {
           this.fakeGetJSON('<IMG SRC=" &#14;  javascript:alert(\'XSS\');">');
-    ***REMOVED***);
+        });
 
         it('strips script/xss tags', function () {
           this.fakeGetJSON('<SCRIPT/XSS SRC="http://ha.ckers.org/xss.js"></SCRIPT>');
-    ***REMOVED***);
+        });
 
         it('strips script/src tags', function () {
           this.fakeGetJSON('<SCRIPT/SRC="http://ha.ckers.org/xss.js"></SCRIPT>');
-    ***REMOVED***);
+        });
 
         it('strips unsecure body tag', function () {
           this.fakeGetJSON('<BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")>');
-    ***REMOVED***);
+        });
 
         it('strips the unclosed script tag', function () {
           this.fakeGetJSON('<SCRIPT SRC=http://ha.ckers.org/xss.js?<B>');
-    ***REMOVED***);
+        });
 
         it('strips unclosed script tags without protocol in src', function () {
           this.fakeGetJSON('<SCRIPT SRC=//ha.ckers.org/.j>');
-    ***REMOVED***);
+        });
 
         it('strips script tags with line breaks in between', function () {
           this.fakeGetJSON('<SCRIPT>a=/XSS/\nalert(a.source)</SCRIPT>');
-    ***REMOVED***);
+        });
 
         it('strips script tags when the come after a closing title tag', function () {
           this.fakeGetJSON('</TITLE><SCRIPT>alert("XSS");</SCRIPT>');
-    ***REMOVED***);
+        });
 
         it('strips input tags with javascript in src attribute', function () {
           this.fakeGetJSON('<INPUT TYPE="IMAGE" SRC="javascript:alert(\'XSS\');">');
-    ***REMOVED***);
+        });
 
         it('strips body tag with background attribute', function () {
           this.fakeGetJSON('<BODY BACKGROUND="javascript:alert(\'XSS\')">');
-    ***REMOVED***);
+        });
 
         it('strips body tag with onload attribute', function () {
           this.fakeGetJSON('<BODY ONLOAD=alert(\'XSS\')>');
-    ***REMOVED***);
+        });
 
         it('strips tags with html quotation', function () {
           this.fakeGetJSON('<SCRIPT a=">" SRC="http://ha.ckers.org/xss.js"></SCRIPT>');
-    ***REMOVED***);
-  ***REMOVED***);
+        });
+      });
 
       describe('> XSS 2 >', function () {
         var tests = [{
           name: 'strips unsecure image tags with \0 in \'script\'',
           test: '<SCR\0IPT>alert("XSS")</SCR\0IPT>',
           result: 'alert("XSS")'
-    ***REMOVED***, {
+        }, {
           name: 'strips script tags with extraneous open brackets',
           test: '<<SCRIPT>alert("XSS");//<</SCRIPT>',
           result: '&lt;'
-    ***REMOVED***, {
+        }, {
           name: 'strips half open html/javascript xss vector',
           test: '<IMG SRC="javascript:alert(\'XSS\')"',
           result: ' SRC="javascript:alert(\'XSS\')"'
-    ***REMOVED***, {
+        }, {
           name: 'strips half open iframe tags',
           test: '<iFraMe SRC="javascript:alert(\'XSS\')"',
           result: ' SRC="javascript:alert(\'XSS\')"'
-    ***REMOVED***, {
+        }, {
           name: 'strips half open iframe tag with double open bracket',
           test: '<iframe src=http://ha.ckers.org/scriptlet.html <',
           result: ' src=http://ha.ckers.org/scriptlet.html &lt;'
-    ***REMOVED***, {
+        }, {
           name: 'strips meta tags with content',
           test: '<META HTTP-EQUIV="Link" Content="<http://ha.ckers.org/xss.css>; REL=stylesheet">',
           result: '; REL=stylesheet"&gt;'
-    ***REMOVED***];
+        }];
 
         tests.forEach(function (test) {
           it(test.name, function (done) {
@@ -355,21 +355,21 @@ describe('jquery.rss', function () {
             $container.rss(this.feedUrl, {
               limit: 1,
               entryTemplate: '<li>{bodyPlain}</li>'
-        ***REMOVED***, function () {
+            }, function () {
               $.getJSON = self.originalGetJSON;
 
               var renderedContent = $container.html().split('\n').map(function (s) {
                 return s.trim();
-          ***REMOVED***).join('').trim();
+              }).join('').trim();
 
               expect(renderedContent).toEqual('<ul><li>' + test.result + '</li><\/ul>');
 
               done();
-        ***REMOVED***);
-      ***REMOVED***);
-    ***REMOVED***);
-  ***REMOVED***);
-***REMOVED***);
+            });
+          });
+        });
+      });
+    });
 
     describe('> date', function () {
       it('renders english dates by default', function (done) {
@@ -380,8 +380,8 @@ describe('jquery.rss', function () {
 
           expect(renderedContent).toMatch(/<a href=".*">\[.*Saturday May 22nd\] RSS<\/a>/);
           done();
-    ***REMOVED***);
-  ***REMOVED***);
+        });
+      });
 
       it('renders german dates if enabled', function (done) {
         var $container = this.element;
@@ -391,8 +391,8 @@ describe('jquery.rss', function () {
 
           expect(renderedContent).toMatch(/<a href=".*">\[.*Samstag Mai 22\.\] RSS<\/a>/);
           done();
-    ***REMOVED***);
-  ***REMOVED***);
-***REMOVED***);
+        });
+      });
+    });
   });
 });
