@@ -29292,7 +29292,11 @@ var SendEmail = function (_React$Component2) {
   function SendEmail() {
     _classCallCheck(this, SendEmail);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(SendEmail).apply(this, arguments));
+    var _this8 = _possibleConstructorReturn(this, Object.getPrototypeOf(SendEmail).call(this));
+
+    _this8._handleClick = _this8._handleClick.bind(_this8);
+
+    return _this8;
   }
 
   _createClass(SendEmail, [{
@@ -29300,7 +29304,7 @@ var SendEmail = function (_React$Component2) {
     value: function render() {
       return React.createElement(
         'a',
-        { onClick: this._handleClick.bind(this), className: 'btn btn-cta-primary pull-right', href: '#',
+        { onClick: this._handleClick, className: 'btn btn-cta-primary pull-right', href: '#',
           target: '_blank' },
         React.createElement('i', { className: 'fa fa-paper-plane' }),
         ' Contact Me'

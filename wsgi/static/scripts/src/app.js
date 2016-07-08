@@ -100,9 +100,14 @@ class ReadingListBooksToRead extends ReadingList {
 }
 
 class SendEmail extends React.Component {
+  constructor() {
+    super();
+    this._handleClick = this._handleClick.bind(this);
+
+  }
   render() {
     return (
-      <a onClick={this._handleClick.bind(this)} className="btn btn-cta-primary pull-right" href="#"
+      <a onClick={this._handleClick} className="btn btn-cta-primary pull-right" href="#"
          target="_blank"><i className="fa fa-paper-plane"></i> Contact Me</a>
     )
   }
