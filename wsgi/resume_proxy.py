@@ -11,7 +11,10 @@ def combined_resume(hide_work_experience=True):
             resume = res
             break
     base = resume
-    resumes.remove(resume)
+    if resume is not None:
+        resumes.remove(resume)
+    else:
+        return None
     for resume in resumes:
         for key, value in resume._fields.items():
             if key in ['reading_list', 'service_links_list']:
