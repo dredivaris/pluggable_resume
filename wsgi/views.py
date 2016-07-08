@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, make_response, request
+from flask import render_template, Blueprint, make_response, request, abort
 from user_agents import parse
 
 from wsgi.models import ResumeSettings
@@ -24,6 +24,10 @@ def resume(url_specifier=None):
         combined_res = combined_resume(hide_work_experience=False)
     else:
         combined_res = combined_resume()
+
+    if not combined_res:
+        abort(404)
+
     user_agent = parse(request.user_agent.string)
 
     resp = make_response(render_template('live_resume.html',
