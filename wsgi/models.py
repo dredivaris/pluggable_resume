@@ -28,6 +28,7 @@ class Skill(EmbeddedDocument):
     name = StringField()
     url = URLField()
     skill_level = IntField(default=3)  # 1 - 10
+    years = IntField(default=0)  # 0 or greater
     order_by = IntField(default=9)  # 1-10
     description = StringField()
 
