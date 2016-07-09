@@ -29102,13 +29102,17 @@ module.exports = validateDOMNesting;
 module.exports = require('./lib/React');
 
 },{"./lib/React":54}],160:[function(require,module,exports){
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _jquery = require('jquery');
+var _jquery = require("jquery");
 
 var _jquery2 = _interopRequireDefault(_jquery);
+
+var _send_email = require("./send_email");
+
+var _send_email2 = _interopRequireDefault(_send_email);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29137,7 +29141,7 @@ var ReadingList = function (_React$Component) {
   }
 
   _createClass(ReadingList, [{
-    key: '_fetch_reading_list',
+    key: "_fetch_reading_list",
     value: function _fetch_reading_list() {
       var _this2 = this;
 
@@ -29159,12 +29163,12 @@ var ReadingList = function (_React$Component) {
       }
     }
   }, {
-    key: 'componentWillMount',
+    key: "componentWillMount",
     value: function componentWillMount() {
       this._fetch_reading_list();
     }
   }, {
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {
       var _this3 = this;
 
@@ -29173,36 +29177,36 @@ var ReadingList = function (_React$Component) {
       }, 10000);
     }
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {
       clearInterval(this._timer);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var reading_list;
       if (this.state.reading_list && this.state.reading_list.length) {
         reading_list = this.state.reading_list.map(function (item) {
           return React.createElement(
-            'li',
-            { className: 'list-group-item', key: item.id },
+            "li",
+            { className: "list-group-item", key: item.id },
             React.createElement(
-              'div',
-              { className: 'row' },
+              "div",
+              { className: "row" },
               React.createElement(
-                'div',
-                { className: 'col-md-3 col-sm-3 col-xs-4' },
-                React.createElement('img', { src: item.image_url, className: 'img-responsive', alt: '' })
+                "div",
+                { className: "col-md-3 col-sm-3 col-xs-4" },
+                React.createElement("img", { src: item.image_url, className: "img-responsive", alt: "" })
               ),
               React.createElement(
-                'div',
-                { className: 'col-md-9 col-sm-9 col-xs-8' },
+                "div",
+                { className: "col-md-9 col-sm-9 col-xs-8" },
                 React.createElement(
-                  'a',
+                  "a",
                   { href: item.url },
-                  ' ',
+                  " ",
                   item.title,
-                  ' '
+                  " "
                 )
               )
             )
@@ -29212,11 +29216,11 @@ var ReadingList = function (_React$Component) {
         reading_list = [];
       }
       return React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(
-          'ul',
-          { className: 'list-group' },
+          "ul",
+          { className: "list-group" },
           reading_list
         )
       );
@@ -29286,46 +29290,7 @@ var ReadingListBooksToRead = function (_ReadingList4) {
   return ReadingListBooksToRead;
 }(ReadingList);
 
-var SendEmail = function (_React$Component2) {
-  _inherits(SendEmail, _React$Component2);
-
-  function SendEmail() {
-    _classCallCheck(this, SendEmail);
-
-    var _this8 = _possibleConstructorReturn(this, Object.getPrototypeOf(SendEmail).call(this));
-
-    _this8._handleClick = _this8._handleClick.bind(_this8);
-
-    return _this8;
-  }
-
-  _createClass(SendEmail, [{
-    key: 'render',
-    value: function render() {
-      return React.createElement(
-        'a',
-        { onClick: this._handleClick, className: 'btn btn-cta-primary pull-right', href: '#',
-          target: '_blank' },
-        React.createElement('i', { className: 'fa fa-paper-plane' }),
-        ' Contact Me'
-      );
-    }
-  }, {
-    key: '_handleClick',
-    value: function _handleClick(event) {
-      event.preventDefault();
-      _jquery2.default.get('../api/v1.0/email/', function (data) {
-        if (data.success) {
-          window.location = 'mailto:' + data.mail_to;
-        }
-      });
-    }
-  }]);
-
-  return SendEmail;
-}(React.Component);
-
-ReactDom.render(React.createElement(SendEmail, null), document.getElementById('contact-me'));
+ReactDom.render(React.createElement(_send_email2.default, null), document.getElementById('contact-me'));
 
 ReactDom.render(React.createElement(ReadingListBooksFinished, null), document.getElementById('reading-list-books-finished'));
 
@@ -29335,4 +29300,66 @@ ReactDom.render(React.createElement(ReadingListBooksFinishedGeneral, null), docu
 
 ReactDom.render(React.createElement(ReadingListBooksToRead, null), document.getElementById('reading-list-books-to-read'));
 
-},{"jquery":28,"react":159,"react-dom":30}]},{},[160]);
+},{"./send_email":161,"jquery":28,"react":159,"react-dom":30}],161:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SendEmail = function (_React$Component) {
+  _inherits(SendEmail, _React$Component);
+
+  function SendEmail() {
+    _classCallCheck(this, SendEmail);
+
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SendEmail).call(this));
+
+    _this._handleClick = _this._handleClick.bind(_this);
+
+    return _this;
+  }
+
+  _createClass(SendEmail, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "a",
+        { onClick: this._handleClick, className: "btn btn-cta-primary pull-right", href: "#",
+          target: "_blank" },
+        _react2.default.createElement("i", { className: "fa fa-paper-plane" }),
+        " Contact Me"
+      );
+    }
+  }, {
+    key: "_handleClick",
+    value: function _handleClick(event) {
+      event.preventDefault();
+      $.get('../api/v1.0/email/', function (data) {
+        if (data.success) {
+          window.location = "mailto:" + data.mail_to;
+        }
+      });
+    }
+  }]);
+
+  return SendEmail;
+}(_react2.default.Component);
+
+exports.default = SendEmail;
+
+},{"react":159}]},{},[160]);

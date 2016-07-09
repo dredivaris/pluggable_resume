@@ -1,4 +1,5 @@
 import $ from "jquery";
+import SendEmail from "./send_email";
 
 var React = require('react');
 var ReactDom = require('react-dom');
@@ -99,28 +100,6 @@ class ReadingListBooksToRead extends ReadingList {
   }
 }
 
-class SendEmail extends React.Component {
-  constructor() {
-    super();
-    this._handleClick = this._handleClick.bind(this);
-
-  }
-  render() {
-    return (
-      <a onClick={this._handleClick} className="btn btn-cta-primary pull-right" href="#"
-         target="_blank"><i className="fa fa-paper-plane"></i> Contact Me</a>
-    )
-  }
-
-  _handleClick(event) {
-    event.preventDefault();
-    $.get('../api/v1.0/email/', function (data) {
-      if (data.success) {
-        window.location = `mailto:${data.mail_to}`;
-      }
-    })
-  }
-}
 
 ReactDom.render(
   <SendEmail/>, document.getElementById('contact-me')
