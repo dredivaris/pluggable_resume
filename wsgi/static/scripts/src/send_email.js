@@ -1,6 +1,6 @@
-import React from "react";
+import React, {Component, PropTypes} from "react";
 
-export default class SendEmail extends React.Component {
+export default class SendEmail extends Component {
   constructor() {
     super();
     this._handleClick = this._handleClick.bind(this);
