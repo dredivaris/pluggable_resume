@@ -37,6 +37,7 @@ gulp.task('transpile', ['lint'], () => bundle()); // TODO
 gulp.task('default', function () {
   gulp.start('transform');
   gulp.watch('./wsgi/static/scripts/src/*.js', ['transform']);
+  gulp.watch('./wsgi/static/scripts/src/**/*.js', ['transform'])
 });
 
 function onError(err) {

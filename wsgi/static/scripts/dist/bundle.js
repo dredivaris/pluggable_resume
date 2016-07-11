@@ -29104,16 +29104,6 @@ module.exports = require('./lib/React');
 },{"./lib/React":54}],160:[function(require,module,exports){
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _jquery = require("jquery");
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-var _send_email = require("./send_email");
-
-var _send_email2 = _interopRequireDefault(_send_email);
-
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -29121,6 +29111,55 @@ var _react2 = _interopRequireDefault(_react);
 var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _SendMail = require("./components/SendMail");
+
+var _SendMail2 = _interopRequireDefault(_SendMail);
+
+var _ReadingListBooksFinished = require("./components/ReadingListBooksFinished");
+
+var _ReadingListBooksFinished2 = _interopRequireDefault(_ReadingListBooksFinished);
+
+var _ReadingListBooksCurrentlyReading = require("./components/ReadingListBooksCurrentlyReading");
+
+var _ReadingListBooksCurrentlyReading2 = _interopRequireDefault(_ReadingListBooksCurrentlyReading);
+
+var _ReadingListBooksFinishedGeneral = require("./components/ReadingListBooksFinishedGeneral");
+
+var _ReadingListBooksFinishedGeneral2 = _interopRequireDefault(_ReadingListBooksFinishedGeneral);
+
+var _ReadingListBooksToRead = require("./components/ReadingListBooksToRead");
+
+var _ReadingListBooksToRead2 = _interopRequireDefault(_ReadingListBooksToRead);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_reactDom2.default.render(_react2.default.createElement(_SendMail2.default, null), document.getElementById('contact-me'));
+
+_reactDom2.default.render(_react2.default.createElement(_ReadingListBooksFinished2.default, null), document.getElementById('reading-list-books-finished'));
+
+_reactDom2.default.render(_react2.default.createElement(_ReadingListBooksCurrentlyReading2.default, null), document.getElementById('reading-list-books-currently-reading'));
+
+_reactDom2.default.render(_react2.default.createElement(_ReadingListBooksFinishedGeneral2.default, null), document.getElementById('reading-list-books-finished-general'));
+
+_reactDom2.default.render(_react2.default.createElement(_ReadingListBooksToRead2.default, null), document.getElementById('reading-list-books-to-read'));
+
+},{"./components/ReadingListBooksCurrentlyReading":162,"./components/ReadingListBooksFinished":163,"./components/ReadingListBooksFinishedGeneral":164,"./components/ReadingListBooksToRead":165,"./components/SendMail":166,"react":159,"react-dom":30}],161:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _jquery = require("jquery");
+
+var _jquery2 = _interopRequireDefault(_jquery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29235,77 +29274,153 @@ var ReadingList = function (_React$Component) {
   return ReadingList;
 }(_react2.default.Component);
 
+exports.default = ReadingList;
+
+},{"jquery":28,"react":159}],162:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _ReadingList2 = require('./ReadingList');
+
+var _ReadingList3 = _interopRequireDefault(_ReadingList2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var ReadingListBooksCurrentlyReading = function (_ReadingList) {
   _inherits(ReadingListBooksCurrentlyReading, _ReadingList);
 
   function ReadingListBooksCurrentlyReading() {
     _classCallCheck(this, ReadingListBooksCurrentlyReading);
 
-    var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(ReadingListBooksCurrentlyReading).call(this));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReadingListBooksCurrentlyReading).call(this));
 
-    _this4.endpoint = '/api/v1.0/reading_list/currently_reading/';
-    return _this4;
+    _this.endpoint = '/api/v1.0/reading_list/currently_reading/';
+    return _this;
   }
 
   return ReadingListBooksCurrentlyReading;
-}(ReadingList);
+}(_ReadingList3.default);
 
-var ReadingListBooksFinished = function (_ReadingList2) {
-  _inherits(ReadingListBooksFinished, _ReadingList2);
+exports.default = ReadingListBooksCurrentlyReading;
+
+},{"./ReadingList":161}],163:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _ReadingList2 = require('./ReadingList');
+
+var _ReadingList3 = _interopRequireDefault(_ReadingList2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ReadingListBooksFinished = function (_ReadingList) {
+  _inherits(ReadingListBooksFinished, _ReadingList);
 
   function ReadingListBooksFinished() {
     _classCallCheck(this, ReadingListBooksFinished);
 
-    var _this5 = _possibleConstructorReturn(this, Object.getPrototypeOf(ReadingListBooksFinished).call(this));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReadingListBooksFinished).call(this));
 
-    _this5.endpoint = '/api/v1.0/reading_list/finished_reading/';
-    return _this5;
+    _this.endpoint = '/api/v1.0/reading_list/finished_reading/';
+    return _this;
   }
 
   return ReadingListBooksFinished;
-}(ReadingList);
+}(_ReadingList3.default);
 
-var ReadingListBooksFinishedGeneral = function (_ReadingList3) {
-  _inherits(ReadingListBooksFinishedGeneral, _ReadingList3);
+exports.default = ReadingListBooksFinished;
+
+},{"./ReadingList":161}],164:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _ReadingList2 = require('./ReadingList');
+
+var _ReadingList3 = _interopRequireDefault(_ReadingList2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ReadingListBooksFinishedGeneral = function (_ReadingList) {
+  _inherits(ReadingListBooksFinishedGeneral, _ReadingList);
 
   function ReadingListBooksFinishedGeneral() {
     _classCallCheck(this, ReadingListBooksFinishedGeneral);
 
-    var _this6 = _possibleConstructorReturn(this, Object.getPrototypeOf(ReadingListBooksFinishedGeneral).call(this));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReadingListBooksFinishedGeneral).call(this));
 
-    _this6.endpoint = '/api/v1.0/reading_list/finished_reading_general/';
-    return _this6;
+    _this.endpoint = '/api/v1.0/reading_list/finished_reading_general/';
+    return _this;
   }
 
   return ReadingListBooksFinishedGeneral;
-}(ReadingList);
+}(_ReadingList3.default);
 
-var ReadingListBooksToRead = function (_ReadingList4) {
-  _inherits(ReadingListBooksToRead, _ReadingList4);
+exports.default = ReadingListBooksFinishedGeneral;
+
+},{"./ReadingList":161}],165:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _ReadingList2 = require('./ReadingList');
+
+var _ReadingList3 = _interopRequireDefault(_ReadingList2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ReadingListBooksToRead = function (_ReadingList) {
+  _inherits(ReadingListBooksToRead, _ReadingList);
 
   function ReadingListBooksToRead() {
     _classCallCheck(this, ReadingListBooksToRead);
 
-    var _this7 = _possibleConstructorReturn(this, Object.getPrototypeOf(ReadingListBooksToRead).call(this));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReadingListBooksToRead).call(this));
 
-    _this7.endpoint = '/api/v1.0/reading_list/to_read/';
-    return _this7;
+    _this.endpoint = '/api/v1.0/reading_list/to_read/';
+    return _this;
   }
 
   return ReadingListBooksToRead;
-}(ReadingList);
+}(_ReadingList3.default);
 
-_reactDom2.default.render(_react2.default.createElement(_send_email2.default, null), document.getElementById('contact-me'));
+exports.default = ReadingListBooksToRead;
 
-_reactDom2.default.render(_react2.default.createElement(ReadingListBooksFinished, null), document.getElementById('reading-list-books-finished'));
-
-_reactDom2.default.render(_react2.default.createElement(ReadingListBooksCurrentlyReading, null), document.getElementById('reading-list-books-currently-reading'));
-
-_reactDom2.default.render(_react2.default.createElement(ReadingListBooksFinishedGeneral, null), document.getElementById('reading-list-books-finished-general'));
-
-_reactDom2.default.render(_react2.default.createElement(ReadingListBooksToRead, null), document.getElementById('reading-list-books-to-read'));
-
-},{"./send_email":161,"jquery":28,"react":159,"react-dom":30}],161:[function(require,module,exports){
+},{"./ReadingList":161}],166:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
