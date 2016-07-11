@@ -29114,6 +29114,14 @@ var _send_email = require("./send_email");
 
 var _send_email2 = _interopRequireDefault(_send_email);
 
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require("react-dom");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29121,9 +29129,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var React = require('react');
-var ReactDom = require('react-dom');
 
 var ReadingList = function (_React$Component) {
   _inherits(ReadingList, _React$Component);
@@ -29187,21 +29192,21 @@ var ReadingList = function (_React$Component) {
       var reading_list;
       if (this.state.reading_list && this.state.reading_list.length) {
         reading_list = this.state.reading_list.map(function (item) {
-          return React.createElement(
+          return _react2.default.createElement(
             "li",
             { className: "list-group-item", key: item.id },
-            React.createElement(
+            _react2.default.createElement(
               "div",
               { className: "row" },
-              React.createElement(
+              _react2.default.createElement(
                 "div",
                 { className: "col-md-3 col-sm-3 col-xs-4" },
-                React.createElement("img", { src: item.image_url, className: "img-responsive", alt: "" })
+                _react2.default.createElement("img", { src: item.image_url, className: "img-responsive", alt: "" })
               ),
-              React.createElement(
+              _react2.default.createElement(
                 "div",
                 { className: "col-md-9 col-sm-9 col-xs-8" },
-                React.createElement(
+                _react2.default.createElement(
                   "a",
                   { href: item.url },
                   " ",
@@ -29215,10 +29220,10 @@ var ReadingList = function (_React$Component) {
       } else {
         reading_list = [];
       }
-      return React.createElement(
+      return _react2.default.createElement(
         "div",
         null,
-        React.createElement(
+        _react2.default.createElement(
           "ul",
           { className: "list-group" },
           reading_list
@@ -29228,7 +29233,7 @@ var ReadingList = function (_React$Component) {
   }]);
 
   return ReadingList;
-}(React.Component);
+}(_react2.default.Component);
 
 var ReadingListBooksCurrentlyReading = function (_ReadingList) {
   _inherits(ReadingListBooksCurrentlyReading, _ReadingList);
@@ -29290,15 +29295,15 @@ var ReadingListBooksToRead = function (_ReadingList4) {
   return ReadingListBooksToRead;
 }(ReadingList);
 
-ReactDom.render(React.createElement(_send_email2.default, null), document.getElementById('contact-me'));
+_reactDom2.default.render(_react2.default.createElement(_send_email2.default, null), document.getElementById('contact-me'));
 
-ReactDom.render(React.createElement(ReadingListBooksFinished, null), document.getElementById('reading-list-books-finished'));
+_reactDom2.default.render(_react2.default.createElement(ReadingListBooksFinished, null), document.getElementById('reading-list-books-finished'));
 
-ReactDom.render(React.createElement(ReadingListBooksCurrentlyReading, null), document.getElementById('reading-list-books-currently-reading'));
+_reactDom2.default.render(_react2.default.createElement(ReadingListBooksCurrentlyReading, null), document.getElementById('reading-list-books-currently-reading'));
 
-ReactDom.render(React.createElement(ReadingListBooksFinishedGeneral, null), document.getElementById('reading-list-books-finished-general'));
+_reactDom2.default.render(_react2.default.createElement(ReadingListBooksFinishedGeneral, null), document.getElementById('reading-list-books-finished-general'));
 
-ReactDom.render(React.createElement(ReadingListBooksToRead, null), document.getElementById('reading-list-books-to-read'));
+_reactDom2.default.render(_react2.default.createElement(ReadingListBooksToRead, null), document.getElementById('reading-list-books-to-read'));
 
 },{"./send_email":161,"jquery":28,"react":159,"react-dom":30}],161:[function(require,module,exports){
 "use strict";

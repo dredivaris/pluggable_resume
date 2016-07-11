@@ -1,8 +1,7 @@
 import $ from "jquery";
 import SendEmail from "./send_email";
-
-var React = require('react');
-var ReactDom = require('react-dom');
+import React, {Component, PropTypes} from "react";
+import ReactDom from "react-dom";
 
 class ReadingList extends React.Component {
   constructor() {
