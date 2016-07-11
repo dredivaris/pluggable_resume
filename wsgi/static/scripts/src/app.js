@@ -1,4 +1,3 @@
-
 import React, {Component, PropTypes} from "react";
 import ReactDom from "react-dom";
 import SendEmail from "./components/SendMail";
@@ -11,7 +10,6 @@ ReactDom.render(
   <SendEmail/>, document.getElementById('contact-me')
 );
 
-
 ReactDom.render(
   <ReadingListBooksFinished/>, document.getElementById('reading-list-books-finished')
 );
@@ -23,7 +21,6 @@ ReactDom.render(
 ReactDom.render(
   <ReadingListBooksFinishedGeneral/>, document.getElementById('reading-list-books-finished-general')
 );
-
 
 ReactDom.render(
   <ReadingListBooksToRead/>, document.getElementById('reading-list-books-to-read')
