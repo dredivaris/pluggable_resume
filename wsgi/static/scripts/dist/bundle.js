@@ -29277,13 +29277,13 @@ var ReadingList = function (_React$Component) {
 exports.default = ReadingList;
 
 },{"jquery":28,"react":159}],162:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ReadingList2 = require('./ReadingList');
+var _ReadingList2 = require("./ReadingList");
 
 var _ReadingList3 = _interopRequireDefault(_ReadingList2);
 
@@ -29313,13 +29313,13 @@ var ReadingListBooksCurrentlyReading = function (_ReadingList) {
 exports.default = ReadingListBooksCurrentlyReading;
 
 },{"./ReadingList":161}],163:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ReadingList2 = require('./ReadingList');
+var _ReadingList2 = require("./ReadingList");
 
 var _ReadingList3 = _interopRequireDefault(_ReadingList2);
 
@@ -29349,13 +29349,13 @@ var ReadingListBooksFinished = function (_ReadingList) {
 exports.default = ReadingListBooksFinished;
 
 },{"./ReadingList":161}],164:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ReadingList2 = require('./ReadingList');
+var _ReadingList2 = require("./ReadingList");
 
 var _ReadingList3 = _interopRequireDefault(_ReadingList2);
 
@@ -29385,13 +29385,13 @@ var ReadingListBooksFinishedGeneral = function (_ReadingList) {
 exports.default = ReadingListBooksFinishedGeneral;
 
 },{"./ReadingList":161}],165:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ReadingList2 = require('./ReadingList');
+var _ReadingList2 = require("./ReadingList");
 
 var _ReadingList3 = _interopRequireDefault(_ReadingList2);
 

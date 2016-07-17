@@ -4,12 +4,12 @@ filters = Blueprint('filters', __name__)
 
 
 def process_newlines(val):
-    vals = val.split('\r\n\r\n')
+    vals = val.split('\r\n\r\n') if '\r\n\r\n' in val else val.split('\n\n')
     return ''.join('<p>{}</p>'.format(v) for v in vals)
 
 
 def process_newlines_short(val):
-    vals = val.split('\r\n')
+    vals = val.split('\r\n') if '\r\n' in val else val.split('\n')
     return ''.join('<p>{}</p>'.format(v) for v in vals)
 
 
