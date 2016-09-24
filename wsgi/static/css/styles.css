@@ -327,6 +327,17 @@ iframe {
   color: #999;
   font-weight: normal;
 }
+.experience .experience-elaboration {
+  color: #999;
+  font-weight: normal;
+  font-size: 15.8px;
+}
+.experience .experience-elaboration a {
+  color: #999;
+}
+.experience .experience-elaboration a:hover {
+  color: #666666;
+}
 /* Git section */
 .github-graph {
   margin-bottom: 30px;

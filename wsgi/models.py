@@ -177,6 +177,7 @@ class Resume(Document):
     basic_info = EmbeddedDocumentField(BasicInfo)
     summary_info = EmbeddedDocumentField(SummaryInfo)
     skills = ListField(EmbeddedDocumentField(Skill))
+    work_experience_text = StringField()
     work_experiences = ListField(EmbeddedDocumentField(Experience))
     certifications = ListField(EmbeddedDocumentField(Certification))
     schools = ListField(EmbeddedDocumentField(School))

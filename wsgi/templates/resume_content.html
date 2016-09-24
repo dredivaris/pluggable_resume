@@ -110,11 +110,13 @@
 
         <section class="experience section">
             <div class="section-inner">
-                <h2 class="heading">Work Experience</h2>
+                <h2 class="heading">Work Experience {% if resume.work_experience_text %}<span class="experience-elaboration"> - {{ resume.work_experience_text }}</span>{% endif %}</h2>
+
                 <div class="content">
                     {% for item in resume.work_experiences %}
                         <div class="item">
-                            <h3 class="title">{{ item.position_title }} - <span class="place"><a href="{{ item.company_url }}">{{ item.company_title }}</a></span> <span class="year">({{ item.from_date }} - {{ item.to_date }})</span></h3>
+                            <h3 class="title">{{ item.position_title }} -
+                              <span class="place"><a href="{{ item.company_url }}">{{ item.company_title }}</a></span> <span class="year">({{ item.from_date }} - {{ item.to_date }})</span></h3>
                             {{ item.description|process_newlines_short|safe }}
                         </div><!--//item-->
                     {% endfor %}
