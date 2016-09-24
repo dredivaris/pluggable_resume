@@ -190,6 +190,9 @@
                                 {% if resume_link %}
                                     <li><i class="fa fa-file"></i><span class="sr-only">Resume PDF:</span><a href="{{ resume_link }}">Resume</a></li>
                                 {% endif %}
+                                {% if resume.basic_info.phone_number %}
+                                    <li><i class="fa fa-phone"></i><span class="sr-only">Phone number:</span>{{ resume.basic_info.phone_number }}</li>
+                                {% endif %}
                             {% endif %}
                             {% if resume.basic_info.website %}<li><i class="fa fa-link"></i><span class="sr-only">Website:</span>
                                 <a href="{{ resume.basic_info.website }}{% if matching_specifier %}/{{ url_specifier }}/{% endif %}">{{ resume.basic_info.website|process_urls }}</a></li> {% endif %}

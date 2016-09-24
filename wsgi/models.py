@@ -20,6 +20,7 @@ def is_empty(doc):
 class BasicInfo(EmbeddedDocument):
     location = StringField()
     email = EmailField()
+    phone_number = StringField()
     website = URLField()
     industry = StringField()
 
